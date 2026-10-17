@@ -165,7 +165,7 @@ Geographic nuances: [if multi-market]
 
 ---
 
-## Example Session
+## Illustrative draft example (fictional; all numbers and product claims require fresh verification)
 
 **User:** Research the AI marketing tools market. Focus on SMBs in Asia, pricing trends, and what HubSpot and Mailchimp are doing in the region.
 
@@ -202,7 +202,7 @@ COMPETITIVE GAPS
 
 - Run this skill before `brand-positioning.md` to inform competitor analysis
 - Save reports to `outputs/research-[topic]-[date].md`
-- Add key findings to `MEMORY.md` so your agent retains market context
+- Store approved source-backed findings in protected tenant/brand-scoped storage with retrieval dates and review records.
 - Set up a recurring brief with OpenClaw's cron tool for weekly market intel
 
 ---

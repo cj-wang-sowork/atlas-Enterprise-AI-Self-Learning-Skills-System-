@@ -107,40 +107,19 @@ class LearnFile:
 
 
 class LearnSecurityValidator:
-    """Detects obvious sensitive content in learning files."""
+    """Apply the same sensitive-content policy used by the skill registry."""
 
-    CREDENTIAL_PATTERNS = [
-        r"(?i)(password|passwd|pwd)\s*[:=]\s*['\"]?([^'\"\s]+)",
-        r"(?i)(api[_-]?key|apikey)\s*[:=]\s*['\"]?([^'\"\s]+)",
-        r"(?i)(secret|token)\s*[:=]\s*['\"]?([^'\"\s]+)",
-        r"(?i)(private[_-]?key)\s*[:=]",
-        r"(?i)(auth|authorization)\s*[:=]\s*['\"]?Bearer\s+([^'\"\s]+)",
-    ]
-    PII_PATTERNS = [
-        r"\b\d{3}-\d{2}-\d{4}\b",
-        r"\b(?:\+?1[-.\s]?)?\(?[0-9]{3}\)?[-.\s]?[0-9]{3}[-.\s]?[0-9]{4}\b",
-        r"(?i)(email|e-mail)\s*[:=]\s*[^@\s]+@[^\s]+",
-    ]
-
-    def __init__(self) -> None:
-        self.logger = logging.getLogger(__name__)
+    def __init__(self, security_checker=None) -> None:
+        from security_checker import SecurityChecker
+        self.checker = security_checker if security_checker is not None else SecurityChecker()
         self.violations: List[str] = []
 
     def validate_file(self, learn_file: LearnFile) -> Tuple[bool, List[str]]:
-        self.violations = []
-
-        for pattern in self.CREDENTIAL_PATTERNS:
-            if re.search(pattern, learn_file.content):
-                self.violations.append(f"CREDENTIAL_LEAK: {learn_file.path}")
-
-        for pattern in self.PII_PATTERNS:
-            if re.search(pattern, learn_file.content):
-                self.violations.append(f"PII_LEAK: {learn_file.path}")
-
+        _, found = self.checker.scan_content(learn_file.content)
+        self.violations = [f"SENSITIVE_CONTENT:{item.violation_type}: {learn_file.path}" for item in found]
         if learn_file.level == LearningLevel.PERSONAL:
             self.violations.append(f"PERSONAL_LAYER_NOT_FOR_GIT: {learn_file.path}")
-
-        return len(self.violations) == 0, list(self.violations)
+        return not self.violations, list(self.violations)
 
 
 class LearnAccessControl:

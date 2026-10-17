@@ -49,7 +49,7 @@ Each supported CLI has a different way to load instructions:
 | Runtime | Adapter strategy |
 | --- | --- |
 | OpenClaw | Copy the full workspace to the OpenClaw workspace directory |
-| Claude Code | Place a project `AGENTS.md` launcher and a Claude skill directory |
+| Claude Code | Place a project `CLAUDE.md` launcher and a Claude skill directory |
 | Codex CLI | Place a project `AGENTS.md` launcher for Codex instruction discovery |
 | Qwen Code CLI | Place a `SKILL.md` directory in Qwen's skill search path |
 
@@ -65,13 +65,17 @@ The top-level `SKILL.md` describes the reusable ATLAS workflow. The `skills/` di
 
 Agents should load the narrowest skill that matches the task, then apply the five-layer learning rules before writing any durable output.
 
+## Current implementation contracts
+
+Use `docs/ACCESS_CONTROL.md` and `docs/LEARNING_LIFECYCLE.md` for the authoritative scoped APIs. Legacy level-only loaders are intentionally denied. Prompts do not enforce filesystem isolation. Outcome verification and human approval are mandatory before reusable revisions; frequency is not correctness. See `docs/VERIFICATION.md` for evidence and limitations.
+
 ## Optional Python Layer
 
 The Python modules are helpers for teams that want programmatic learning behavior:
 
 | Module | Responsibility |
 | --- | --- |
-| `learn_system.py` | Parse and validate learning files by level |
+| `learn_system.py` | Authorize canonical tenant/brand/team/owner scope before content reads |
 | `market_router.py` | Manage market-specific configuration and context |
 | `security_checker.py` | Detect sensitive content and policy violations |
 | `hermes_adapter.py` | Observe behavior and convert repeated patterns into adaptive rules |

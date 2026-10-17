@@ -79,6 +79,14 @@ class SecurityRegressionTests(unittest.TestCase):
             self.assertEqual(checker.clear_violations(), 1)
             self.assertEqual(checker.get_violations(), [])
 
+    def test_learning_audit_uses_same_sensitive_content_policy(self):
+        from learn_system import AccessLevel, LearnFile, LearningLevel, LearnSecurityValidator
+        validator = LearnSecurityValidator()
+        for content in ('Contact alice@example.com', 'API金鑰 = synthetic-value'):
+            resource = LearnFile(Path('safe.md'), LearningLevel.BRAND, AccessLevel.INTERNAL,
+                                 content, '2026-10-17', 'tester')
+            self.assertFalse(validator.validate_file(resource)[0])
+
 
 if __name__ == '__main__':
     unittest.main()

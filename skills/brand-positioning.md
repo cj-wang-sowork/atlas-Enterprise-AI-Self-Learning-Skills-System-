@@ -156,7 +156,7 @@ If user asks: convert to bullet points, slides outline, or JSON
 
 ---
 
-## Example Session
+## Illustrative draft example (fictional; claims are not verified evidence)
 
 **User:** Run a brand positioning analysis for a Taiwanese AI marketing startup targeting SMBs in Southeast Asia. Competitors: HubSpot, Mailchimp, Klaviyo.
 
@@ -212,7 +212,7 @@ For best results, use a flagship model (GPT-5, Claude 4, Gemini 2.5 Pro or equiv
 - Run positioning before campaign — the campaign brief builds on the positioning framework
 - For multi-market brands, run separate positioning sessions per market
 - Save outputs to `outputs/brand-[name]-positioning-[date].md` for future reference
-- Add key decisions to `MEMORY.md` so your agent remembers brand context across sessions
+- Record approved decisions in protected tenant/brand-scoped storage with revision, approver and evidence; never put multiple clients in shared `MEMORY.md`.
 
 ---
 

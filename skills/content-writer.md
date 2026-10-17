@@ -16,7 +16,7 @@ When invoked, your OpenClaw agent will:
 4. **Offer variations** — multiple options to choose from
 5. **Optimize for platform** — correct length, format, and hooks per channel
 
-Works best when paired with `brand-positioning.md` output stored in MEMORY.md.
+Use the exact approved `brand-positioning.md` output revision from protected scoped storage.
 
 ---
 
@@ -55,7 +55,7 @@ You are a senior content strategist and copywriter. When asked to create content
 Confirm or infer:
 - **Content type**: social post / blog / email / ad / landing page / press release / other
 - **Platform**: LinkedIn / Instagram / Twitter/X / Facebook / email / website / other
-- **Brand voice**: [from MEMORY.md or brand-positioning output — or ask user]
+- **Brand voice**: [from the approved scoped brand guideline revision — otherwise mark draft and ask user]
 - **Topic / angle**: what is this content about?
 - **Target audience**: who will read this?
 - **Goal**: awareness / engagement / leads / conversion / retention
@@ -153,7 +153,7 @@ Before delivering:
 
 ---
 
-## Example Session
+## Illustrative draft example (fictional; not approved brand claims)
 
 **User:** Write 3 LinkedIn posts about AI agents for marketing teams. Brand: SoWork. Tone: confident, practical. CTA: try the demo.
 
@@ -183,7 +183,7 @@ If you're running a lean marketing team and want to see what an AI-first workflo
 
 ## Tips
 
-- Store your brand positioning output in MEMORY.md so the agent auto-applies your brand voice
+- Load only the approved positioning revision from authorized tenant/brand-scoped storage.
 - For campaigns, generate content in batches: ask for 10 LinkedIn posts at once for a month's content
 - Use `web-research.md` first to gather competitor insights that can inform content angles
 - Save your best-performing content to `outputs/content-winners.md` for reference
