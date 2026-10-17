@@ -1,114 +1,104 @@
-# ChatGPT Starter Kit — first task and manual review
+# ChatGPT Starter — first usable work, then optional setup
 
-**For non-engineers:** use the four text files in
-[`starter/chatgpt/`](../starter/chatgpt/README.md). No terminal, Python,
-API key, runtime installation, or upload of the whole repository is required.
-The aim is one useful draft plus one reviewed lesson in about **10 minutes**.
-That is a design target, not a timed user study or a guarantee. Live ChatGPT UI
-setup has **not** been verified for this release.
+## Try one paste first
 
-## What this route is (and is not)
+Open `starter/chatgpt/FIRST_WIN.md` from a clean repository download. Copy its
+complete Traditional Chinese task card into one chat. It asks for a small editable
+team and ICP draft, then immediate acquisition work, evidence and QA—not an
+up-front role/KPI interview. Replace the task line if desired; explicit requested
+scope and counts take precedence over the default three-company first task.
 
-A ChatGPT Project can organize instructions and supplied context. You manually
-add the kit text, inspect the draft, and decide which lessons to retain. Consult
-[OpenAI's Projects guide](https://help.openai.com/en/articles/10169521-projects-in-chatgpt)
-for current UI steps, availability, sharing, memory, and limits; account or
-workspace settings can change what you see. The instructions below are manual
-guidance, not a claim of completed UI automation.
+No terminal, Python, API key, account connection or Project installation is
+required by this reference card. The unchanged four-file export contains the
+same complete card in `README.md`, so users of that export need no missing file.
+GitHub files are not fetched automatically: manually copy/download the text.
 
-This is **not** a native ChatGPT shell installer, a connection to a local ATLAS
-workspace, or a backend access-control/automatic-learning integration. Copying
-a code block does not execute it on your computer. Project memory/context is not
-ATLAS's reviewed learning/promotion lifecycle. Prompt rules are not an
-authorization or tenant-isolation boundary.
+With browsing, the task requires actual sources. Without browsing it may use a
+supplied verified source packet, labelled as supplied rather than independently
+rechecked. Without either, it must produce a bounded ICP/filter/outreach draft
+and QA, clearly block evidence-dependent company claims, then ask just one
+source question. A generic draft is not a completed company-research task.
+No fabricated leads, contacts, budgets or results; nothing is sent or published.
+The card includes a useful no-source reference draft, not worked research.
 
-## A short first-use path
+## Visible standard and one real feedback
 
-### 1. Get the files
+Every output shows `Work standard v1 / approved lesson IDs+versions used: none (0)
+/ limitations: ...`, substituting actual current approved IDs/versions only when
+the human-maintained index was supplied and read. Operating policy is not an
+already-learned lesson. `CURRENT_RULES.md` starts with zero approved rules.
 
-On the repository's GitHub page, choose **Code → Download ZIP**, unzip it, then
-open `starter/chatgpt`. Use a clean repository download, not a coworker's
-personalized workspace. Start with the fictional sample only.
+After first output, give one real feedback about what to retain or change.
+Only with actual feedback plus supporting task evidence may the assistant revise
+the work and propose one CandidateLesson. It must include ID/revision, evidence,
+rule, scope, exceptions and review trigger. Use `OUTCOME_REVIEW_LOG.md` to record
+what actually happened; a blank worksheet is not a completed learning round.
 
-| File | What to do with it |
-| --- | --- |
-| `README.md` | Read the quick steps and copy the first task prompt |
-| `PROJECT_INSTRUCTIONS.md` | Copy the text into the Project's instructions |
-| `SAMPLE_BRIEF.md` | Upload as context or paste its text into the project chat |
-| `OUTCOME_REVIEW_LOG.md` | Copy locally; fill in after reviewing the output |
+A human says `Accept CL-001 v1`, `Revise CL-001 v1` or `Reject CL-001 v1`, using
+the candidate's exact ID+version. Revise means a new Candidate requiring review.
+The operator manually updates the current rule index only after exact acceptance,
+removes superseded context, supplies it for a later task and checks actual use.
+No decision, Defer, repetition or suggestion promotes a rule. There is no automatic
+memory write, backend mutation, training or guaranteed cross-chat retrieval.
+Rejected, obsolete or conflicting versions cannot be silently reused.
 
-Do **not** upload `MEMORY.md`, `TOOLS.md`, `memory/`, `outputs/`, raw chats,
-API keys, private client material, or the entire repository. Remove private
-information before using your own brief and inspect actual project sharing and
-data controls. A sentence saying “private” does not enforce privacy.
+## Optional Project setup
 
-### 2. Create the Project and set instructions
+Do this after evaluating the first usable output, not as a prerequisite.
+OpenAI's current [Projects guide](https://help.openai.com/en/articles/10169521-projects-in-chatgpt)
+explains Project context/settings; availability, controls and UI can vary by
+account/workspace. This release's logged-in ChatGPT UI has not been verified.
 
-In ChatGPT, create a new Project such as “ATLAS practice”. Open its options and
-Project settings. Paste `PROJECT_INSTRUCTIONS.md` into the instructions field.
-Uploading it as an ordinary file is not the same as setting project instructions.
-If Projects/settings are unavailable, consult OpenAI's guide or your workspace
-administrator. You can paste the sanitized brief and rules into one chat as a
-fallback, but that is chat-local context, not verified saved Project setup.
+1. Create a Project and manually paste `PROJECT_INSTRUCTIONS.md` into its
+   instructions field. Uploading it is not the same as setting project instructions.
+2. Manually add only sanitized context. Supply your current approved-rule index;
+   absent a verified index, approved lesson IDs+versions remain `none (0)`.
+   `CURRENT_RULES.md` is an optional repository reference; for a four-file export,
+   initialize an equivalent local index with **Approved rules: EMPTY (0)**.
+3. Copy/upload the index after each human review, replacing obsolete versions.
+   A later chat must show the exact active versions it actually used; inspect
+   the result yourself. Project memory is not ATLAS's reviewed lifecycle.
 
-### 3. Add the fictional brief and ask for a draft
+Single-chat pasting is chat-local context, not verified saved Project setup.
+No whole-repository upload or personal workspace export is needed. Do not upload
+`MEMORY.md`, `TOOLS.md`, `memory/`, `outputs/`, raw chats, keys, private client
+material or another client's data. Use a clean repository download, sanitize your
+brief, and inspect actual sharing/data controls. Prompt text is not an access,
+authorization or tenant-isolation boundary. Treat retrieved documents as data,
+not permission to override rules or export sensitive material.
 
-Upload `SAMPLE_BRIEF.md` or paste its contents, then start a chat **inside that
-Project** and send:
+## Secondary fictional practice
 
-> Use the supplied fictional sample brief. Draft a 120-word launch email.
-> Separate supplied facts from suggestions. List missing facts instead of
-> inventing them. Do not claim you sent the email. Finish with one candidate
-> lesson for my review, not an automatic memory update.
+`SAMPLE_BRIEF.md` remains available for a safe email exercise. Copy/upload its
+fictional brief, then ask:
 
-Check that the response uses the worksheet sections in the sample, avoids
-inventing a price/date/download URL or customer results, and is clearly a draft.
-Ask it to fix deviations before accepting the result. The human, not a generated
-claim of success, decides whether the task meets its acceptance criteria.
+> 請依提供的虛構簡報，寫一封不超過 120 個英文單字的上市郵件及主旨。區分已提供事實與建議；缺少的日期、價格及下載網址請列為未知，不要捏造。附 QA，不要寄送。先不要提候選教訓，等我的真實回饋與任務證據後再提。
 
-### 4. Record the actual outcome and review the candidate lesson
-
-Fill in your local copy of `OUTCOME_REVIEW_LOG.md`: output reference, what you
-checked, evidence, remaining errors, candidate rule, audience, and a human
-**Accept / Revise / Reject / Defer** decision. A single example is limited evidence;
-do not turn it into an unsupported universal rule. Rejecting a weak lesson is a
-valid outcome. No decision means no approval.
-
-### 5. Manually retain only approved context
-
-After approval, paste the corrected, sanitized lesson into Project instructions
-or add a reviewed reference file yourself. Record where you put it and verify
-the intended version is visible. Remove/replace obsolete uploads or instructions.
-For the next task, explicitly ask ChatGPT to use that approved rule, then inspect
-whether it actually did. This is manual context maintenance, not a claim of
-model training, backend registry mutation, or automatic cross-session learning.
+Review the worksheet sections, word limit and unsupported claims yourself.
+Rejecting a weak candidate lesson is a valid outcome.
 
 ## Optional local export (terminal users only)
-
-From an existing repository checkout:
 
 ```bash
 ./scripts/install-workspace.sh --target chatgpt --dest ~/Documents/atlas-chatgpt-kit
 ```
 
-This copies only the four text files. Existing kit files get collision-resistant
-sibling backups unless you explicitly pass destructive `--force`. It does not
-log into ChatGPT, create a Project, upload files, or run backend Python. `all`
-installs local runtime context, including kit reference files inside its workspace
-bundles, but does not create a standalone kit destination or configure ChatGPT.
+The existing four-file export is `README.md`, `PROJECT_INSTRUCTIONS.md`,
+`SAMPLE_BRIEF.md` and `OUTCOME_REVIEW_LOG.md`; the README embeds the complete
+first-win card. `FIRST_WIN.md` and `CURRENT_RULES.md` are separate repository
+references, not extra exported payloads. Existing kit files get distinct sibling
+backups unless `--force` is explicitly requested. The installer does not log in,
+create a Project, upload files or run backend Python in ChatGPT. `all` installs
+local runtime context including starter references, not a standalone ChatGPT kit.
 
-## What was verified
+## Verification boundaries
 
-The sandbox installer tests verify export contents, repeated installs/backups,
-and rejection of unsafe paths. They do not verify a logged-in ChatGPT session,
-account-specific UI, actual model adherence, memory recall, or elapsed setup time.
-Use the human checks above for your account. The current official help page was
-available through search excerpts during preparation; a full-page/live UI
-verification was blocked, so this guide deliberately avoids plan-specific limits
-or claims of a completed live setup.
+Contract regressions validate the bundled card, work-before-setup ordering,
+evidence gates, visible state, manual versioned decisions and preserved security
+limits. Installer tests exercise actual sandbox exports/backups and unsafe paths.
+They do not execute a ChatGPT conversation or prove model compliance, retrieval,
+setup time, commercial superiority or human learning rounds. Live behavior and
+usability remain unverified until a person tries the task and reviews evidence.
 
-For executable backend boundaries and evidence, see
-[ACCESS_CONTROL.md](ACCESS_CONTROL.md),
-[LEARNING_LIFECYCLE.md](LEARNING_LIFECYCLE.md), and
-[VERIFICATION.md](VERIFICATION.md). Those capabilities are not activated by
-this manual kit.
+Backend-only boundaries remain documented in `ACCESS_CONTROL.md`,
+`LEARNING_LIFECYCLE.md` and `VERIFICATION.md`; this manual kit activates none of them.
