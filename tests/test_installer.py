@@ -173,8 +173,15 @@ class InstallerTests(unittest.TestCase):
     def test_chatgpt_export_is_manual_text_only_and_repeatable(self):
         dest = self.root / "manual kit"
         self.assert_installs("--target", "chatgpt", "--dest", str(dest))
-        required = {"README.md", "PROJECT_INSTRUCTIONS.md", "SAMPLE_BRIEF.md", "OUTCOME_REVIEW_LOG.md"}
+        core = {"README.md", "PROJECT_INSTRUCTIONS.md", "SAMPLE_BRIEF.md", "OUTCOME_REVIEW_LOG.md"}
+        required = {p.name for p in (self.source / "starter/chatgpt").iterdir()
+                    if p.suffix in (".md", ".json") and not p.name.startswith(".")}
+        self.assertTrue(core <= required)
         self.assertEqual({p.name for p in dest.iterdir()}, required)
+        self.assertTrue(all(p.suffix in (".md", ".json") for p in dest.iterdir()))
+        for name in required:
+            self.assertEqual((dest / name).read_bytes(),
+                             (self.source / "starter/chatgpt" / name).read_bytes())
         self.assertFalse(list(dest.rglob("*.py")))
         instructions = (dest / "PROJECT_INSTRUCTIONS.md").read_text()
         self.assertIn("not access control", instructions)

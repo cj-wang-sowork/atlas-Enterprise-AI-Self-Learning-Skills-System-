@@ -299,7 +299,14 @@ def check_tree(path):
                     fail("Symlink or special file in managed tree: " + str(child))
 
 # Verify source payloads before touching any runtime home.
-source_items = ["starter/chatgpt/" + name for name in ("README.md", "PROJECT_INSTRUCTIONS.md", "SAMPLE_BRIEF.md", "OUTCOME_REVIEW_LOG.md")] if target == "chatgpt" else workspace + modules + required_modules
+if target == "chatgpt":
+    core = {"README.md", "PROJECT_INSTRUCTIONS.md", "SAMPLE_BRIEF.md", "OUTCOME_REVIEW_LOG.md"}
+    cards = {path.name for pattern in ("*.md", "*.json")
+             for path in (source / "starter/chatgpt").glob(pattern)
+             if not path.name.startswith(".")}
+    source_items = ["starter/chatgpt/" + name for name in sorted(core | cards)]
+else:
+    source_items = workspace + modules + required_modules
 for name in set(source_items):
     path = source / name
     for parent in path.parents:
@@ -379,8 +386,9 @@ HERMES_ROOT=$(normalize_path "$HERMES_ROOT")
 case "$TARGET" in
   chatgpt)
     mkdir -p "$DEST"
-    for item in README.md PROJECT_INSTRUCTIONS.md SAMPLE_BRIEF.md OUTCOME_REVIEW_LOG.md; do
-      copy_item "$REPO_ROOT/starter/chatgpt/$item" "$DEST"
+    for item in "$REPO_ROOT"/starter/chatgpt/*.md "$REPO_ROOT"/starter/chatgpt/*.json; do
+      [ -e "$item" ] || continue
+      copy_item "$item" "$DEST"
     done
     log "Exported manual ChatGPT Starter Kit -> $DEST"
     log "Open README.md; upload/copy manually. No ChatGPT configuration or backend code was executed."
