@@ -56,7 +56,8 @@ class SecurityRegressionTests(unittest.TestCase):
         self.assertTrue(checker.validate_access_marker('---\naccess: "@internal"\n---\ntext')[0])
 
     def test_taiwan_pii_in_chinese_prose_is_sensitive(self):
-        for content in ('請致電 0912-345-678', '身分證 A123456789'):
+        for content in ('請致電 0912-345-678', '請致電0912345678謝謝',
+                        '請致電+886912345678謝謝', '身分證 A123456789'):
             with self.subTest(content=content):
                 self.assertFalse(SecurityChecker().scan_content(content)[0])
 
@@ -86,6 +87,10 @@ class SecurityRegressionTests(unittest.TestCase):
             resource = LearnFile(Path('safe.md'), LearningLevel.BRAND, AccessLevel.INTERNAL,
                                  content, '2026-10-17', 'tester')
             self.assertFalse(validator.validate_file(resource)[0])
+
+    def test_hex_digest_does_not_accidentally_match_taiwan_phone(self):
+        hexadecimal = 'a' * 12 + '0912345678' + 'b' * 42
+        self.assertTrue(SecurityChecker().scan_content('digest: ' + hexadecimal)[0])
 
 
 if __name__ == '__main__':

@@ -31,6 +31,23 @@ def draft(adapter, task="task-1", skill_id=None):
                                 skill_id=skill_id)
 
 
+class StructuredSafetyTests(unittest.TestCase):
+    def test_non_json_containers_cannot_bypass_observation_screening(self):
+        from skill_registry import scan_safe
+        from security_checker import SecurityChecker
+        secret = 'sk-proj-' + 'A' * 24
+        for value in ({'nested': (secret,)}, {'nested': ('safe text',)}):
+            with self.subTest(kind='tuple'):
+                with self.assertRaises(ValueError):
+                    scan_safe(SecurityChecker(), value)
+        with TemporaryDirectory() as directory:
+            adapter = governed(data_dir=directory)
+            with self.assertRaises(ValueError):
+                adapter.learn_market_behavior('us-en', {'nested': (secret,)})
+            self.assertEqual(adapter.patterns, {})
+            self.assertFalse((Path(directory) / 'registry.json').exists())
+
+
 class ReviewedLifecycleTests(unittest.TestCase):
     def test_malformed_or_replayed_evidence_cannot_support_approval(self):
         invalid = [dict(task_id=""), dict(source_ref=""), dict(result_ref=""),

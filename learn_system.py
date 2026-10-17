@@ -239,6 +239,11 @@ class MultiMarketLearnManager:
             metadata = self._parse_metadata(header)
             self._verify_scope_metadata(scope, metadata)
             content = header + self._read_body(stream)
+        # Scan every runtime entry point after authorization and bounded metadata
+        # validation, but before content can enter the caller's context. Personal
+        # owner access is allowed here; the offline no-personal-for-Git rule is not.
+        if not self.validator.checker.scan_content(content)[0]:
+            raise ValueError("learning resource contains unsafe content")
         return LearnFile(
             path=file_path,
             level=scope.level,

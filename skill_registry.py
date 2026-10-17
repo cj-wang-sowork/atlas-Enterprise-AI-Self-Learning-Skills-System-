@@ -43,6 +43,10 @@ def scan_safe(checker, value):
     elif isinstance(value, list):
         for item in value:
             scan_safe(checker, item)
+    elif value is not None and type(value) not in (bool, int, float):
+        # json.dumps accepts tuples as arrays, but scanning must not silently
+        # skip a type whose decoded representation will differ after restart.
+        raise ValueError("only JSON objects, arrays, strings and scalar values are accepted")
 
 
 class SkillRegistry:

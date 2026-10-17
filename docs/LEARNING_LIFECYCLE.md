@@ -79,6 +79,13 @@ inheritance, cross-tenant, cross-brand, cross-team, or cross-user import is impl
 `SecurityChecker` is constructed by default and scans decoded content, structured field
 assignments, evidence references, observations, imports, and persisted records. Unsafe
 input is rejected, not stored or silently redacted into a different approved artifact.
+Structured inputs accept only JSON-compatible dictionaries with string keys, lists,
+strings, booleans, null, and finite numeric scalars. Python tuples (including nested
+and benign tuples) and other unsupported containers are rejected rather than silently
+serialized into lists that bypass decoded-string scanning. Scanning is recursive;
+there is no exemption for arbitrary metadata or identifier fields. Phone detection
+uses ASCII alphanumeric boundaries so a decimal substring inside a hexadecimal digest
+is not misclassified while adjacent Chinese prose still permits Taiwan mobile detection.
 Injected scanners are trusted application dependencies. Pattern matching is defense in
 depth, not a guarantee that every possible secret or malicious instruction is detected.
 Never include credentials, raw sensitive outputs, or bearer URLs in evidence references.

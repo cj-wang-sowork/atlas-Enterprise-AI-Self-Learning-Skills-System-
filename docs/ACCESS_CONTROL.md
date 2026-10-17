@@ -114,11 +114,16 @@ fallbacks, but scope fields have **no defaults**.
 4. Read only the bounded header through an unbuffered stream, validate metadata
    against the already-authorized path, then read the body from the same open
    file descriptor. There is no whole-file-read-then-filter authorization path.
-5. Apply any non-security market filter to authorized files.
+5. Scan the complete validated header and body with the shared `SecurityChecker`
+   before returning any content. Authorization is necessary but does not exempt
+   enterprise, brand, or owner-personal content from credential/PII screening.
+6. Apply any non-security market filter to authorized, screened files.
 
-`load_learn_file(path, context)` raises on denial/malformed data or filesystem
-errors. `load_learn_files(context, *, level=None, market=None)` omits denied,
-malformed, or unreadable candidates. Missing/invalid context raises
+`load_learn_file(path, context)` raises on denial/malformed data, unsafe content,
+or filesystem errors. Unsafe content raises a generic `ValueError` without
+including the detected value. `load_learn_files(context, *, level=None, market=None)`
+and `get_market_context(market, context)` omit denied, unsafe, malformed, or
+unreadable candidates. Missing/invalid context raises
 `PermissionError` rather than returning an apparently successful result. Header
 validation may consume up to the header limit when an opening fence is present
 but the closing fence is missing; such a file is never returned as learning
@@ -132,8 +137,10 @@ application boundary; it does not authenticate an administrator. It intentionall
 reads valid files from all tenants to run security checks, returns only counts
 and findings, and does not call the scoped context loader.
 
-Malformed files produce `INVALID_RESOURCE` findings and do not abort the audit.
-Directory symlinks are reported and not traversed. Invalid/missing audit roots
+Unsafe and malformed files produce sanitized `INVALID_RESOURCE` findings and do
+not abort the audit; detected content is never echoed. The runtime scanner and
+offline validator share `SecurityChecker` policy. Directory symlinks are reported
+and not traversed. Invalid/missing audit roots
 and traversal I/O errors make the audit non-clean. `files` counts `.md` candidates
 examined, including malformed files; directory-symlink findings do not inflate
 that count. Findings do not include file bodies. The existing security validator
@@ -184,4 +191,8 @@ python3 -m unittest discover -s tests -p test_access_control.py -v
 The suite covers authorized hierarchy, cross-tenant/brand/department/team/personal
 denials before file parsing, malformed identity and metadata, traversal, nested
 paths, symlinks, market filtering, and explicit audit failure reporting. Body-read
-spies verify rejected metadata never reaches the body-reading stage.
+spies verify rejected metadata never reaches the body-reading stage. Synthetic
+provider keys and unlabelled emails in otherwise authorized enterprise, brand,
+and owner-personal files are rejected by direct reads and omitted by list/market
+loaders, while safe owner-personal content remains readable. Pattern screening
+is defense in depth, not a guarantee of detecting every secret or instruction.

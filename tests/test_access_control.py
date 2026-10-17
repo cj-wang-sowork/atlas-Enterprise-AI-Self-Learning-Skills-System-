@@ -58,6 +58,30 @@ class AccessControlTests(unittest.TestCase):
         self.assertEqual({item.path for item in files}, expected)
         self.assertTrue(all("BODY SENTINEL" in item.content for item in files))
 
+    def test_authorized_loaders_reject_sensitive_content_before_return(self):
+        safe_owner = self.document("acme/personal/alpha/alice/safe.md", market="us-en")
+        context = self.context()
+        for relative in ("acme/enterprise/unsafe.md", "acme/brand/alpha/unsafe.md",
+                         "acme/personal/alpha/alice/unsafe.md"):
+            for sensitive in ("sk-proj-" + "A" * 24, "alice@example.com"):
+                with self.subTest(relative=relative, kind=sensitive[:3]):
+                    path = self.document(relative, market="us-en")
+                    with path.open("a", encoding="utf-8") as stream:
+                        stream.write(sensitive + "\n")
+                    with self.assertRaises(ValueError) as rejected:
+                        self.manager.load_learn_file(path, context)
+                    self.assertNotIn(sensitive, str(rejected.exception))
+                    self.assertEqual([item.path for item in self.manager.load_learn_files(context)],
+                                     [safe_owner])
+                    self.assertEqual([item.path for item in self.manager.get_market_context("us-en", context)],
+                                     [safe_owner])
+                    report = self.manager.audit_security()
+                    self.assertFalse(report["valid"])
+                    self.assertTrue(any(str(path) in finding for finding in report["violations"]))
+                    self.assertNotIn(sensitive, str(report))
+                    path.unlink()
+        self.assertIn("BODY SENTINEL", self.manager.load_learn_file(safe_owner, context).content)
+
     def test_direct_read_denies_foreign_scopes_before_open(self):
         self.assertTrue(hasattr(self.manager, "load_learn_file"), "scoped direct-read API is missing")
         denied = [
