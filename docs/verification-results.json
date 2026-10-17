@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-10-17T04:26:33.270521+00:00",
-  "started_at_utc": "2026-10-17T04:25:30.322062+00:00",
-  "candidate_code_commit": "704eb9e99dd05e30f9b77b85110163c638c2071d",
+  "generated_at_utc": "2026-10-17T04:31:01.004283+00:00",
+  "started_at_utc": "2026-10-17T04:30:04.248018+00:00",
+  "candidate_code_commit": "0542a5204df72aab4f22aeb4e72bc96fc8f375db",
   "working_tree_note": "Code/tests match committed candidate; documentation-only verification evidence is generated afterward.",
   "platform": "macOS-26.3-arm64-arm-64bit",
   "python": "3.9.6",
@@ -15,8 +15,8 @@
     "test_learning": 22,
     "test_security": 10
   },
-  "runner_seconds": 60.44,
-  "wall_seconds": 62.948,
+  "runner_seconds": 56.495,
+  "wall_seconds": 56.756,
   "result": "PASS",
   "shell_syntax": "PASS",
   "git_diff_check": "PASS",
