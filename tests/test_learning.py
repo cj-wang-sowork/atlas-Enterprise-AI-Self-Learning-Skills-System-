@@ -38,7 +38,7 @@ class StructuredSafetyTests(unittest.TestCase):
         checker = SecurityChecker()
         samples = ({'password': 2468}, {'nested': [{'phone': 2025550123}]},
                    {'api_key': 123456}, {'nested': [2025550123]},
-                   {'pass\u200bword': 2468}, {'密碼': 2468})
+                   {'pass\u200bword': 2468}, {'密碼': 2468}, {'ｐａｓｓｗｏｒｄ': 2468})
         for value in samples:
             with self.subTest(value=value):
                 self.assertFalse(checker.scan_content(json.dumps(value, ensure_ascii=False))[0])
@@ -53,7 +53,8 @@ class StructuredSafetyTests(unittest.TestCase):
             def scan_content(self, content):
                 return True, []
 
-        for values in ({'password': 2468}, {'nested': [{'phone': 2025550123}]}):
+        for values in ({'password': 2468}, {'nested': [{'phone': 2025550123}]},
+                       {'密碼': 2468}, {'ｐａｓｓｗｏｒｄ': 2468}, {'pass\u200bword': 2468}):
             with self.subTest(values=values), TemporaryDirectory() as directory:
                 consumer = governed()
                 with self.assertRaises(ValueError):
