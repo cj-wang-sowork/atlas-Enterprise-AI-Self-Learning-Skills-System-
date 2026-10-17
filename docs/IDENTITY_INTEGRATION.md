@@ -137,13 +137,14 @@ are rejected before their data is read; safe error messages do not echo JWTs.
 
 ## Run and verify
 
-The actual installed and exercised set was CPython **3.9.6**, PyJWT **2.15.1**,
-cryptography **50.0.2**, cffi **2.0.0**, pycparser **2.23** and typing_extensions
-**4.16.0** on macOS arm64. Installed metadata requires Python >=3.9 for PyJWT and
-cryptography (cryptography excludes 3.9.0/3.9.1). Other platforms/interpreters
-were not exercised. Versions are pinned in the optional requirements file;
-search-engine snippets reporting PyJWT 2.13.0 were stale compared with the live
-2.15.1 docs and installed package metadata.
+At the **historical isolated identity-integration checkpoint**, the installed
+and exercised set was CPython **3.9.6**, PyJWT **2.15.1**, cryptography **50.0.2**,
+cffi **2.0.0**, pycparser **2.23** and typing_extensions **4.16.0** on macOS arm64.
+Installed metadata requires Python >=3.9 for PyJWT and cryptography (cryptography
+excludes 3.9.0/3.9.1). Other platforms/interpreters were not exercised at that
+checkpoint. Versions are pinned as a tested set, not a claim to be latest.
+The subsequent **integrated acceptance** ran CPython **3.12.12 / 94 tests / zero
+skips**; see [current integrated evidence](E2E_ACCEPTANCE.md) and its machine result.
 
 ```sh
 python3 -m venv .venv
@@ -166,8 +167,10 @@ be deployed/exposed as an API**.
 
 Baseline: 63 pre-existing tests. Integration suite: 12 additional tests, including
 real cryptographic adversarial tokens, pre-read denial guards, fresh-instance
-reuse, and the CLI's real subprocess E2E. The full installed suite ran **75 tests,
-zero skips**. Without optional dependencies the integration tests skip gracefully;
+reuse, and the CLI's real subprocess E2E. At that isolated historical checkpoint,
+the full installed suite ran **75 tests, zero skips**, before the paired-evaluation
+and usability modules were integrated. The integrated total is recorded in
+[E2E acceptance](E2E_ACCEPTANCE.md). Without optional dependencies the integration tests skip gracefully;
 that is acceptable for stdlib-only users but **not** for identity acceptance/CI.
 The identity CI lane must install the pinned requirements and enforce no skips,
 for example (after activating its venv):

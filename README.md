@@ -25,7 +25,7 @@ The same repository can be installed for:
 
 ## Verified implementation and boundaries
 
-The current regression evidence is in [VERIFICATION.md](docs/VERIFICATION.md), including
+The earlier core-hardening regression evidence is in [VERIFICATION.md](docs/VERIFICATION.md), including
 collected tests, the pinned detector-fixture comparison, and explicit unverified
 production, live-runtime, usability, and business-benefit criteria. See
 [ACCESS_CONTROL.md](docs/ACCESS_CONTROL.md) for the intentional scoped-API migration and
