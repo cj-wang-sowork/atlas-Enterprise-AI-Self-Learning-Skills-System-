@@ -1,69 +1,66 @@
-test_audit_reports_directory_symlinks_without_following_them (test_access_control.AccessControlTests.test_audit_reports_directory_symlinks_without_following_them) ... /Users/soworkaiteam/.hermes/cache/scratch/atlas-hardening-20261017/learn_system.py:247: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
-  created=metadata.get("created", datetime.utcnow().date().isoformat()),
-ok
-test_audit_reports_malformed_files_and_continues_without_context_loading (test_access_control.AccessControlTests.test_audit_reports_malformed_files_and_continues_without_context_loading) ... ok
-test_authorized_hierarchy_includes_own_personal_files (test_access_control.AccessControlTests.test_authorized_hierarchy_includes_own_personal_files) ... ok
-test_direct_read_denies_foreign_scopes_before_open (test_access_control.AccessControlTests.test_direct_read_denies_foreign_scopes_before_open) ... ok
-test_identity_is_validated_and_memberships_are_immutable (test_access_control.AccessControlTests.test_identity_is_validated_and_memberships_are_immutable) ... ok
-test_invalid_metadata_is_rejected_before_body_read (test_access_control.AccessControlTests.test_invalid_metadata_is_rejected_before_body_read) ... ok
-test_invalid_scope_identifiers_are_rejected_before_open (test_access_control.AccessControlTests.test_invalid_scope_identifiers_are_rejected_before_open) ... ok
-test_loading_without_authenticated_context_fails_closed (test_access_control.AccessControlTests.test_loading_without_authenticated_context_fails_closed) ... ok
-test_market_filter_requires_context_and_does_not_grant_scope (test_access_control.AccessControlTests.test_market_filter_requires_context_and_does_not_grant_scope) ... ok
-test_symlinked_learn_root_is_not_a_valid_empty_audit (test_access_control.AccessControlTests.test_symlinked_learn_root_is_not_a_valid_empty_audit) ... ok
-test_symlinks_are_rejected_even_inside_authorized_scope (test_access_control.AccessControlTests.test_symlinks_are_rejected_even_inside_authorized_scope) ... ok
-test_traversal_is_rejected_before_open_and_nested_files_remain_scoped (test_access_control.AccessControlTests.test_traversal_is_rejected_before_open_and_nested_files_remain_scoped) ... ok
-test_security_comparison_is_real_and_explicitly_not_llm_benchmark (test_benchmark.ComparisonTests.test_security_comparison_is_real_and_explicitly_not_llm_benchmark) ... ok
-test_all_preflights_bundle_and_pack_directory_conflicts (test_installer.InstallerTests.test_all_preflights_bundle_and_pack_directory_conflicts) ... ok
-test_all_preflights_every_destination_before_any_write (test_installer.InstallerTests.test_all_preflights_every_destination_before_any_write) ... ok
-test_all_preflights_launcher_symlink_before_openclaw_write (test_installer.InstallerTests.test_all_preflights_launcher_symlink_before_openclaw_write) ... ok
-test_chatgpt_export_is_manual_text_only_and_repeatable (test_installer.InstallerTests.test_chatgpt_export_is_manual_text_only_and_repeatable) ... ok
-test_chatgpt_rejects_symlinked_source_parent (test_installer.InstallerTests.test_chatgpt_rejects_symlinked_source_parent) ... ok
-test_default_destinations_stay_in_sandbox (test_installer.InstallerTests.test_default_destinations_stay_in_sandbox) ... ok
-test_force_replaces_managed_items_without_new_backups (test_installer.InstallerTests.test_force_replaces_managed_items_without_new_backups) ... ok
-test_hermes_honors_explicit_profile_home (test_installer.InstallerTests.test_hermes_honors_explicit_profile_home) ... ok
-test_malformed_arguments_do_not_write (test_installer.InstallerTests.test_malformed_arguments_do_not_write) ... ok
-test_missing_runtime_source_fails_all_without_writing (test_installer.InstallerTests.test_missing_runtime_source_fails_all_without_writing) ... ok
-test_new_registry_module_is_copied_when_present (test_installer.InstallerTests.test_new_registry_module_is_copied_when_present) ... ok
-test_repeated_installs_preserve_distinct_backups_without_launcher_refusal (test_installer.InstallerTests.test_repeated_installs_preserve_distinct_backups_without_launcher_refusal) ... ok
-test_shell_targets_install_complete_importable_bundles (test_installer.InstallerTests.test_shell_targets_install_complete_importable_bundles) ... ok
-test_source_overlap_and_all_destination_overlap_are_rejected (test_installer.InstallerTests.test_source_overlap_and_all_destination_overlap_are_rejected) ... ok
-test_source_symlink_fails_before_writing (test_installer.InstallerTests.test_source_symlink_fails_before_writing) ... ok
-test_symlinks_are_rejected_without_touching_their_targets (test_installer.InstallerTests.test_symlinks_are_rejected_without_touching_their_targets) ... ok
-test_wrong_source_shapes_fail_before_any_install (test_installer.InstallerTests.test_wrong_source_shapes_fail_before_any_install) ... ok
-test_cross_scope_or_unscoped_imports_fail_without_partial_effects (test_learning.ImportIsolationTests.test_cross_scope_or_unscoped_imports_fail_without_partial_effects) ... <string>:10: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
-/Users/soworkaiteam/.hermes/cache/scratch/atlas-hardening-20261017/hermes_adapter.py:176: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
-  pattern.last_updated = datetime.utcnow()
-ok
-test_import_validation_is_atomic_and_checks_each_skill_scope (test_learning.ImportIsolationTests.test_import_validation_is_atomic_and_checks_each_skill_scope) ... ok
-test_imported_approvals_and_verifications_are_untrusted_drafts (test_learning.ImportIsolationTests.test_imported_approvals_and_verifications_are_untrusted_drafts) ... ok
-test_public_mutation_cannot_create_a_reusable_rule (test_learning.ImportIsolationTests.test_public_mutation_cannot_create_a_reusable_rule) ... ok
-test_repeated_failures_never_establish_correctness_or_reuse (test_learning.ObservationTests.test_repeated_failures_never_establish_correctness_or_reuse) ... ok
-test_default_scanner_blocks_secret_content_evidence_and_observations (test_learning.PersistenceTests.test_default_scanner_blocks_secret_content_evidence_and_observations) ... <string>:8: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
-ok
-test_disk_failure_does_not_activate_in_memory_or_on_restart (test_learning.PersistenceTests.test_disk_failure_does_not_activate_in_memory_or_on_restart) ... ok
-test_failed_promotion_is_never_persisted_as_active (test_learning.PersistenceTests.test_failed_promotion_is_never_persisted_as_active) ... ok
-test_persisted_tampering_is_rejected_before_reuse (test_learning.PersistenceTests.test_persisted_tampering_is_rejected_before_reuse) ... ok
-test_restart_preserves_approved_versions_and_revocations (test_learning.PersistenceTests.test_restart_preserves_approved_versions_and_revocations) ... ok
-test_stale_instance_cannot_reuse_or_overwrite_a_revocation (test_learning.PersistenceTests.test_stale_instance_cannot_reuse_or_overwrite_a_revocation) ... ok
-test_unprotected_or_symlinked_store_is_not_trusted (test_learning.PersistenceTests.test_unprotected_or_symlinked_store_is_not_trusted) ... ok
-test_reuse_is_version_bound_then_measured_not_self_promoted (test_learning.ReuseComparisonTests.test_reuse_is_version_bound_then_measured_not_self_promoted) ... ok
-test_draft_rejects_malformed_explicit_identifiers (test_learning.ReviewedLifecycleTests.test_draft_rejects_malformed_explicit_identifiers) ... ok
-test_evidence_replay_cannot_be_renamed_or_overflow_comparison (test_learning.ReviewedLifecycleTests.test_evidence_replay_cannot_be_renamed_or_overflow_comparison) ... ok
-test_malformed_or_replayed_evidence_cannot_support_approval (test_learning.ReviewedLifecycleTests.test_malformed_or_replayed_evidence_cannot_support_approval) ... ok
-test_reject_revoke_edit_and_rollback_require_new_reviews (test_learning.ReviewedLifecycleTests.test_reject_revoke_edit_and_rollback_require_new_reviews) ... ok
-test_unverified_failed_or_nonimproving_tasks_cannot_be_approved (test_learning.ReviewedLifecycleTests.test_unverified_failed_or_nonimproving_tasks_cannot_be_approved) ... ok
-test_verified_outcome_then_human_approval_allows_reuse (test_learning.ReviewedLifecycleTests.test_verified_outcome_then_human_approval_allows_reuse) ... ok
-test_access_marker_is_exact_frontmatter_not_body_substring (test_security.SecurityRegressionTests.test_access_marker_is_exact_frontmatter_not_body_substring) ... ok
-test_audit_does_not_contain_detected_values (test_security.SecurityRegressionTests.test_audit_does_not_contain_detected_values) ... ok
-test_classification_review_and_deny_terms_fail_closed (test_security.SecurityRegressionTests.test_classification_review_and_deny_terms_fail_closed) ... ok
-test_learning_audit_uses_same_sensitive_content_policy (test_security.SecurityRegressionTests.test_learning_audit_uses_same_sensitive_content_policy) ... ok
-test_policy_allows_only_exact_email_not_credentials (test_security.SecurityRegressionTests.test_policy_allows_only_exact_email_not_credentials) ... ok
-test_safe_prose_and_known_secret_shapes (test_security.SecurityRegressionTests.test_safe_prose_and_known_secret_shapes) ... ok
-test_taiwan_pii_in_chinese_prose_is_sensitive (test_security.SecurityRegressionTests.test_taiwan_pii_in_chinese_prose_is_sensitive) ... ok
-test_unlabelled_and_multilingual_credentials_are_sensitive (test_security.SecurityRegressionTests.test_unlabelled_and_multilingual_credentials_are_sensitive) ... ok
-test_unlabelled_email_is_sensitive (test_security.SecurityRegressionTests.test_unlabelled_email_is_sensitive) ... ok
+test_audit_reports_directory_symlinks_without_following_them (test_access_control.AccessControlTests) ... ok
+test_audit_reports_malformed_files_and_continues_without_context_loading (test_access_control.AccessControlTests) ... ok
+test_authorized_hierarchy_includes_own_personal_files (test_access_control.AccessControlTests) ... ok
+test_authorized_loaders_reject_sensitive_content_before_return (test_access_control.AccessControlTests) ... ok
+test_direct_read_denies_foreign_scopes_before_open (test_access_control.AccessControlTests) ... ok
+test_identity_is_validated_and_memberships_are_immutable (test_access_control.AccessControlTests) ... ok
+test_invalid_metadata_is_rejected_before_body_read (test_access_control.AccessControlTests) ... ok
+test_invalid_scope_identifiers_are_rejected_before_open (test_access_control.AccessControlTests) ... ok
+test_loading_without_authenticated_context_fails_closed (test_access_control.AccessControlTests) ... ok
+test_market_filter_requires_context_and_does_not_grant_scope (test_access_control.AccessControlTests) ... ok
+test_symlinked_learn_root_is_not_a_valid_empty_audit (test_access_control.AccessControlTests) ... ok
+test_symlinks_are_rejected_even_inside_authorized_scope (test_access_control.AccessControlTests) ... ok
+test_traversal_is_rejected_before_open_and_nested_files_remain_scoped (test_access_control.AccessControlTests) ... ok
+test_security_comparison_is_real_and_explicitly_not_llm_benchmark (test_benchmark.ComparisonTests) ... ok
+test_all_preflights_bundle_and_pack_directory_conflicts (test_installer.InstallerTests) ... ok
+test_all_preflights_every_destination_before_any_write (test_installer.InstallerTests) ... ok
+test_all_preflights_launcher_symlink_before_openclaw_write (test_installer.InstallerTests) ... ok
+test_chatgpt_export_is_manual_text_only_and_repeatable (test_installer.InstallerTests) ... ok
+test_chatgpt_rejects_symlinked_source_parent (test_installer.InstallerTests) ... ok
+test_default_destinations_stay_in_sandbox (test_installer.InstallerTests) ... ok
+test_force_replaces_managed_items_without_new_backups (test_installer.InstallerTests) ... ok
+test_hermes_honors_explicit_profile_home (test_installer.InstallerTests) ... ok
+test_malformed_arguments_do_not_write (test_installer.InstallerTests) ... ok
+test_missing_runtime_source_fails_all_without_writing (test_installer.InstallerTests) ... ok
+test_new_registry_module_is_copied_when_present (test_installer.InstallerTests) ... ok
+test_repeated_installs_preserve_distinct_backups_without_launcher_refusal (test_installer.InstallerTests) ... ok
+test_shell_targets_install_complete_importable_bundles (test_installer.InstallerTests) ... ok
+test_source_overlap_and_all_destination_overlap_are_rejected (test_installer.InstallerTests) ... ok
+test_source_symlink_fails_before_writing (test_installer.InstallerTests) ... ok
+test_symlinks_are_rejected_without_touching_their_targets (test_installer.InstallerTests) ... ok
+test_wrong_source_shapes_fail_before_any_install (test_installer.InstallerTests) ... ok
+test_cross_scope_or_unscoped_imports_fail_without_partial_effects (test_learning.ImportIsolationTests) ... ok
+test_import_validation_is_atomic_and_checks_each_skill_scope (test_learning.ImportIsolationTests) ... ok
+test_imported_approvals_and_verifications_are_untrusted_drafts (test_learning.ImportIsolationTests) ... ok
+test_public_mutation_cannot_create_a_reusable_rule (test_learning.ImportIsolationTests) ... ok
+test_repeated_failures_never_establish_correctness_or_reuse (test_learning.ObservationTests) ... ok
+test_default_scanner_blocks_secret_content_evidence_and_observations (test_learning.PersistenceTests) ... ok
+test_disk_failure_does_not_activate_in_memory_or_on_restart (test_learning.PersistenceTests) ... ok
+test_failed_promotion_is_never_persisted_as_active (test_learning.PersistenceTests) ... ok
+test_persisted_tampering_is_rejected_before_reuse (test_learning.PersistenceTests) ... ok
+test_restart_preserves_approved_versions_and_revocations (test_learning.PersistenceTests) ... ok
+test_stale_instance_cannot_reuse_or_overwrite_a_revocation (test_learning.PersistenceTests) ... ok
+test_unprotected_or_symlinked_store_is_not_trusted (test_learning.PersistenceTests) ... ok
+test_reuse_is_version_bound_then_measured_not_self_promoted (test_learning.ReuseComparisonTests) ... ok
+test_draft_rejects_malformed_explicit_identifiers (test_learning.ReviewedLifecycleTests) ... ok
+test_evidence_replay_cannot_be_renamed_or_overflow_comparison (test_learning.ReviewedLifecycleTests) ... ok
+test_malformed_or_replayed_evidence_cannot_support_approval (test_learning.ReviewedLifecycleTests) ... ok
+test_reject_revoke_edit_and_rollback_require_new_reviews (test_learning.ReviewedLifecycleTests) ... ok
+test_unverified_failed_or_nonimproving_tasks_cannot_be_approved (test_learning.ReviewedLifecycleTests) ... ok
+test_verified_outcome_then_human_approval_allows_reuse (test_learning.ReviewedLifecycleTests) ... ok
+test_non_json_containers_cannot_bypass_observation_screening (test_learning.StructuredSafetyTests) ... ok
+test_access_marker_is_exact_frontmatter_not_body_substring (test_security.SecurityRegressionTests) ... ok
+test_audit_does_not_contain_detected_values (test_security.SecurityRegressionTests) ... ok
+test_classification_review_and_deny_terms_fail_closed (test_security.SecurityRegressionTests) ... ok
+test_hex_digest_does_not_accidentally_match_taiwan_phone (test_security.SecurityRegressionTests) ... ok
+test_learning_audit_uses_same_sensitive_content_policy (test_security.SecurityRegressionTests) ... ok
+test_policy_allows_only_exact_email_not_credentials (test_security.SecurityRegressionTests) ... ok
+test_safe_prose_and_known_secret_shapes (test_security.SecurityRegressionTests) ... ok
+test_taiwan_pii_in_chinese_prose_is_sensitive (test_security.SecurityRegressionTests) ... ok
+test_unlabelled_and_multilingual_credentials_are_sensitive (test_security.SecurityRegressionTests) ... ok
+test_unlabelled_email_is_sensitive (test_security.SecurityRegressionTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 58 tests in 26.539s
+Ran 61 tests in 59.584s
 
 OK
