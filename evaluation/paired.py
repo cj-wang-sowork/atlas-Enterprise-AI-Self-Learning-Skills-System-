@@ -73,10 +73,14 @@ def run_command(argv, cwd, timeout):
         os.close(master)
         if slave != -1:
             os.close(slave)
+    raw_transcript = data.decode('utf-8', errors='replace')
+    # Extract only the response before redacting diagnostics. Never persist the
+    # raw transport/auth log or reconstruct response evidence from a redacted log.
+    final_message = parse_events(raw_transcript)['final_message']
     return {'exit_code': proc.returncode if proc else None,
             'wall_seconds': time.monotonic() - started, 'timed_out': timed_out,
             'output_limited': output_limited,
-            'transcript': sanitize(data.decode('utf-8', errors='replace'))}
+            'transcript': sanitize(raw_transcript), 'final_message': final_message}
 
 
 def score_output(task, text, tool_calls=0):
@@ -338,15 +342,16 @@ def run_study(dataset, packet, output_dir, scratch_root, *, execute=False,
         run['tool_calls'] = events['tool_calls']
         # Never create a plausible substitute for a missing provider answer.
         content = final.read_bytes() if final.exists() else None
-        if content is None and events['final_message'] is not None:
-            content = events['final_message'].encode()
+        if content is None and result['final_message'] is not None:
+            content = result['final_message'].encode('utf-8')
         if content is not None:
             relative = f"outputs/{run['run_id']}.txt"
             _locked_write(output_dir, relative, content, locks)
             run['output_path'] = relative
             run['output_digest'] = locks[relative]
         failed = (result['exit_code'] != 0 or result['timed_out'] or result['output_limited']
-                  or not events['turn_completed'] or not content or events['tool_calls'] > 0)
+                  or events['errors'] or not events['turn_completed']
+                  or not content or events['tool_calls'] > 0)
         run['status'] = 'failed' if failed else 'completed'
         if failed:
             run['failure_reason'] = ('timeout' if result['timed_out'] else 'output_limit'
@@ -442,6 +447,16 @@ def verify_study(root):
             errors.append(f"paired order mismatch: {run['run_id']}")
         if run['task_digest'] != digest_json(tasks[step['task_id']]):
             errors.append(f"task digest mismatch: {run['run_id']}")
+        if run['status'] == 'completed':
+            log = (root / (run.get('log_path') or '')).resolve()
+            output = (root / (run.get('output_path') or '')).resolve()
+            events = parse_events(log.read_text()) if log.is_relative_to(root) and log.is_file() else None
+            if (run.get('exit_code') != 0 or run.get('failure_reason')
+                    or run.get('tool_calls') != 0 or not events
+                    or not events['turn_completed'] or events['errors'] or events['tool_calls']
+                    or not output.is_relative_to(root) or not output.is_file()
+                    or not output.stat().st_size):
+                errors.append(f"completed run contradicts execution evidence: {run['run_id']}")
         for kind in ('prompt', 'output'):
             path = run.get(kind + '_path')
             if path and run[kind + '_digest'] != report['artifact_digests'].get(path):
@@ -490,7 +505,8 @@ def main(argv=None):
                        timeout_seconds=args.timeout_seconds,
                        total_timeout_seconds=args.total_timeout_seconds, runtime_metadata=metadata)
     print(json.dumps(report['summary'], indent=2))
-    return 1 if report['summary']['failed_calls'] else 0
+    incomplete = report['summary']['completed_calls'] != report['summary']['planned_calls']
+    return 1 if args.execute and incomplete else 0
 
 
 if __name__ == '__main__':

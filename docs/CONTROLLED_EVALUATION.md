@@ -50,6 +50,14 @@ performed. Missing usage and dollar costs are `null`, not estimated from a
 subscription. Cache-token fields are reported as returned, not added to input
 counts. Wall time includes CLI startup and network latency, not human work.
 
+An `error` or `turn.failed` event invalidates the run even after `turn.completed`
+and a zero process exit; the failed run and subsequent unattempted arms remain
+in the manifest. An executed CLI study returns nonzero unless every planned arm
+completed, including when the total time budget expires before any call. A dry
+plan may succeed with no calls. `verify` checks artifact integrity and completed
+status against execution evidence, not study completion: a correctly labelled
+failed or incomplete study can pass verification.
+
 `dataset_digest` is SHA-256 of canonical JSON (UTF-8, sorted keys, compact
 separators); file-byte hashes are separately recorded. `manifest.sha256` locks
 the final manifest and its artifact digests. Git anchors the resulting files;
@@ -95,6 +103,15 @@ must implement the Codex JSONL protocol and write the final response to `{output
 or emit an `agent_message`. No provider response is synthesized. A new provider
 requires its own matched configuration/version evidence; the Codex controls are
 not magically enforced for arbitrary executables.
+
+The `{output}` file, when present, is retained byte-for-byte and takes precedence.
+For event-only adapters, the original decoded `agent_message` text is extracted
+transiently before log sanitization and saved as UTF-8, never reconstructed from
+the sanitized log. Diagnostic logs still redact credential-shaped strings and
+home paths; the raw full transport log is not persisted. These redactions must
+not change the saved response or its gates. Output integrity uses its own byte
+digest, not literal equality with the redacted diagnostic message. Supply only
+authorized, nonsecret response data, as with the file-output adapter.
 
 Verify the committed pilot without making model calls:
 

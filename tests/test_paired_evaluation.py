@@ -205,5 +205,175 @@ class RunnerTests(unittest.TestCase):
         self.assertIsNone(paired.parse_events('bad log')['usage'])
 
 
+class SyntheticProtocolRegressionTests(unittest.TestCase):
+    """Fictional LOCAL subprocess fixtures, never provider/model evidence."""
+
+    def setUp(self):
+        import tempfile
+        from pathlib import Path
+        self.paired = importlib.import_module('evaluation.paired')
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.dataset = {'schema_version': 1, 'tasks': [
+            {'task_id': 'TEST_ONLY_LOCAL', 'source_kind': 'fictional', 'brief': 'Test only',
+             'sources': [{'id': 'S1', 'text': 'TEST_ONLY fictional fact'}],
+             'rubric': {'required_facts': ['TEST_ONLY fictional fact'], 'forbidden_patterns': []}}]}
+
+    def local_argv(self, terminal=None):
+        import sys
+        task = self.dataset['tasks'][0]
+        answer = json.dumps({'task_id': task['task_id'], 'status': 'draft',
+                             'positioning': 'Test draft', 'headlines': ['One', 'Two', 'Three'],
+                             'cta': 'Test only', 'claims': [
+                                 {'text': task['sources'][0]['text'], 'source_ids': ['S1']}],
+                             'gaps': ['TEST_ONLY missing approval']}, ensure_ascii=False)
+        events = [
+            {'type': 'item.completed', 'item': {'type': 'agent_message', 'text': answer}},
+            {'type': 'turn.completed', 'usage': {'input_tokens': 1, 'output_tokens': 1}}]
+        if terminal:
+            events.append({'type': terminal, 'message': 'TEST_ONLY terminal failure'})
+        script = 'print(' + repr('\n'.join(json.dumps(e) for e in events)) + ')'
+        return [sys.executable, '-c', script], answer.encode()
+
+    def study(self, argv):
+        return self.paired.run_study(
+            self.dataset, 'TEST_ONLY packet', self.root / 'study', self.root / 'work',
+            execute=True, provider_argv=argv, provider_label='TEST_ONLY_LOCAL_SUBPROCESS')
+
+    def cli(self, argv, *, execute=True, total_timeout='5'):
+        import subprocess
+        import sys
+        from pathlib import Path
+        (self.root / 'dataset.json').write_text(json.dumps(self.dataset))
+        (self.root / 'packet.txt').write_text('TEST_ONLY packet')
+        command = [sys.executable, '-m', 'evaluation.paired', 'run',
+                   '--dataset', str(self.root / 'dataset.json'),
+                   '--packet', str(self.root / 'packet.txt'),
+                   '--output', str(self.root / 'study'),
+                   '--scratch-root', str(self.root / 'work'),
+                   '--provider-command-json', json.dumps(argv),
+                   '--total-timeout-seconds', total_timeout]
+        if execute:
+            command.append('--execute')
+        return subprocess.run(command, cwd=Path(__file__).resolve().parents[1],
+                              capture_output=True, text=True, timeout=10)
+
+    def test_cli_executed_budget_exhaustion_is_nonzero_even_without_failed_calls(self):
+        argv, _ = self.local_argv()
+        result = self.cli(argv, total_timeout='1e-12')
+        summary = json.loads(result.stdout)
+        self.assertEqual(summary['attempted_calls'], 0)
+        self.assertEqual(summary['failed_calls'], 0)
+        self.assertEqual(summary['not_run_calls'], 2)
+        self.assertNotEqual(result.returncode, 0, result.stdout + result.stderr)
+        report = json.loads((self.root / 'study' / 'manifest.json').read_text())
+        self.assertTrue(all(r['failure_reason'] == 'total_timeout_budget' for r in report['runs']))
+        self.assertEqual(self.paired.verify_study(self.root / 'study'), [])
+
+    def test_verifier_rejects_completed_status_hiding_terminal_failure_with_resealed_counts(self):
+        argv, _ = self.local_argv('turn.failed')
+        report = self.study(argv)
+        report['runs'][0]['status'] = 'completed'
+        report['runs'][0]['failure_reason'] = None
+        report['summary'] = self.paired.summarize(report['runs'])
+        manifest = self.root / 'study' / 'manifest.json'
+        manifest.write_text(json.dumps(report))
+        (manifest.parent / 'manifest.sha256').write_text(
+            self.paired.digest_bytes(manifest.read_bytes()))
+        self.assertIn('completed run contradicts execution evidence: run-01',
+                      self.paired.verify_study(manifest.parent))
+
+    def test_event_only_preserves_exact_answer_before_log_redaction_and_scoring(self):
+        from pathlib import Path
+        fact = 'Bearer TEST_ONLY_NOT_A_CREDENTIAL; fictional path ' + str(Path.home())
+        self.dataset['tasks'][0]['sources'][0]['text'] = fact
+        self.dataset['tasks'][0]['rubric']['required_facts'] = [fact]
+        argv, answer = self.local_argv()
+        argv[2] += '\nprint("Authorization: Bearer TEST_ONLY_DIAGNOSTIC_NOT_A_CREDENTIAL")'
+        self.assertTrue(self.paired.score_output(self.dataset['tasks'][0], answer.decode())['all_passed'])
+        report = self.study(argv)
+        self.assertEqual(report['summary']['completed_calls'], 2)
+        for run in report['runs']:
+            self.assertEqual((self.root / 'study' / run['output_path']).read_bytes(), answer)
+            self.assertEqual(run['output_digest'], self.paired.digest_bytes(answer))
+            self.assertTrue(run['gates']['all_passed'])
+            log = (self.root / 'study' / run['log_path']).read_text()
+            self.assertNotIn('TEST_ONLY_NOT_A_CREDENTIAL', log)
+            self.assertNotIn('TEST_ONLY_DIAGNOSTIC_NOT_A_CREDENTIAL', log)
+            self.assertNotIn(str(Path.home()), log)
+            self.assertIn('<REDACTED>', log)
+            self.assertIn('<HOME>', log)
+        form = json.loads((self.root / 'study' / 'human-scoring.json').read_text())
+        self.assertTrue(all(row['output'] == answer.decode() for row in form['rows']))
+        for path in (self.root / 'study').rglob('*'):
+            if path.is_file():
+                self.assertNotIn(b'TEST_ONLY_DIAGNOSTIC_NOT_A_CREDENTIAL', path.read_bytes())
+        self.assertEqual(self.paired.verify_study(self.root / 'study'), [])
+
+    def test_cli_terminal_failure_returns_nonzero_and_retains_both_arms(self):
+        argv, _ = self.local_argv('turn.failed')
+        result = self.cli(argv)
+        self.assertNotEqual(result.returncode, 0, result.stderr)
+        summary = json.loads(result.stdout)
+        self.assertEqual((summary['completed_calls'], summary['failed_calls'],
+                          summary['not_run_calls']), (0, 1, 1))
+        self.assertEqual(self.paired.verify_study(self.root / 'study'), [])
+
+    def test_cli_dry_plan_succeeds_without_executing_command(self):
+        argv, _ = self.local_argv()
+        argv[2] = 'raise RuntimeError("TEST_ONLY must not execute dry run")'
+        result = self.cli(argv, execute=False)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads(result.stdout)['attempted_calls'], 0)
+        self.assertFalse((self.root / 'work').exists() and list((self.root / 'work').iterdir()))
+        self.assertEqual(self.paired.verify_study(self.root / 'study'), [])
+
+    def test_cli_complete_local_execution_succeeds(self):
+        argv, _ = self.local_argv()
+        result = self.cli(argv)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads(result.stdout)['completed_calls'], 2)
+        self.assertEqual(self.paired.verify_study(self.root / 'study'), [])
+
+    def test_error_event_after_completed_also_invalidates_run(self):
+        argv, _ = self.local_argv('error')
+        report = self.study(argv)
+        self.assertEqual((report['summary']['completed_calls'], report['summary']['failed_calls'],
+                          report['summary']['not_run_calls']), (0, 1, 1))
+        self.assertEqual(self.paired.verify_study(self.root / 'study'), [])
+
+    def test_output_file_bytes_take_precedence_over_event_message(self):
+        argv, answer = self.local_argv()
+        # Exact file bytes include trailing CRLF; the event is deliberately different.
+        answer += b'\r\n'
+        argv[2] = ('import pathlib, sys\npathlib.Path(sys.argv[1]).write_bytes(' + repr(answer)
+                   + ')\nprint(\'{"type":"item.completed","item":{"type":"agent_message",'
+                   '"text":"TEST_ONLY noncanonical event summary"}}\')\n'
+                   'print(\'{"type":"turn.completed"}\')')
+        argv.append('{output}')
+        report = self.study(argv)
+        for run in report['runs']:
+            self.assertEqual(run['status'], 'completed')
+            self.assertEqual((self.root / 'study' / run['output_path']).read_bytes(), answer)
+            self.assertEqual(run['output_digest'], self.paired.digest_bytes(answer))
+            self.assertTrue(run['gates']['all_passed'])
+        self.assertEqual(self.paired.verify_study(self.root / 'study'), [])
+
+    def test_terminal_failure_after_completed_invalidates_run_and_retains_evidence(self):
+        argv, answer = self.local_argv('turn.failed')
+        report = self.study(argv)
+        self.assertEqual(report['summary']['completed_calls'], 0)
+        self.assertEqual(report['summary']['failed_calls'], 1)
+        self.assertEqual(report['summary']['not_run_calls'], 1)
+        first, second = report['runs']
+        self.assertEqual(first['status'], 'failed')
+        self.assertEqual(first['failure_reason'], 'provider_or_protocol_failure')
+        self.assertEqual(second['failure_reason'], 'prior_provider_failure')
+        self.assertEqual((self.root / 'study' / first['output_path']).read_bytes(), answer)
+        self.assertIn('turn.failed', (self.root / 'study' / first['log_path']).read_text())
+        self.assertEqual(self.paired.verify_study(self.root / 'study'), [])
+
+
 if __name__ == '__main__':
     unittest.main()
