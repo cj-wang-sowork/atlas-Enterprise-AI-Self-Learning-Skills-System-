@@ -1,0 +1,31 @@
+{
+  "task_id": "harbor-workshop",
+  "status": "draft",
+  "positioning": "Harbor Mend offers online beginner clothing repair for Seattle adults new to sewing.",
+  "headlines": [
+    "Explore clothing repair with Harbor Mend",
+    "Buttons and seams: a beginner workshop",
+    "Two hours of beginner clothing repair"
+  ],
+  "cta": "View workshop details",
+  "claims": [
+    {
+      "text": "Harbor Mend offers a two-hour online beginner clothing-repair workshop for adults in Seattle.",
+      "source_ids": ["H1"]
+    },
+    {
+      "text": "The workshop costs $39 per participant.",
+      "source_ids": ["H2"]
+    },
+    {
+      "text": "The workshop covers sewing on a button and repairing a small seam.",
+      "source_ids": ["H3"]
+    }
+  ],
+  "gaps": [
+    "No human-approved brand guidelines or approved positioning revision were supplied; this copy remains a proposal awaiting review.",
+    "No authenticated application scope was supplied; authentication and approval steps were not performed.",
+    "No measured learning outcomes, customer results, or competitor evidence were supplied.",
+    "Workshop dates, materials requirements, and a workshop-details URL were not supplied."
+  ]
+}

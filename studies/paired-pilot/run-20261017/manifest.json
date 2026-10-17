@@ -1,0 +1,371 @@
+{
+  "artifact_digests": {
+    "dataset.json": "ae5f4123c907e6ee06cbd1e08b65e9ea25a7cbb7617a6286f2f9cfe076720ed9",
+    "human-scoring.json": "9a4e5ae945e8e04806c2ad9378beef686a42df1b9a463117922d63939bfdca5e",
+    "logs/run-01.jsonl": "4f4a27ab25f9ea84c979afc3dd8a3c923d7f69be30ca80b3146cd608fdfdac50",
+    "logs/run-02.jsonl": "01d5762c298895149f5c399014894c20c06e3e9f8bd87e3bf0353c5c230387aa",
+    "logs/run-03.jsonl": "4b971a8830e10cc631f2b385dc8153521ac66cf90d863073224cc832032d9263",
+    "logs/run-04.jsonl": "2549f1bfad1e0969ed104e91b14da29c092004812d1b96bb1b90e0987fab5d38",
+    "logs/run-05.jsonl": "28289a1f9f6d634af62b8ebb39a3d07ade713b94b8f1e037432a0a46379db553",
+    "logs/run-06.jsonl": "1be669d3458fe62ed9fcac15dc7be4e46ac6aa0441b724d8c04b5a819988c019",
+    "outputs/run-01.txt": "b0f0612f46691df83051eb2e1eec3122bd2612eddf521f3d2930dd23c73a01b9",
+    "outputs/run-02.txt": "a7ed83f54e6923d19d71a9f228753e3922d353c1d559195c4171c10fc7d29d15",
+    "outputs/run-03.txt": "0aafad42eeb4e3b7789b8f851617051ae4a79236491bf6cb6da1f3ece747a3c8",
+    "outputs/run-04.txt": "b4eed4136bf2a29c130bc3b71d8a5478fded414c17f710d92d14f0a8ad187095",
+    "outputs/run-05.txt": "afa4afeebee939f26e2888c72eaa07627daa045c8507ad927cbb8aa31805be00",
+    "outputs/run-06.txt": "0ebdb58c06409c461a9c059eebcf0343daf8c33fb2cb5cfaaedeee7b529b0622",
+    "prompts/run-01.txt": "500b6b0ece17f9ae7485688ddc3f0f33ae6e284ac34ce51892479e9a2059d82e",
+    "prompts/run-02.txt": "15f057d6120af87692e5993ffe38a0220a326138c88ff9ad866ac8aeee9dbb5e",
+    "prompts/run-03.txt": "ef295e61d3f833e44f98fbfd137c84679a68b2ddfb9f88253937c80c663f0159",
+    "prompts/run-04.txt": "049fd38a18ad4fc9ebae290dbeb48e9464ecc967529c4607019e18b16cddd510",
+    "prompts/run-05.txt": "fdf206920161fa50f90bef34234474827de3d05e22311cf6aabc8553c7a5b2f5",
+    "prompts/run-06.txt": "7ab586bd6f47cb17b66244872c4e11965e2a933a06c165ab2579c7a9224c2c92",
+    "reference-packet.txt": "271413d56bf96e96af39df0acc3177f2e500e7ae520f8c608e14ebd50f8f69f3",
+    "unblinding-DO-NOT-SHARE.json": "d9cb298f4ebf327205fd4bccd68812ce03f56851544522bd925f441b0aaa384a"
+  },
+  "config": {
+    "max_calls": 6,
+    "model_observed": null,
+    "model_requested": "gpt-6-astra",
+    "platform": "macOS-26.3-arm64-arm-64bit",
+    "provider": "codex_openai",
+    "provider_argv_template": [
+      "<HOME>/.hermes/cache/scratch/atlas-pilot-npm-cache-20261017/_npx/9944b469fae7e739/node_modules/.bin/codex",
+      "exec",
+      "--ignore-user-config",
+      "--ignore-rules",
+      "--ephemeral",
+      "--skip-git-repo-check",
+      "--sandbox",
+      "read-only",
+      "--json",
+      "--color",
+      "never",
+      "--model",
+      "gpt-6-astra",
+      "-c",
+      "model_reasoning_effort=\"low\"",
+      "-c",
+      "model_provider=\"openai\"",
+      "-c",
+      "project_doc_max_bytes=0",
+      "--output-last-message",
+      "{output}",
+      "{prompt}"
+    ],
+    "python": "3.9.6",
+    "reasoning_effort": "low",
+    "runtime_metadata": {
+      "cli_version": "codex-cli 0.163.0",
+      "cli_version_exit_code": 0,
+      "launcher_sha256": "61b0194f3bb6534439c8d26a3ed57d0805f84b884588b761795323eeb92fcf70"
+    },
+    "seed": 17,
+    "temperature": "provider_default_not_exposed",
+    "timeout_seconds": 90.0,
+    "tools": "prompt_forbidden; read-only sandbox; observed events checked",
+    "total_timeout_seconds": 540.0
+  },
+  "cost_note": "No billing evidence; subscription is not a dollar estimate.",
+  "cost_usd": null,
+  "created_at": "2026-10-17T06:21:02.848513+00:00",
+  "dataset_digest": "efaf7037a453606a12158b10e367bfb667f4287ade445803ef5f535653e3f7b0",
+  "finished_at": "2026-10-17T06:22:00.900174+00:00",
+  "human_evaluation": {
+    "raters": 0,
+    "status": "not_run"
+  },
+  "reference_packet_digest": "271413d56bf96e96af39df0acc3177f2e500e7ae520f8c608e14ebd50f8f69f3",
+  "runs": [
+    {
+      "arm": "baseline",
+      "cost_usd": null,
+      "ended_at": "2026-10-17T06:21:11.995624+00:00",
+      "exit_code": 0,
+      "failure_reason": null,
+      "gates": {
+        "all_passed": true,
+        "claim_allowlist": true,
+        "forbidden_claims": true,
+        "format": true,
+        "required_facts": true,
+        "source_refs": true,
+        "tool_free": true
+      },
+      "human_scores": null,
+      "log_path": "logs/run-01.jsonl",
+      "output_digest": "b0f0612f46691df83051eb2e1eec3122bd2612eddf521f3d2930dd23c73a01b9",
+      "output_path": "outputs/run-01.txt",
+      "position": 1,
+      "prompt_digest": "500b6b0ece17f9ae7485688ddc3f0f33ae6e284ac34ce51892479e9a2059d82e",
+      "prompt_path": "prompts/run-01.txt",
+      "run_id": "run-01",
+      "started_at": "2026-10-17T06:21:02.857286+00:00",
+      "status": "completed",
+      "task_digest": "63202fc082a3b7dfb52f9c0c3aa9f403866eb1c7271ca5099392422514083b13",
+      "task_id": "harbor-workshop",
+      "tool_calls": 0,
+      "usage": {
+        "cache_write_input_tokens": 0,
+        "cached_input_tokens": 12288,
+        "input_tokens": 16695,
+        "output_tokens": 253,
+        "reasoning_output_tokens": 0
+      },
+      "wall_seconds": 9.137954166,
+      "within_pair_position": 1
+    },
+    {
+      "arm": "atlas_reference",
+      "cost_usd": null,
+      "ended_at": "2026-10-17T06:21:23.887185+00:00",
+      "exit_code": 0,
+      "failure_reason": null,
+      "gates": {
+        "all_passed": true,
+        "claim_allowlist": true,
+        "forbidden_claims": true,
+        "format": true,
+        "required_facts": true,
+        "source_refs": true,
+        "tool_free": true
+      },
+      "human_scores": null,
+      "log_path": "logs/run-02.jsonl",
+      "output_digest": "a7ed83f54e6923d19d71a9f228753e3922d353c1d559195c4171c10fc7d29d15",
+      "output_path": "outputs/run-02.txt",
+      "position": 2,
+      "prompt_digest": "15f057d6120af87692e5993ffe38a0220a326138c88ff9ad866ac8aeee9dbb5e",
+      "prompt_path": "prompts/run-02.txt",
+      "run_id": "run-02",
+      "started_at": "2026-10-17T06:21:11.998098+00:00",
+      "status": "completed",
+      "task_digest": "63202fc082a3b7dfb52f9c0c3aa9f403866eb1c7271ca5099392422514083b13",
+      "task_id": "harbor-workshop",
+      "tool_calls": 0,
+      "usage": {
+        "cache_write_input_tokens": 0,
+        "cached_input_tokens": 12288,
+        "input_tokens": 18747,
+        "output_tokens": 270,
+        "reasoning_output_tokens": 0
+      },
+      "wall_seconds": 11.888678624999999,
+      "within_pair_position": 2
+    },
+    {
+      "arm": "atlas_reference",
+      "cost_usd": null,
+      "ended_at": "2026-10-17T06:21:33.137765+00:00",
+      "exit_code": 0,
+      "failure_reason": null,
+      "gates": {
+        "all_passed": true,
+        "claim_allowlist": true,
+        "forbidden_claims": true,
+        "format": true,
+        "required_facts": true,
+        "source_refs": true,
+        "tool_free": true
+      },
+      "human_scores": null,
+      "log_path": "logs/run-03.jsonl",
+      "output_digest": "0aafad42eeb4e3b7789b8f851617051ae4a79236491bf6cb6da1f3ece747a3c8",
+      "output_path": "outputs/run-03.txt",
+      "position": 3,
+      "prompt_digest": "ef295e61d3f833e44f98fbfd137c84679a68b2ddfb9f88253937c80c663f0159",
+      "prompt_path": "prompts/run-03.txt",
+      "run_id": "run-03",
+      "started_at": "2026-10-17T06:21:23.889308+00:00",
+      "status": "completed",
+      "task_digest": "2233d90af8d69ec33606038a7ec427595531f83fcfd728e04e518d5316be608a",
+      "task_id": "loom-scheduler",
+      "tool_calls": 0,
+      "usage": {
+        "cache_write_input_tokens": 0,
+        "cached_input_tokens": 12288,
+        "input_tokens": 18762,
+        "output_tokens": 280,
+        "reasoning_output_tokens": 0
+      },
+      "wall_seconds": 9.248240499999998,
+      "within_pair_position": 1
+    },
+    {
+      "arm": "baseline",
+      "cost_usd": null,
+      "ended_at": "2026-10-17T06:21:42.699310+00:00",
+      "exit_code": 0,
+      "failure_reason": null,
+      "gates": {
+        "all_passed": true,
+        "claim_allowlist": true,
+        "forbidden_claims": true,
+        "format": true,
+        "required_facts": true,
+        "source_refs": true,
+        "tool_free": true
+      },
+      "human_scores": null,
+      "log_path": "logs/run-04.jsonl",
+      "output_digest": "b4eed4136bf2a29c130bc3b71d8a5478fded414c17f710d92d14f0a8ad187095",
+      "output_path": "outputs/run-04.txt",
+      "position": 4,
+      "prompt_digest": "049fd38a18ad4fc9ebae290dbeb48e9464ecc967529c4607019e18b16cddd510",
+      "prompt_path": "prompts/run-04.txt",
+      "run_id": "run-04",
+      "started_at": "2026-10-17T06:21:33.139025+00:00",
+      "status": "completed",
+      "task_digest": "2233d90af8d69ec33606038a7ec427595531f83fcfd728e04e518d5316be608a",
+      "task_id": "loom-scheduler",
+      "tool_calls": 0,
+      "usage": {
+        "cache_write_input_tokens": 0,
+        "cached_input_tokens": 12288,
+        "input_tokens": 16710,
+        "output_tokens": 268,
+        "reasoning_output_tokens": 0
+      },
+      "wall_seconds": 9.560095083000004,
+      "within_pair_position": 2
+    },
+    {
+      "arm": "baseline",
+      "cost_usd": null,
+      "ended_at": "2026-10-17T06:21:51.359543+00:00",
+      "exit_code": 0,
+      "failure_reason": null,
+      "gates": {
+        "all_passed": false,
+        "claim_allowlist": true,
+        "forbidden_claims": false,
+        "format": true,
+        "required_facts": true,
+        "source_refs": true,
+        "tool_free": true
+      },
+      "human_scores": null,
+      "log_path": "logs/run-05.jsonl",
+      "output_digest": "afa4afeebee939f26e2888c72eaa07627daa045c8507ad927cbb8aa31805be00",
+      "output_path": "outputs/run-05.txt",
+      "position": 5,
+      "prompt_digest": "fdf206920161fa50f90bef34234474827de3d05e22311cf6aabc8553c7a5b2f5",
+      "prompt_path": "prompts/run-05.txt",
+      "run_id": "run-05",
+      "started_at": "2026-10-17T06:21:42.700321+00:00",
+      "status": "completed",
+      "task_digest": "5b6b65911adb332ab80945f1f263e1ac7d08e2fc4654339c5c6cdc688c8cb5ec",
+      "task_id": "sprout-crate",
+      "tool_calls": 0,
+      "usage": {
+        "cache_write_input_tokens": 0,
+        "cached_input_tokens": 12288,
+        "input_tokens": 16726,
+        "output_tokens": 290,
+        "reasoning_output_tokens": 0
+      },
+      "wall_seconds": 8.659033917000002,
+      "within_pair_position": 1
+    },
+    {
+      "arm": "atlas_reference",
+      "cost_usd": null,
+      "ended_at": "2026-10-17T06:22:00.897813+00:00",
+      "exit_code": 0,
+      "failure_reason": null,
+      "gates": {
+        "all_passed": true,
+        "claim_allowlist": true,
+        "forbidden_claims": true,
+        "format": true,
+        "required_facts": true,
+        "source_refs": true,
+        "tool_free": true
+      },
+      "human_scores": null,
+      "log_path": "logs/run-06.jsonl",
+      "output_digest": "0ebdb58c06409c461a9c059eebcf0343daf8c33fb2cb5cfaaedeee7b529b0622",
+      "output_path": "outputs/run-06.txt",
+      "position": 6,
+      "prompt_digest": "7ab586bd6f47cb17b66244872c4e11965e2a933a06c165ab2579c7a9224c2c92",
+      "prompt_path": "prompts/run-06.txt",
+      "run_id": "run-06",
+      "started_at": "2026-10-17T06:21:51.360716+00:00",
+      "status": "completed",
+      "task_digest": "5b6b65911adb332ab80945f1f263e1ac7d08e2fc4654339c5c6cdc688c8cb5ec",
+      "task_id": "sprout-crate",
+      "tool_calls": 0,
+      "usage": {
+        "cache_write_input_tokens": 0,
+        "cached_input_tokens": 12288,
+        "input_tokens": 18778,
+        "output_tokens": 307,
+        "reasoning_output_tokens": 0
+      },
+      "wall_seconds": 9.536677625000003,
+      "within_pair_position": 2
+    }
+  ],
+  "schedule": [
+    {
+      "arm": "baseline",
+      "position": 1,
+      "task_id": "harbor-workshop",
+      "within_pair_position": 1
+    },
+    {
+      "arm": "atlas_reference",
+      "position": 2,
+      "task_id": "harbor-workshop",
+      "within_pair_position": 2
+    },
+    {
+      "arm": "atlas_reference",
+      "position": 3,
+      "task_id": "loom-scheduler",
+      "within_pair_position": 1
+    },
+    {
+      "arm": "baseline",
+      "position": 4,
+      "task_id": "loom-scheduler",
+      "within_pair_position": 2
+    },
+    {
+      "arm": "baseline",
+      "position": 5,
+      "task_id": "sprout-crate",
+      "within_pair_position": 1
+    },
+    {
+      "arm": "atlas_reference",
+      "position": 6,
+      "task_id": "sprout-crate",
+      "within_pair_position": 2
+    }
+  ],
+  "schema_version": 1,
+  "study_type": "reference_skill_prompt_condition",
+  "study_wall_seconds": 58.0426955,
+  "summary": {
+    "arms": {
+      "atlas_reference": {
+        "completed": 3,
+        "gate_passed": 3,
+        "planned": 3,
+        "wall_seconds": 30.67359675
+      },
+      "baseline": {
+        "completed": 3,
+        "gate_passed": 2,
+        "planned": 3,
+        "wall_seconds": 27.357083166000006
+      }
+    },
+    "attempted_calls": 6,
+    "completed_calls": 6,
+    "failed_calls": 0,
+    "not_run_calls": 0,
+    "planned_calls": 6
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tool-free marketing draft response v1",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "const": "draft"
+    },
+    "positioning": {
+      "type": "string",
+      "pattern": "^\\S+(?:\\s+\\S+){0,14}\\s*$"
+    },
+    "headlines": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^\\S+(?:\\s+\\S+){0,7}\\s*$"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "cta": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "text",
+          "source_ids"
+        ]
+      },
+      "minItems": 1
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "task_id",
+    "status",
+    "positioning",
+    "headlines",
+    "cta",
+    "claims",
+    "gaps"
+  ]
+}

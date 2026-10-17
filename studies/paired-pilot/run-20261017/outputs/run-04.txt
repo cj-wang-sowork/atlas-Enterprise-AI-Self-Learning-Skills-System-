@@ -1,0 +1,31 @@
+{
+  "task_id": "loom-scheduler",
+  "status": "draft",
+  "positioning": "Appointment scheduling with a calendar and email reminders for independent US salons.",
+  "headlines": [
+    "Your salon’s appointment calendar",
+    "Email reminders for salon appointments",
+    "Try Loom Desk for 14 days"
+  ],
+  "cta": "Start a 14-day trial.",
+  "claims": [
+    {
+      "text": "Loom Desk provides an appointment calendar and email reminders for independent salons in the United States.",
+      "source_ids": ["L1"]
+    },
+    {
+      "text": "Loom Desk costs $24 per location per month.",
+      "source_ids": ["L2"]
+    },
+    {
+      "text": "A 14-day trial is available without a credit card.",
+      "source_ids": ["L3"]
+    }
+  ],
+  "gaps": [
+    "No human-approved brand guideline or approval for this draft is supplied.",
+    "No authenticated application scope is supplied; this is a fictional offline draft.",
+    "No evidence supports reduced no-shows, revenue uplift, integrations, competitive superiority, or measured ease of administration.",
+    "Creative copy is proposed, with no measured outcomes or approvals implied."
+  ]
+}

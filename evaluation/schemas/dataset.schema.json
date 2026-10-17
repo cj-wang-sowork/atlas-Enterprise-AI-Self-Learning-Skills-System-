@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Paired evaluation dataset v1",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_kind": {
+            "enum": [
+              "fictional",
+              "anonymized",
+              "public",
+              "customer_authorized"
+            ]
+          },
+          "brief": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "text": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "id",
+                "text"
+              ]
+            },
+            "minItems": 1
+          },
+          "rubric": {
+            "type": "object",
+            "properties": {
+              "required_facts": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 1
+              },
+              "forbidden_patterns": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            },
+            "required": [
+              "required_facts",
+              "forbidden_patterns"
+            ]
+          }
+        },
+        "required": [
+          "task_id",
+          "source_kind",
+          "brief",
+          "sources",
+          "rubric"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "tasks"
+  ]
+}

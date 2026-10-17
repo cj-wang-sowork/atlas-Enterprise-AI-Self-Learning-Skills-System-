@@ -1,0 +1,305 @@
+{
+  "status": "not_run",
+  "independent_raters_required": 2,
+  "scale": "1=unusable; 2=major edits; 3=usable with edits; 4=minor edits; 5=ready as draft",
+  "rows": [
+    {
+      "anonymous_output_id": "X001",
+      "task": {
+        "task_id": "loom-scheduler",
+        "source_kind": "fictional",
+        "brief": "Draft a positioning one-liner and three landing-page headlines for Loom Desk, an appointment scheduling service for independent US salons. Target owner-operators who want simple appointment administration. Be concise and helpful, not an enterprise-software pitch. CTA: Start a 14-day trial. Include all three supplied product facts in claims. No evidence about reduced no-shows, revenue uplift, integrations or competitive superiority is supplied. Return the common JSON draft format.",
+        "sources": [
+          {
+            "id": "L1",
+            "text": "Loom Desk provides an appointment calendar and email reminders for independent salons in the United States."
+          },
+          {
+            "id": "L2",
+            "text": "Loom Desk costs $24 per location per month."
+          },
+          {
+            "id": "L3",
+            "text": "A 14-day trial is available without a credit card."
+          }
+        ],
+        "rubric": {
+          "required_facts": [
+            "email reminders",
+            "$24",
+            "per location per month",
+            "14-day",
+            "without a credit card"
+          ],
+          "forbidden_patterns": [
+            "eliminates no-shows",
+            "doubles revenue",
+            "guaranteed bookings",
+            "SMS reminders"
+          ]
+        }
+      },
+      "execution_status": "completed",
+      "output_digest": "0aafad42eeb4e3b7789b8f851617051ae4a79236491bf6cb6da1f3ece747a3c8",
+      "output": "{\n  \"task_id\": \"loom-scheduler\",\n  \"status\": \"draft\",\n  \"positioning\": \"Loom Desk provides appointment calendars and email reminders for independent US salons.\",\n  \"headlines\": [\n    \"Your Salon\u2019s Appointment Calendar\",\n    \"Email Reminders for Salon Appointments\",\n    \"Try Loom Desk Without a Credit Card\"\n  ],\n  \"cta\": \"Start a 14-day trial.\",\n  \"claims\": [\n    {\n      \"text\": \"Loom Desk provides an appointment calendar and email reminders for independent salons in the United States.\",\n      \"source_ids\": [\"L1\"]\n    },\n    {\n      \"text\": \"Loom Desk costs $24 per location per month.\",\n      \"source_ids\": [\"L2\"]\n    },\n    {\n      \"text\": \"A 14-day trial is available without a credit card.\",\n      \"source_ids\": [\"L3\"]\n    }\n  ],\n  \"gaps\": [\n    \"No authenticated application scope or human-approved brand guideline was supplied; approval is missing.\",\n    \"No evidence supports reduced no-shows, revenue uplift, integrations, competitive superiority, or measured ease of use.\",\n    \"Supplied fictional records are the sole evidence; product facts have not been independently verified.\",\n    \"Creative copy is proposed draft messaging, with no measured outcomes or customer approvals supplied.\"\n  ]\n}",
+      "rater_id": null,
+      "scores": {
+        "factual_accuracy": null,
+        "brand_fit": null,
+        "actionability": null,
+        "clarity": null,
+        "risk_control": null
+      },
+      "editing_minutes_measured": null,
+      "review_notes": null
+    },
+    {
+      "anonymous_output_id": "X002",
+      "task": {
+        "task_id": "sprout-crate",
+        "source_kind": "fictional",
+        "brief": "Draft a positioning one-liner and three social-post headlines for Sprout Pantry's pantry starter kit in Austin, aimed at apartment residents looking for a straightforward local pickup option. Tone: welcoming and concrete. CTA: See this week's kit. Include all three product facts in claims. Do not claim health, organic certification, carbon savings, free delivery or environmental superiority. No approved brand guideline or performance results are supplied. Return the common JSON draft format.",
+        "sources": [
+          {
+            "id": "P1",
+            "text": "Sprout Pantry offers a $42 pantry starter kit in Austin containing rice, lentils and oats."
+          },
+          {
+            "id": "P2",
+            "text": "Kits are available for pickup on Thursdays from 5 pm to 7 pm."
+          },
+          {
+            "id": "P3",
+            "text": "The kit uses returnable glass jars; customers can bring the jars back at a later pickup."
+          }
+        ],
+        "rubric": {
+          "required_facts": [
+            "$42",
+            "rice, lentils and oats",
+            "Thursdays",
+            "5 pm to 7 pm",
+            "returnable glass jars"
+          ],
+          "forbidden_patterns": [
+            "certified organic",
+            "carbon-neutral kit",
+            "free delivery",
+            "clinically proven"
+          ]
+        }
+      },
+      "execution_status": "completed",
+      "output_digest": "afa4afeebee939f26e2888c72eaa07627daa045c8507ad927cbb8aa31805be00",
+      "output": "{\n  \"task_id\": \"sprout-crate\",\n  \"status\": \"draft\",\n  \"positioning\": \"Sprout Pantry\u2019s $42 pantry starter kit offers apartment residents Thursday pickup in Austin.\",\n  \"headlines\": [\n    \"Rice, Lentils and Oats: Your $42 Starter\",\n    \"Austin Pantry Pickup, Thursdays 5\u20137 pm\",\n    \"Bring Your Glass Jars Back Next Pickup\"\n  ],\n  \"cta\": \"See this week's kit.\",\n  \"claims\": [\n    {\n      \"text\": \"Sprout Pantry offers a $42 pantry starter kit in Austin containing rice, lentils and oats.\",\n      \"source_ids\": [\"P1\"]\n    },\n    {\n      \"text\": \"Kits are available for pickup on Thursdays from 5 pm to 7 pm.\",\n      \"source_ids\": [\"P2\"]\n    },\n    {\n      \"text\": \"The kit uses returnable glass jars; customers can bring the jars back at a later pickup.\",\n      \"source_ids\": [\"P3\"]\n    }\n  ],\n  \"gaps\": [\n    \"No human-approved brand guideline or approval for this draft is supplied.\",\n    \"No performance results or customer outcome evidence is supplied.\",\n    \"No pickup address or destination link for the CTA is supplied.\",\n    \"No evidence supports health benefits, organic certification, carbon savings, free delivery or environmental superiority.\"\n  ]\n}",
+      "rater_id": null,
+      "scores": {
+        "factual_accuracy": null,
+        "brand_fit": null,
+        "actionability": null,
+        "clarity": null,
+        "risk_control": null
+      },
+      "editing_minutes_measured": null,
+      "review_notes": null
+    },
+    {
+      "anonymous_output_id": "X003",
+      "task": {
+        "task_id": "harbor-workshop",
+        "source_kind": "fictional",
+        "brief": "Draft a positioning one-liner and three email subject-line options for Harbor Mend's beginner clothing-repair workshop, aimed at Seattle adults new to sewing. Use a calm, practical tone, not guilt or urgency. CTA: View workshop details. Include all three supplied product facts in claims. There are no measured learning outcomes or approved brand guidelines. Return the common JSON draft format.",
+        "sources": [
+          {
+            "id": "H1",
+            "text": "Harbor Mend offers a two-hour online beginner clothing-repair workshop for adults in Seattle."
+          },
+          {
+            "id": "H2",
+            "text": "The workshop costs $39 per participant."
+          },
+          {
+            "id": "H3",
+            "text": "The workshop covers sewing on a button and repairing a small seam."
+          }
+        ],
+        "rubric": {
+          "required_facts": [
+            "two-hour",
+            "$39",
+            "sewing on a button",
+            "small seam"
+          ],
+          "forbidden_patterns": [
+            "guaranteed mastery",
+            "Seattle's best",
+            "certified instructor",
+            "free workshop"
+          ]
+        }
+      },
+      "execution_status": "completed",
+      "output_digest": "b0f0612f46691df83051eb2e1eec3122bd2612eddf521f3d2930dd23c73a01b9",
+      "output": "{\n  \"task_id\": \"harbor-workshop\",\n  \"status\": \"draft\",\n  \"positioning\": \"Harbor Mend offers Seattle adults new to sewing an online introduction to clothing repair.\",\n  \"headlines\": [\n    \"Explore beginner clothing repair with Harbor Mend\",\n    \"A two-hour online workshop for Seattle beginners\",\n    \"Buttons and small seams: workshop details\"\n  ],\n  \"cta\": \"View workshop details\",\n  \"claims\": [\n    {\n      \"text\": \"Harbor Mend offers a two-hour online beginner clothing-repair workshop for adults in Seattle.\",\n      \"source_ids\": [\"H1\"]\n    },\n    {\n      \"text\": \"The workshop costs $39 per participant.\",\n      \"source_ids\": [\"H2\"]\n    },\n    {\n      \"text\": \"The workshop covers sewing on a button and repairing a small seam.\",\n      \"source_ids\": [\"H3\"]\n    }\n  ],\n  \"gaps\": [\n    \"Human approval and approved brand guidelines are not supplied; creative copy remains proposed.\",\n    \"No measured learning outcomes are supplied.\",\n    \"No workshop schedule, required materials, or workshop-details URL is supplied.\",\n    \"No authenticated application scope is supplied.\"\n  ]\n}",
+      "rater_id": null,
+      "scores": {
+        "factual_accuracy": null,
+        "brand_fit": null,
+        "actionability": null,
+        "clarity": null,
+        "risk_control": null
+      },
+      "editing_minutes_measured": null,
+      "review_notes": null
+    },
+    {
+      "anonymous_output_id": "X004",
+      "task": {
+        "task_id": "harbor-workshop",
+        "source_kind": "fictional",
+        "brief": "Draft a positioning one-liner and three email subject-line options for Harbor Mend's beginner clothing-repair workshop, aimed at Seattle adults new to sewing. Use a calm, practical tone, not guilt or urgency. CTA: View workshop details. Include all three supplied product facts in claims. There are no measured learning outcomes or approved brand guidelines. Return the common JSON draft format.",
+        "sources": [
+          {
+            "id": "H1",
+            "text": "Harbor Mend offers a two-hour online beginner clothing-repair workshop for adults in Seattle."
+          },
+          {
+            "id": "H2",
+            "text": "The workshop costs $39 per participant."
+          },
+          {
+            "id": "H3",
+            "text": "The workshop covers sewing on a button and repairing a small seam."
+          }
+        ],
+        "rubric": {
+          "required_facts": [
+            "two-hour",
+            "$39",
+            "sewing on a button",
+            "small seam"
+          ],
+          "forbidden_patterns": [
+            "guaranteed mastery",
+            "Seattle's best",
+            "certified instructor",
+            "free workshop"
+          ]
+        }
+      },
+      "execution_status": "completed",
+      "output_digest": "a7ed83f54e6923d19d71a9f228753e3922d353c1d559195c4171c10fc7d29d15",
+      "output": "{\n  \"task_id\": \"harbor-workshop\",\n  \"status\": \"draft\",\n  \"positioning\": \"Harbor Mend offers online beginner clothing repair for Seattle adults new to sewing.\",\n  \"headlines\": [\n    \"Explore clothing repair with Harbor Mend\",\n    \"Buttons and seams: a beginner workshop\",\n    \"Two hours of beginner clothing repair\"\n  ],\n  \"cta\": \"View workshop details\",\n  \"claims\": [\n    {\n      \"text\": \"Harbor Mend offers a two-hour online beginner clothing-repair workshop for adults in Seattle.\",\n      \"source_ids\": [\"H1\"]\n    },\n    {\n      \"text\": \"The workshop costs $39 per participant.\",\n      \"source_ids\": [\"H2\"]\n    },\n    {\n      \"text\": \"The workshop covers sewing on a button and repairing a small seam.\",\n      \"source_ids\": [\"H3\"]\n    }\n  ],\n  \"gaps\": [\n    \"No human-approved brand guidelines or approved positioning revision were supplied; this copy remains a proposal awaiting review.\",\n    \"No authenticated application scope was supplied; authentication and approval steps were not performed.\",\n    \"No measured learning outcomes, customer results, or competitor evidence were supplied.\",\n    \"Workshop dates, materials requirements, and a workshop-details URL were not supplied.\"\n  ]\n}",
+      "rater_id": null,
+      "scores": {
+        "factual_accuracy": null,
+        "brand_fit": null,
+        "actionability": null,
+        "clarity": null,
+        "risk_control": null
+      },
+      "editing_minutes_measured": null,
+      "review_notes": null
+    },
+    {
+      "anonymous_output_id": "X005",
+      "task": {
+        "task_id": "sprout-crate",
+        "source_kind": "fictional",
+        "brief": "Draft a positioning one-liner and three social-post headlines for Sprout Pantry's pantry starter kit in Austin, aimed at apartment residents looking for a straightforward local pickup option. Tone: welcoming and concrete. CTA: See this week's kit. Include all three product facts in claims. Do not claim health, organic certification, carbon savings, free delivery or environmental superiority. No approved brand guideline or performance results are supplied. Return the common JSON draft format.",
+        "sources": [
+          {
+            "id": "P1",
+            "text": "Sprout Pantry offers a $42 pantry starter kit in Austin containing rice, lentils and oats."
+          },
+          {
+            "id": "P2",
+            "text": "Kits are available for pickup on Thursdays from 5 pm to 7 pm."
+          },
+          {
+            "id": "P3",
+            "text": "The kit uses returnable glass jars; customers can bring the jars back at a later pickup."
+          }
+        ],
+        "rubric": {
+          "required_facts": [
+            "$42",
+            "rice, lentils and oats",
+            "Thursdays",
+            "5 pm to 7 pm",
+            "returnable glass jars"
+          ],
+          "forbidden_patterns": [
+            "certified organic",
+            "carbon-neutral kit",
+            "free delivery",
+            "clinically proven"
+          ]
+        }
+      },
+      "execution_status": "completed",
+      "output_digest": "0ebdb58c06409c461a9c059eebcf0343daf8c33fb2cb5cfaaedeee7b529b0622",
+      "output": "{\n  \"task_id\": \"sprout-crate\",\n  \"status\": \"draft\",\n  \"positioning\": \"Sprout Pantry\u2019s $42 pantry starter kit offers Austin apartment residents a Thursday pickup option.\",\n  \"headlines\": [\n    \"Meet Your $42 Pantry Starter Kit\",\n    \"Rice, Lentils and Oats: Thursday Pickup\",\n    \"Bring Your Glass Jars Back Next Pickup\"\n  ],\n  \"cta\": \"See this week's kit.\",\n  \"claims\": [\n    {\n      \"text\": \"Sprout Pantry offers a $42 pantry starter kit in Austin containing rice, lentils and oats.\",\n      \"source_ids\": [\"P1\"]\n    },\n    {\n      \"text\": \"Kits are available for pickup on Thursdays from 5 pm to 7 pm.\",\n      \"source_ids\": [\"P2\"]\n    },\n    {\n      \"text\": \"The kit uses returnable glass jars; customers can bring the jars back at a later pickup.\",\n      \"source_ids\": [\"P3\"]\n    }\n  ],\n  \"gaps\": [\n    \"No human-approved brand guideline or draft approval is supplied; this remains proposed copy.\",\n    \"No authenticated application scope is supplied; authentication and approval steps were not performed.\",\n    \"The fictional source records are the sole evidence; no independent verification or performance results are supplied.\",\n    \"Pickup address, kit quantities and this week's availability are not supplied.\",\n    \"No competitor evidence is supplied to support comparative differentiation.\"\n  ]\n}",
+      "rater_id": null,
+      "scores": {
+        "factual_accuracy": null,
+        "brand_fit": null,
+        "actionability": null,
+        "clarity": null,
+        "risk_control": null
+      },
+      "editing_minutes_measured": null,
+      "review_notes": null
+    },
+    {
+      "anonymous_output_id": "X006",
+      "task": {
+        "task_id": "loom-scheduler",
+        "source_kind": "fictional",
+        "brief": "Draft a positioning one-liner and three landing-page headlines for Loom Desk, an appointment scheduling service for independent US salons. Target owner-operators who want simple appointment administration. Be concise and helpful, not an enterprise-software pitch. CTA: Start a 14-day trial. Include all three supplied product facts in claims. No evidence about reduced no-shows, revenue uplift, integrations or competitive superiority is supplied. Return the common JSON draft format.",
+        "sources": [
+          {
+            "id": "L1",
+            "text": "Loom Desk provides an appointment calendar and email reminders for independent salons in the United States."
+          },
+          {
+            "id": "L2",
+            "text": "Loom Desk costs $24 per location per month."
+          },
+          {
+            "id": "L3",
+            "text": "A 14-day trial is available without a credit card."
+          }
+        ],
+        "rubric": {
+          "required_facts": [
+            "email reminders",
+            "$24",
+            "per location per month",
+            "14-day",
+            "without a credit card"
+          ],
+          "forbidden_patterns": [
+            "eliminates no-shows",
+            "doubles revenue",
+            "guaranteed bookings",
+            "SMS reminders"
+          ]
+        }
+      },
+      "execution_status": "completed",
+      "output_digest": "b4eed4136bf2a29c130bc3b71d8a5478fded414c17f710d92d14f0a8ad187095",
+      "output": "{\n  \"task_id\": \"loom-scheduler\",\n  \"status\": \"draft\",\n  \"positioning\": \"Appointment scheduling with a calendar and email reminders for independent US salons.\",\n  \"headlines\": [\n    \"Your salon\u2019s appointment calendar\",\n    \"Email reminders for salon appointments\",\n    \"Try Loom Desk for 14 days\"\n  ],\n  \"cta\": \"Start a 14-day trial.\",\n  \"claims\": [\n    {\n      \"text\": \"Loom Desk provides an appointment calendar and email reminders for independent salons in the United States.\",\n      \"source_ids\": [\"L1\"]\n    },\n    {\n      \"text\": \"Loom Desk costs $24 per location per month.\",\n      \"source_ids\": [\"L2\"]\n    },\n    {\n      \"text\": \"A 14-day trial is available without a credit card.\",\n      \"source_ids\": [\"L3\"]\n    }\n  ],\n  \"gaps\": [\n    \"No human-approved brand guideline or approval for this draft is supplied.\",\n    \"No authenticated application scope is supplied; this is a fictional offline draft.\",\n    \"No evidence supports reduced no-shows, revenue uplift, integrations, competitive superiority, or measured ease of administration.\",\n    \"Creative copy is proposed, with no measured outcomes or approvals implied.\"\n  ]\n}",
+      "rater_id": null,
+      "scores": {
+        "factual_accuracy": null,
+        "brand_fit": null,
+        "actionability": null,
+        "clarity": null,
+        "risk_control": null
+      },
+      "editing_minutes_measured": null,
+      "review_notes": null
+    }
+  ]
+}

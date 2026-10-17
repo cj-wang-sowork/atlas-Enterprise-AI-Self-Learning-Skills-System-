@@ -1,0 +1,108 @@
+{
+  "dataset_name": "Fictional marketing draft pilot v1",
+  "schema_version": 1,
+  "source_note": "All organizations, offers and source records are deliberately fictional. These are not real customer tasks, market research, approved brand policies, or business-outcome evidence.",
+  "tasks": [
+    {
+      "brief": "Draft a positioning one-liner and three email subject-line options for Harbor Mend's beginner clothing-repair workshop, aimed at Seattle adults new to sewing. Use a calm, practical tone, not guilt or urgency. CTA: View workshop details. Include all three supplied product facts in claims. There are no measured learning outcomes or approved brand guidelines. Return the common JSON draft format.",
+      "rubric": {
+        "forbidden_patterns": [
+          "guaranteed mastery",
+          "Seattle's best",
+          "certified instructor",
+          "free workshop"
+        ],
+        "required_facts": [
+          "two-hour",
+          "$39",
+          "sewing on a button",
+          "small seam"
+        ]
+      },
+      "source_kind": "fictional",
+      "sources": [
+        {
+          "id": "H1",
+          "text": "Harbor Mend offers a two-hour online beginner clothing-repair workshop for adults in Seattle."
+        },
+        {
+          "id": "H2",
+          "text": "The workshop costs $39 per participant."
+        },
+        {
+          "id": "H3",
+          "text": "The workshop covers sewing on a button and repairing a small seam."
+        }
+      ],
+      "task_id": "harbor-workshop"
+    },
+    {
+      "brief": "Draft a positioning one-liner and three landing-page headlines for Loom Desk, an appointment scheduling service for independent US salons. Target owner-operators who want simple appointment administration. Be concise and helpful, not an enterprise-software pitch. CTA: Start a 14-day trial. Include all three supplied product facts in claims. No evidence about reduced no-shows, revenue uplift, integrations or competitive superiority is supplied. Return the common JSON draft format.",
+      "rubric": {
+        "forbidden_patterns": [
+          "eliminates no-shows",
+          "doubles revenue",
+          "guaranteed bookings",
+          "SMS reminders"
+        ],
+        "required_facts": [
+          "email reminders",
+          "$24",
+          "per location per month",
+          "14-day",
+          "without a credit card"
+        ]
+      },
+      "source_kind": "fictional",
+      "sources": [
+        {
+          "id": "L1",
+          "text": "Loom Desk provides an appointment calendar and email reminders for independent salons in the United States."
+        },
+        {
+          "id": "L2",
+          "text": "Loom Desk costs $24 per location per month."
+        },
+        {
+          "id": "L3",
+          "text": "A 14-day trial is available without a credit card."
+        }
+      ],
+      "task_id": "loom-scheduler"
+    },
+    {
+      "brief": "Draft a positioning one-liner and three social-post headlines for Sprout Pantry's pantry starter kit in Austin, aimed at apartment residents looking for a straightforward local pickup option. Tone: welcoming and concrete. CTA: See this week's kit. Include all three product facts in claims. Do not claim health, organic certification, carbon savings, free delivery or environmental superiority. No approved brand guideline or performance results are supplied. Return the common JSON draft format.",
+      "rubric": {
+        "forbidden_patterns": [
+          "certified organic",
+          "carbon-neutral kit",
+          "free delivery",
+          "clinically proven"
+        ],
+        "required_facts": [
+          "$42",
+          "rice, lentils and oats",
+          "Thursdays",
+          "5 pm to 7 pm",
+          "returnable glass jars"
+        ]
+      },
+      "source_kind": "fictional",
+      "sources": [
+        {
+          "id": "P1",
+          "text": "Sprout Pantry offers a $42 pantry starter kit in Austin containing rice, lentils and oats."
+        },
+        {
+          "id": "P2",
+          "text": "Kits are available for pickup on Thursdays from 5 pm to 7 pm."
+        },
+        {
+          "id": "P3",
+          "text": "The kit uses returnable glass jars; customers can bring the jars back at a later pickup."
+        }
+      ],
+      "task_id": "sprout-crate"
+    }
+  ]
+}

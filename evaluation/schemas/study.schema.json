@@ -1,0 +1,259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Paired evaluation observation manifest v1",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "study_type": {
+      "const": "reference_skill_prompt_condition"
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "finished_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dataset_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "reference_packet_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "config": {
+      "type": "object",
+      "properties": {
+        "model_requested": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model_observed": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reasoning_effort": {
+          "const": "low"
+        },
+        "provider": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runtime_metadata": {
+          "type": "object"
+        },
+        "provider_argv_template": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "seed": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "model_requested",
+        "model_observed",
+        "reasoning_effort",
+        "provider",
+        "runtime_metadata",
+        "provider_argv_template",
+        "seed"
+      ]
+    },
+    "schedule": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 2
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "task_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "task_digest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "arm": {
+            "enum": [
+              "baseline",
+              "atlas_reference"
+            ]
+          },
+          "position": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "within_pair_position": {
+            "enum": [
+              1,
+              2
+            ]
+          },
+          "status": {
+            "enum": [
+              "not_run",
+              "completed",
+              "failed"
+            ]
+          },
+          "prompt_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prompt_digest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "output_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "output_digest": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "wall_seconds": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "usage": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "human_scores": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "cost_usd": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "gates": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "log_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "exit_code": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "run_id",
+          "task_id",
+          "task_digest",
+          "arm",
+          "position",
+          "within_pair_position",
+          "status",
+          "prompt_path",
+          "prompt_digest",
+          "output_path",
+          "output_digest",
+          "wall_seconds",
+          "usage",
+          "human_scores",
+          "cost_usd",
+          "gates",
+          "log_path",
+          "exit_code"
+        ]
+      },
+      "minItems": 2
+    },
+    "artifact_digests": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "human_evaluation": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "not_run"
+        },
+        "raters": {
+          "const": 0
+        }
+      },
+      "required": [
+        "status",
+        "raters"
+      ]
+    },
+    "cost_usd": {
+      "type": [
+        "number",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "study_type",
+    "created_at",
+    "finished_at",
+    "dataset_digest",
+    "reference_packet_digest",
+    "config",
+    "schedule",
+    "runs",
+    "artifact_digests",
+    "summary",
+    "human_evaluation",
+    "cost_usd"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "verified_at": "2026-10-17T06:32:36.029756+00:00",
+  "evidence_checks": {
+    "verified": true,
+    "schema_validated_datasets": 1,
+    "schema_validated_manifests": 1,
+    "schema_validated_original_outputs": 6,
+    "paired_calls": 6,
+    "total_model_invocations_including_smokes": 8,
+    "recomputed_gates_match_original": true,
+    "paired_prompts_match_locked_fixtures": true,
+    "blinded_outputs_exact_and_scores_blank": true,
+    "human_raters": 0
+  },
+  "tests": {
+    "scoped": {
+      "command": "python3 -m unittest discover -s tests -p test_paired_evaluation.py -v",
+      "observed_tests": 9,
+      "result": "OK",
+      "observed_duration_seconds": 0.287
+    },
+    "full_suite": {
+      "command": "python3 -m unittest discover -s tests -v",
+      "observed_tests": 72,
+      "result": "OK",
+      "observed_duration_seconds": 65.434
+    },
+    "observation_note": "Counts and summaries copied from actual terminal tool output; not model or human outcomes."
+  },
+  "syntax_check": {
+    "command": "python3 -m compileall -q evaluation tests/test_paired_evaluation.py",
+    "observed_exit_code": 0
+  },
+  "diff_check": {
+    "default_result": "Three blank-at-EOF warnings in original reference-arm prompt payloads (run-02, run-03, run-06); preserved unchanged to retain exact submitted prompts.",
+    "command": "git -c core.whitespace=-blank-at-eof diff --cached --check",
+    "note": "Only blank-at-EOF is exempted for immutable evidence; no persistent Git configuration is changed."
+  },
+  "global_cli_recheck": {
+    "command": "/opt/homebrew/bin/codex --version",
+    "observed_stdout": "codex-cli 0.133.0"
+  },
+  "no_additional_model_calls_during_verification": true
+}

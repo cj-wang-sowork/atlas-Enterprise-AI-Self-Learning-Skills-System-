@@ -1,0 +1,35 @@
+Complete this marketing draft using only the supplied source records.
+Do not call tools, inspect files, browse, access memory/skills, or execute commands.
+Do not publish or save an approved policy. No authenticated application scope or
+human-approved brand guideline is supplied. This is a fictional offline draft,
+not a protected client-knowledge operation; flag the missing approval in gaps.
+Use only facts in the records. Ideas are proposals, never measured outcomes.
+Return only one JSON object with: task_id (exact), status ("draft"), positioning
+(nonempty, at most 15 whitespace-separated words), headlines (exactly three
+nonempty strings, each at most 8 words), cta (nonempty string), claims (nonempty
+array of {"text": exact verbatim source-record text, "source_ids": [that record id]}),
+gaps (nonempty string array, including missing approval and any evidence gaps).
+Include the requested product facts in claims. Claims must be source-locked;
+creative copy must not imply unprovided superiority, customer results or approvals.
+Use English. The response schema above overrides any reference report template.
+
+TASK AND SOURCE RECORDS:
+{
+  "brief": "Draft a positioning one-liner and three social-post headlines for Sprout Pantry's pantry starter kit in Austin, aimed at apartment residents looking for a straightforward local pickup option. Tone: welcoming and concrete. CTA: See this week's kit. Include all three product facts in claims. Do not claim health, organic certification, carbon savings, free delivery or environmental superiority. No approved brand guideline or performance results are supplied. Return the common JSON draft format.",
+  "source_kind": "fictional",
+  "sources": [
+    {
+      "id": "P1",
+      "text": "Sprout Pantry offers a $42 pantry starter kit in Austin containing rice, lentils and oats."
+    },
+    {
+      "id": "P2",
+      "text": "Kits are available for pickup on Thursdays from 5 pm to 7 pm."
+    },
+    {
+      "id": "P3",
+      "text": "The kit uses returnable glass jars; customers can bring the jars back at a later pickup."
+    }
+  ],
+  "task_id": "sprout-crate"
+}

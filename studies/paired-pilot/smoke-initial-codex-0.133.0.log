@@ -1,0 +1,8 @@
+[oh-my-zsh] You can update manually by running `omz update`
+2026-10-17T06:14:50.128215Z ERROR codex_models_manager::cache: failed to load models cache: unknown variant `max`, expected one of `none`, `minimal`, `low`, `medium`, `high`, `xhigh` at line 30 column 25
+2026-10-17T06:14:50.631203Z ERROR codex_models_manager::manager: failed to refresh available models: stream disconnected before completion: failed to decode models response: unknown variant `max`, expected one of `none`, `minimal`, `low`, `medium`, `high`, `xhigh` at line 1 column 1444; [large public model-catalog body omitted, not a task response]
+{"type":"thread.started","thread_id":"01a1487f-b20a-7851-b53e-6c1b7cb07d7f"}
+{"type":"turn.started"}
+2026-10-17T06:14:55.120659Z ERROR codex_models_manager::manager: failed to refresh available models: stream disconnected before completion: failed to decode models response: unknown variant `max`, expected one of `none`, `minimal`, `low`, `medium`, `high`, `xhigh` at line 1 column 1444; [large public model-catalog body omitted, not a task response]
+{"type":"error","message":"{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"}
+{"type":"turn.failed","error":{"message":"{\"type\":\"error\",\"status\":400,\"error\":{\"type\":\"invalid_request_error\",\"message\":\"The 'gpt-6-astra' model requires a newer version of Codex. Please upgrade to the latest app or CLI and try again.\"}}"}}

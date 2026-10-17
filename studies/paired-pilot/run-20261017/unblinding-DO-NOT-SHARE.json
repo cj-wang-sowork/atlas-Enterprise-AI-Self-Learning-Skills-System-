@@ -1,0 +1,32 @@
+{
+  "X001": {
+    "run_id": "run-03",
+    "arm": "atlas_reference",
+    "task_id": "loom-scheduler"
+  },
+  "X002": {
+    "run_id": "run-05",
+    "arm": "baseline",
+    "task_id": "sprout-crate"
+  },
+  "X003": {
+    "run_id": "run-01",
+    "arm": "baseline",
+    "task_id": "harbor-workshop"
+  },
+  "X004": {
+    "run_id": "run-02",
+    "arm": "atlas_reference",
+    "task_id": "harbor-workshop"
+  },
+  "X005": {
+    "run_id": "run-06",
+    "arm": "atlas_reference",
+    "task_id": "sprout-crate"
+  },
+  "X006": {
+    "run_id": "run-04",
+    "arm": "baseline",
+    "task_id": "loom-scheduler"
+  }
+}
