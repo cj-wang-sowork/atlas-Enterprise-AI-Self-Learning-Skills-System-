@@ -20,7 +20,9 @@ class InstallerTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="atlas-installer-", dir=os.environ.get("TMPDIR"))
         self.addCleanup(self.temp.cleanup)
-        self.root = Path(self.temp.name)
+        # macOS often exposes the temporary root via /var -> /private/var.
+        # Use its canonical spelling; the installer intentionally rejects symlinks.
+        self.root = Path(self.temp.name).resolve()
         self.source = self.root / "source"
         shutil.copytree(REPO, self.source, ignore=shutil.ignore_patterns(
             ".git", "__pycache__", ".pytest_cache", "*.pyc"))
