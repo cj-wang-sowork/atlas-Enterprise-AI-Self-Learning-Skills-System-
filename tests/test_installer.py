@@ -231,11 +231,18 @@ class InstallerTests(unittest.TestCase):
                 self.assertEqual(marker.read_text(), "keep this")
 
     def test_missing_runtime_source_fails_all_without_writing(self):
-        (self.source / "learn_system.py").unlink()
-        result = self.run_installer("--target", "all", "--dest", str(self.project))
-        self.assertNotEqual(result.returncode, 0)
-        self.assertFalse(self.project.exists())
-        self.assertEqual(list(self.home.iterdir()), [])
+        for name in ('learn_system.py', 'skill_registry.py'):
+            with self.subTest(module=name):
+                module = self.source / name
+                saved = module.with_suffix('.py.saved')
+                module.rename(saved)
+                try:
+                    result = self.run_installer("--target", "all", "--dest", str(self.project))
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertFalse(self.project.exists())
+                    self.assertEqual(list(self.home.iterdir()), [])
+                finally:
+                    saved.rename(module)
 
     def test_new_registry_module_is_copied_when_present(self):
         # A test-only module proves future top-level modules are not omitted.

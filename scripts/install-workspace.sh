@@ -276,7 +276,7 @@ target = sys.argv[2]
 roots = [Path(os.path.abspath(os.path.expanduser(value))) for value in sys.argv[3:]]
 workspace = "AGENTS.md HEARTBEAT.md IDENTITY.md MEMORY.md README.md SKILL.md SOUL.md TOOLS.md USER.md CONTRIBUTING.md LICENSE SECURITY.md starter docs examples memory outputs scripts skills".split()
 modules = [p.name for p in source.glob("*.py")]
-required_modules = "learn_system.py market_router.py security_checker.py hermes_adapter.py market_intelligence.py".split()
+required_modules = "learn_system.py market_router.py security_checker.py hermes_adapter.py skill_registry.py market_intelligence.py".split()
 
 def fail(message):
     sys.exit("Error: " + message)
