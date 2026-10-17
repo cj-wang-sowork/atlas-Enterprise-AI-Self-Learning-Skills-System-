@@ -1,5 +1,6 @@
 """Static prompt contracts, not a claim of live model/UI adherence."""
 from pathlib import Path
+import json
 import re
 import unittest
 
@@ -25,6 +26,20 @@ class FirstValueTests(unittest.TestCase):
         for required in ("即時瀏覽", "已核對的來源包", "不可編造", "來源 URL", "查閱日期", "QA", "先交付", "一個問題", "不得寄送"):
             self.assertIn(required, prompt)
         self.assertIn("不是已完成研究", path.read_text())
+
+    def test_ready_source_card_preserves_feedback_approval_and_snapshot_boundaries(self):
+        text = (KIT / "TRY_SOWORK_NOW.md").read_text()
+        prompt = card(text)
+        for required in ("不要先訪談", "立即交付三筆研究候選", "成果後只問一個回饋問題", "我的實際回饋", "Candidate Lesson", "ID、版本", "ID／版本的人工核准", "不是我的核准", "未寄送", "未知", "本輪核准業務經驗 0"):
+            self.assertIn(required, prompt)
+        for required in ("不是持久化安裝或後端學習連線", "未即時重驗", "不是即時搜尋結果", "不可把這次體驗稱為 C 組學習成效"):
+            self.assertIn(required, text)
+        packet = json.loads((KIT / "SOWORK_DEMO_SOURCES.json").read_text())
+        self.assertEqual(packet["candidate_count"], 3)
+        self.assertEqual(packet["approved_business_lessons"], [])
+        for row in packet["candidates"]:
+            for field in ("company", "signal_date", "signal_url"):
+                self.assertIn(row[field], prompt)
 
     def test_exported_readme_bundles_complete_card_before_optional_setup(self):
         readme = (KIT / "README.md").read_text()

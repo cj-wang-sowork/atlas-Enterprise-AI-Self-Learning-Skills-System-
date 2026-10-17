@@ -1,0 +1,400 @@
+{
+  "leads": [
+    {
+      "source_id": "tw-aaeon",
+      "company": "AAEON Technology Inc.",
+      "signal_date": "2026-07-29",
+      "signal_url": "https://www.aaeon.com/en/news/detail/mix-q870a1_mini-itx_arrow_lake",
+      "signal_summary": "資料所載事實：宣布推出 MIX-Q870A1 工業 Mini-ITX 主機板，支援 Intel Core Ultra 200S 系列處理器。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：工業主機板新品適合研究競品定位，並規劃面向設備商的規格與應用內容；是否需要外部服務仍未知。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["優先市場與應用產業", "現有內容資源"]
+      },
+      "outreach_draft": "您好，看到 MIX-Q870A1 新品公告。想交流如何將規格轉成設備商易讀的應用內容，並整理同級產品定位。是否方便先分享一頁研究構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-acer",
+      "company": "Acer Inc.",
+      "signal_date": "2026-05-29",
+      "signal_url": "https://news.acer.com/acer-unveils-comprehensive-lineup-of-veriton-workstations-and-desktops",
+      "signal_summary": "資料所載事實：宣布四款 Veriton 商用桌機與工作站，並列出北美、EMEA 及澳洲各地供應時程；不代表各市場均已上市。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：跨區商用產品組合可作為市場比較與分眾內容規劃題材；大型企業既有團隊及服務商配置待查。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["各區實際供應狀態", "既有服務商與分工"]
+      },
+      "outreach_draft": "您好，看到 Veriton 商用新品與各區供應規劃。想以企業採購情境整理產品比較與區域訊息差異，是否方便先分享一頁內容構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-adata",
+      "company": "ADATA",
+      "signal_date": "2026-05-28",
+      "signal_url": "https://trusta.adata.com/en/news/1312/",
+      "signal_summary": "資料所載事實：企業儲存品牌 TRUSTA 宣布 AI Scaler，將主張從儲存硬體延伸至整合式企業 AI 解決方案。來源正文的 TLS 驗證有缺口。",
+      "source_access": "first_party_body_tls_unverified",
+      "icp_hypothesis": "推論：從硬體延伸到企業 AI 解決方案，可研究品牌定位與買方內容架構；不代表已需要品牌重整或委案。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["TLS 正常驗證下的正文核對", "台灣總部直接來源", "AI Scaler 目標客群"]
+      },
+      "outreach_draft": "您好，看到 TRUSTA 的 AI Scaler 公告。想交流從儲存硬體到企業 AI 方案的訊息架構，整理不同買方關注的價值與問題。是否方便分享一頁構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-advantech",
+      "company": "Advantech Co., Ltd.",
+      "signal_date": "2026-10-16",
+      "signal_url": "https://www.advantech.com/en-us/resources/news/advantech-launches-ds-540-compact-fanless-computer-for-digital-signage-and-interactive-display-applications",
+      "signal_summary": "資料所載事實：宣布 DS-540，面向數位看板與互動顯示，包含餐飲、自助服務機與廚房顯示應用。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：明確的垂直應用可支援產業研究及分眾內容規劃，適合探索餐飲與系統整合商溝通題材。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["優先垂直市場", "通路內容需求"]
+      },
+      "outreach_draft": "您好，看到 DS-540 的數位看板與餐飲應用公告。想整理餐飲業者及系統整合商的不同關注點，規劃分眾內容。是否方便分享一頁題綱？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-asrock",
+      "company": "ASRock Inc.",
+      "signal_date": "2026-09-16",
+      "signal_url": "https://tw.asrock.com/news/index.asp?iD=5850",
+      "signal_summary": "資料所載事實：宣布旗艦 Taichi 品牌擴展至顯示器，推出 TCO27USA、TCO27QXA 與 TCO27QXB OLED 型號。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：品牌跨品類延伸可研究競品定位與產品區隔；偏消費型產品，與 B2B 假設的適配需另確認通路需求。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["通路溝通需求", "跨品類品牌策略"]
+      },
+      "outreach_draft": "您好，看到 Taichi 延伸至 OLED 顯示器。想以新品類定位為題，整理競品訊息與三款產品的溝通區隔。是否方便先分享一頁研究構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-asus",
+      "company": "ASUSTeK Computer Inc. (ASUS)",
+      "signal_date": "2026-03-17",
+      "signal_url": "https://press.asus.com/news/press-releases/asus-tuf-gaming-laptops-2026-oled-rtx/",
+      "signal_summary": "資料所載事實：宣布 2026 年 TUF Gaming A16、F16 與 A18 筆記型電腦產品陣容。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：多機型陣容可研究產品比較與內容架構；電競消費市場與 B2B 假設的直接適配較弱，需查通路端題目。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["通路端內容缺口", "既有品牌與代理商分工"]
+      },
+      "outreach_draft": "您好，看到 2026 TUF Gaming 新品陣容。想整理 A16、F16、A18 的選購問題與競品訊息，作為通路內容題綱。是否方便分享一頁構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-asustor",
+      "company": "ASUSTOR 華芸科技",
+      "signal_date": "2026-03-03",
+      "signal_url": "https://www.asustor.com/zh-tw/news/news_detail?id=35832",
+      "signal_summary": "資料所載事實：繁中新聞稿宣布 24 槽 AS7224RDX（Lockerstor 24R Pro Gen2）上市。日期依繁中頁，不混用英文索引日期。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：高槽數儲存產品可研究企業儲存選型問題與技術內容架構；目標產業與實際需求待查。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["總部所在地獨立確認", "目標企業規模", "TLS 狀態另行核對"]
+      },
+      "outreach_draft": "您好，看到 24 槽 AS7224RDX 上市公告。想以企業儲存選型為題，整理買方問題與產品比較內容。是否方便先分享一頁研究題綱？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-auo",
+      "company": "AUO",
+      "signal_date": "2025-11-18",
+      "signal_url": "https://www.auo.com/en-global/New_Archive/detail/News_Archive_Product_20251118",
+      "signal_summary": "資料所載事實：預告新成立的 AUO Mobility Solutions 將於 CES 2026 首次向汽車產業展示；資料未證實展示已完成。來源正文的 TLS 驗證有缺口。",
+      "source_access": "first_party_body_tls_unverified",
+      "icp_hypothesis": "推論：新事業品牌與車用市場切入可研究定位及產業情報；須先確認後續發展，不能將歷史預告視為當前需求。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["展示是否實際發生", "目前事業進展", "TLS 與台灣所在地證據核對"]
+      },
+      "outreach_draft": "您好，看到 AUO Mobility Solutions 的 CES 2026 展示預告。想以車用市場定位與競品訊息為題交流，是否方便先分享一頁研究構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-aver-information",
+      "company": "AVer Information",
+      "signal_date": "2026-08-11",
+      "signal_url": "https://www.aver.com/press-release/tr322-launch",
+      "signal_summary": "資料所載事實：發表 TR322 雙鏡頭自動追蹤攝影機，面向企業及教育等場景。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：企業與教育的不同採購情境，可作為分眾研究及內容系統題目。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["台灣所在地正文證據", "企業與教育市場優先順序"]
+      },
+      "outreach_draft": "您好，看到 TR322 雙鏡頭自動追蹤攝影機公告。想整理企業與教育場景的選型問題，規劃兩組內容題綱。是否方便先分享構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-avermedia",
+      "company": "AVerMedia",
+      "signal_date": "2026-06-01",
+      "signal_url": "https://www.avermedia.com/GB/media/news-detail?slug=avermedia-to-showcase-professional-streaming-and-real-world-physical-ai-applications-at-computex-2026",
+      "signal_summary": "資料所載事實：預告於 COMPUTEX 2026 展示擴充的創作者串流產品及 Physical AI 應用；資料未證實展示已完成。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：創作者產品與 Physical AI 的雙主題可研究受眾區隔及訊息架構；各事業的服務適配待查。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["實際展示及後續產品狀態", "Physical AI 目標產業"]
+      },
+      "outreach_draft": "您好，看到 COMPUTEX 2026 串流產品與 Physical AI 展示預告。想整理兩類受眾的訊息差異與內容方向，是否方便分享一頁構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-benq",
+      "company": "BenQ",
+      "signal_date": "2026-03-24",
+      "signal_url": "https://www.benq.com/en-us/education/news/benq-launches-ai-ready-rp05.html",
+      "signal_summary": "資料所載事實：透過美國教育新聞室介紹 AI-ready RP05 互動顯示器，面向教育及職場協作；未確認台灣供應狀態。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：教育與職場協作可分別建立買方問題與比較內容；美國來源不能直接代表台灣行銷需求。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["台灣上市與推廣安排", "區域內容權責"]
+      },
+      "outreach_draft": "您好，看到美國教育新聞室的 RP05 公告。想比較教育與職場協作的買方問題，整理分眾內容題綱。是否方便先分享一頁研究構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-cyberlink",
+      "company": "CyberLink",
+      "signal_date": "2026-01-06",
+      "signal_url": "https://www.cyberlink.com/eng/press_room/view_5215.html",
+      "signal_summary": "資料所載事實：宣布創作及行銷應用的 Intel AI PC 最佳化，並描述 CES 合作夥伴攤位展示安排；未獨立確認展示執行情況。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：AI PC 技術訊息可轉化為創作與行銷工作流程內容，也可建立持續競品情報題目。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["展示執行情況", "優先應用與買方角色"]
+      },
+      "outreach_draft": "您好，看到 Intel AI PC 最佳化公告。想以創作及行銷工作流程為題，整理使用情境與競品訊息。是否方便先分享一頁內容構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-dfi",
+      "company": "DFI Inc.",
+      "signal_date": "2026-07-24",
+      "signal_url": "https://blog.dfi.com/en/one-board-two-generations-dfi-arh171/arh173-brings-intel-core-ultra-edge-ai-to-mini-itx",
+      "signal_summary": "資料所載事實：發布具日期的 ARH171/ARH173 工業 Mini-ITX 主機板介紹，說明單板支援兩代處理器；不另推定上市日期。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：跨處理器世代支援可作為設備商選型與升級議題，適合技術內容及競品研究。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["產品實際供應狀態", "設備商主要選型問題"]
+      },
+      "outreach_draft": "您好，看到 ARH171/ARH173 跨兩代處理器的介紹。想以設備商選型與升級問題為主軸，整理比較內容。是否方便先分享一頁題綱？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-eink",
+      "company": "E Ink Holdings",
+      "signal_date": "2026-10-15",
+      "signal_url": "https://www.eink.com/news/detail/EInk-Launches-Latest-Version-of-Color-ePaper-Platform-E-Ink-Kaleido-4",
+      "signal_summary": "資料所載事實：宣布 Kaleido 4 彩色電子紙，並指出首款採用該平台的終端產品；資料未提供該終端產品名稱。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：平台新品與終端應用的連結可支援品牌定位、應用內容及顯示技術情報研究。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["首款終端產品詳細資訊", "優先應用市場"]
+      },
+      "outreach_draft": "您好，看到 Kaleido 4 彩色電子紙公告。想以平台技術到終端應用的溝通為題，整理市場比較與內容方向。是否方便分享一頁構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-gigabyte",
+      "company": "GIGA-BYTE TECHNOLOGY CO., LTD. (GIGABYTE)",
+      "signal_date": "2026-01-07",
+      "signal_url": "https://gigabyte.com/Press/News/2350",
+      "signal_summary": "資料所載事實：官方搜尋摘要提及於 CES 2026 介紹 AORUS GeForce RTX 5090 INFINITY；正文受阻，無法由資料確認更多細節。",
+      "source_access": "official_snippet_only",
+      "icp_hypothesis": "推論：顯示卡產品定位可作為競品與通路內容研究題目；僅有摘要且偏消費市場，適配證據有限。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["公告正文與展示細節", "台灣所在地正文證據", "通路內容需求"]
+      },
+      "outreach_draft": "您好，官方搜尋摘要提及 AORUS RTX 5090 INFINITY。想以產品定位與通路比較內容為題交流，是否方便先分享一頁研究構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-innodisk",
+      "company": "Innodisk Corporation",
+      "signal_date": "2026-09-29",
+      "signal_url": "https://www.innodisk.com/en/news/innodisk-ddr5-8000-rdimm-edge-ai-hpc",
+      "signal_summary": "資料所載事實：宣布工業級 DDR5 8000 RDIMM，面向邊緣 AI、企業伺服器等高運算需求應用。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：工業記憶體與運算應用的連結可支援技術買方內容及市場情報研究。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["優先運算應用", "技術內容與通路分工"]
+      },
+      "outreach_draft": "您好，看到工業級 DDR5 8000 RDIMM 公告。想整理邊緣 AI 與企業伺服器買方的選型問題，規劃技術內容。是否方便分享一頁題綱？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-msi",
+      "company": "Micro-Star Int’l Co., Ltd. (MSI)",
+      "signal_date": "2026-01-07",
+      "signal_url": "https://my.msi.com/news/detail/MSI-Launches-AI-Edge-Series-Desktop--Pioneering-the-Next-Era-of-Edge-AI-Computing-147555",
+      "signal_summary": "資料所載事實：2026 年 1 月 7 日的官方搜尋摘要宣布 AI Edge Series 及首款 AI Edge 桌機；正文受阻，未確認完整產品細節。",
+      "source_access": "official_snippet_only",
+      "icp_hypothesis": "推論：AI Edge 桌機可作為應用定位與競品研究題目；須補正文及目標客群證據，才能進一步判斷 B2B 適配。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["完整公告與產品細節", "台灣所在地正文證據", "目標客群"]
+      },
+      "outreach_draft": "您好，官方搜尋摘要提及 AI Edge Series 與首款桌機。想以應用定位與買方問題為題整理研究方向，是否方便先分享一頁構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-qnap",
+      "company": "QNAP",
+      "signal_date": "2026-09-21",
+      "signal_url": "https://www.qnap.com/en-us/news/2026/qnap-launches-hdp-for-business-beta-transforms-nas-into-a-zero-trust-ransomware-resilient-backup-center",
+      "signal_summary": "資料所載事實：公布 HDP for Business Beta 企業備份方案；Beta 不等同正式版全面上市。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：企業備份方案的 Beta 階段可研究評估者問題與教育內容架構；未確認其對外服務需求。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["目前版本與正式推出安排", "Beta 評估對象"]
+      },
+      "outreach_draft": "您好，看到 HDP for Business Beta 公告。想以企業備份評估問題為主軸，整理內容題綱與競品訊息。是否方便先分享一頁構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-teamgroup",
+      "company": "TEAMGROUP",
+      "signal_date": "2026-03-26",
+      "signal_url": "https://www.teamgroupinc.com/en/news-detail/T-CREATE-H514-SSD/",
+      "signal_summary": "資料所載事實：宣布面向創作者的 PCIe 5.0 SSD，定位於生成式 AI 與創作工作流程。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：創作工作流程可作為產品定位與內容研究題目；是否面向企業創作團隊及通路仍待查。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["企業與個人創作者客群比重", "實際內容缺口"]
+      },
+      "outreach_draft": "您好，看到面向生成式 AI 與創作流程的 PCIe 5.0 SSD 公告。想整理創作者選型問題與競品定位，是否方便先分享一頁內容構想？",
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "source_id": "tw-transcend",
+      "company": "Transcend Information, Inc.",
+      "signal_date": "2026-08-20",
+      "signal_url": "https://tw.transcend-info.com/About/press/12629",
+      "signal_summary": "資料所載事實：宣布 DDR5-7200 工業記憶體產品線，涵蓋 CUDIMM、CSODIMM、ECC 版本及 RDIMM。",
+      "source_access": "first_party_accessible",
+      "icp_hypothesis": "推論：多規格工業記憶體可研究買方選型架構及競品情報，作為技術內容系統的題目。",
+      "unknowns": {
+        "budget": "unknown",
+        "decision_maker": "unknown",
+        "agency_need": "unknown",
+        "purchase_intent": "unknown",
+        "additional": ["優先應用與產品規格差異", "現有技術內容配置"]
+      },
+      "outreach_draft": "您好，看到 DDR5-7200 工業記憶體產品線公告。想依不同規格整理買方選型問題與比較內容，是否方便先分享一頁研究題綱？",
+      "outreach_status": "draft_not_sent"
+    }
+  ],
+  "limitations": {
+    "work_standard_card": {
+      "standard": "Work standard v1",
+      "approved_lesson_ids_versions_used": "none (0)",
+      "limitations": "僅使用本次使用者提供的固定公開證據資料；使用者提供，未獨立重查。未使用工具、網路或檔案。"
+    },
+    "method": "固定來源池篩選與撰稿，不是即時開放網路搜尋。20筆均為研究候選，未確認委案需求或採購意圖。",
+    "source_interpretation": "source_access 逐字沿用提供資料的歷史存取分類，不表示本次已存取或驗證來源。signal_summary 為來源摘要的轉述；icp_hypothesis 均為適配推論。",
+    "service_basis": {
+      "url": "https://sowork.ai/",
+      "status": "使用者提供，未獨立重查",
+      "scope": ["市場與競品研究", "品牌定位", "內容營運系統", "持續情報與 AI／報告工作流程"],
+      "qualification": "僅依提供的服務描述提出適配假設；未使用同名外國 sowork.com 資料，未推定服務成效或商業優越性。"
+    },
+    "selection": "來源池偏向台灣相關出口科技與製造企業，包含大型企業及可能關聯集團，不代表中小企業市場或20個獨立合格採購帳戶。消費型電競產品候選與 B2B 假設的直接適配較弱。",
+    "country_evidence": "台灣所在地及總部證據強度依原資料而異，辦公室或新聞日期地點不等於總部證明。ADATA、AUO 的所在地證據有摘要或 TLS 限制；AVer Information、GIGABYTE、MSI 僅有官方摘要；ASUSTOR 僅確認辦公室，總部未獨立確認。",
+    "source_caveats": [
+      "ADATA：資料記錄正文在本機憑證驗證失敗後停用 TLS 驗證取得；台灣總部僅由官方搜尋摘要支持，直接及瀏覽器存取受阻。",
+      "AUO：資料記錄官方正文在本機憑證驗證失敗後停用 TLS 驗證取得。",
+      "GIGABYTE、MSI：公告正文受阻，只能依官方搜尋摘要研究，完整正文研究受阻。",
+      "ASUSTOR：採繁中頁日期2026-03-03；英文索引地區日期不同，不混用，TLS 未另行稽核。",
+      "AUO、AVerMedia 的展示預告不代表活動已完成；CyberLink 的展示安排亦未獨立確認執行。",
+      "公告日期不保證產品目前供應狀態；海外公告不等於台灣上市或推廣安排。"
+    ],
+    "qa": {
+      "requirements": "已按要求僅提供 leads 與 limitations，20筆均含指定欄位。",
+      "source_mapping": "source_id、公司、日期、URL、source_access 已依提供資料逐筆對應；外部真實性未獨立查證。",
+      "quantity": "20筆，20個不同source_id；未確認是否均為獨立採購帳戶。",
+      "unknowns": "20筆均保留 budget、decision_maker、agency_need、purchase_intent 為 unknown。",
+      "drafts": "20筆均含繁體中文外聯草稿，每則不超過100字；未加入資料以外的姓名、電話或Email。",
+      "delivery_status": "20筆 outreach_status 均為 draft_not_sent；未寄送、發佈或操作外部系統。",
+      "evidence_gaps": "TLS、摘要限定、總部、活動執行及採購需求缺口均保留，不標為查證通過。"
+    },
+    "candidate_lesson": "尚無候選教訓；尚未收到本次成果的真實使用者回饋，人工維護索引為空。",
+    "feedback_request": "請指出一筆最需要調整的外聯草稿，並說明希望修改的具體措辭。"
+  }
+}

@@ -22,6 +22,9 @@ of role/KPI setup. This is chat-local prompt context, **not** a backend connecti
 automatic learning, guaranteed cross-chat retrieval or proven product uplift.
 The [generic first-win card](starter/chatgpt/FIRST_WIN.md) works for other tasks;
 Project setup and manual rule retention come after evaluating the first output.
+See the [real SoWork A/B prompt-proxy report](studies/sowork-acquisition/REPORT.md)
+for original outputs and the 20-company comparison sheet. It is not a ChatGPT UI
+test or proof of better sales outcomes; C remains blocked pending real reviews.
 
 ## What You Get
 

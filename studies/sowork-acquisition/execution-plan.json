@@ -1,6 +1,8 @@
 {
   "status": "dry_plan_no_calls",
   "config": {
+    "code_source_head": "9f73ac8669c7223de0fc1f49c95eddb54b0c26e9",
+    "runner_sha256": "30a93fe4c5b041278d99252242b802a135249a909695e9eab7f0d80fc2f9d261",
     "model_requested": "gpt-6-astra",
     "reasoning_effort": "low",
     "provider": "openai via existing authorized Codex CLI",

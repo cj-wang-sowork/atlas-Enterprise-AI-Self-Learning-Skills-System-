@@ -386,6 +386,11 @@ HERMES_ROOT=$(normalize_path "$HERMES_ROOT")
 case "$TARGET" in
   chatgpt)
     mkdir -p "$DEST"
+    # Match Python's preflight set, regardless of inherited shell preferences.
+    unset GLOBIGNORE
+    if command -v shopt >/dev/null 2>&1; then
+      shopt -u dotglob nullglob failglob nocaseglob
+    fi
     for item in "$REPO_ROOT"/starter/chatgpt/*.md "$REPO_ROOT"/starter/chatgpt/*.json; do
       [ -e "$item" ] || continue
       copy_item "$item" "$DEST"

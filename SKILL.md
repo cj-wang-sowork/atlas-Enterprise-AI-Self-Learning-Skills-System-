@@ -5,7 +5,7 @@ description: >
   Codex CLI, Qwen Code CLI, and Hermes Agent. Provides reusable brand, research, and content
   workflows plus a five-layer methodology for reviewed learning across
   enterprise, brand, department, team, and personal context.
-version: "1.3.0"
+version: "1.4.0"
 author: cj-wang-sowork
 license: MIT
 tags:
