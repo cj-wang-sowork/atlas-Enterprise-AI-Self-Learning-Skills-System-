@@ -23,6 +23,14 @@ The same repository can be installed for:
 - A POSIX shell/Python 3 installer for OpenClaw, Claude Code, Codex CLI, Qwen Code CLI, Hermes, or all five
 - A separate [ChatGPT Starter Kit](docs/CHATGPT_STARTER.md) for non-engineers; no terminal required
 
+## Verified implementation and boundaries
+
+The current regression evidence is in [VERIFICATION.md](docs/VERIFICATION.md), including
+collected tests, the pinned detector-fixture comparison, and explicit unverified
+production, live-runtime, usability, and business-benefit criteria. See
+[ACCESS_CONTROL.md](docs/ACCESS_CONTROL.md) for the intentional scoped-API migration and
+[LEARNING_LIFECYCLE.md](docs/LEARNING_LIFECYCLE.md) for reviewed versioned reuse.
+
 ## Quick Install
 
 ```bash
@@ -167,7 +175,8 @@ Core Python modules:
 | `learn_system.py` | Five-layer learning files and access validation |
 | `market_router.py` | Market registration, context, routing, and stats |
 | `security_checker.py` | Credential, PII, path, and access marker checks |
-| `hermes_adapter.py` | Pattern observation, confidence scoring, and adaptive rules |
+| `hermes_adapter.py` | Observation, verified outcomes, reviewed lesson promotion, and reuse comparison |
+| `skill_registry.py` | Scoped revision history, human approvals, persistence, revocation, and import distrust |
 | `market_intelligence.py` | Cross-market insights, anomalies, and health reports |
 
 The installer includes **all root `*.py` modules**, including `skill_registry.py` when present. Full workspace bundles contain them at the workspace root; skill packs contain them in `templates/workspace/`. Run code explicitly from that directory or integrate it yourself. Installing prompts does not invoke the backend or automatically observe/review/promote lessons. ChatGPT uses manual text context only.

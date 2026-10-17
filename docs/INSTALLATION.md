@@ -8,7 +8,7 @@ ATLAS is a reference implementation, not a production-ready tenant-isolation ser
 
 - macOS, Linux, or WSL
 - `sh`, `cp`, `mv`, and `mkdir`
-- Python 3 for path/source preflight and collision-resistant backup names
+- Python 3.9+ for the optional modules and tests; the installer also uses Python for path/source preflight and backup names
 - Git, if you clone the repository
 
 No Python packages are required for the workspace or installer.

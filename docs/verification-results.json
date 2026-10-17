@@ -1,0 +1,39 @@
+{
+  "generated_at_utc": "2026-10-17T03:49:32.741929+00:00",
+  "candidate_code_commit": "42d428d3b62b95363ba97c2fd40f7f3b73a0a62c",
+  "working_tree_note": "Only README/installation documentation updates were uncommitted for this run; tests and code match candidate_code_commit.",
+  "platform": "macOS-26.3-arm64-arm-64bit-Mach-O",
+  "python": "3.14.7",
+  "test_command": "python3 -m unittest discover -s tests -v",
+  "test_methods": 58,
+  "methods_by_module": {
+    "test_access_control": 12,
+    "test_benchmark": 1,
+    "test_installer": 17,
+    "test_learning": 19,
+    "test_security": 9
+  },
+  "result": "PASS",
+  "shell_syntax": "PASS",
+  "git_diff_check": "PASS",
+  "restart_reuse_doc_fixture": {
+    "status": "PASS",
+    "output": "Reviewed fixture reused and compared after restart: True",
+    "evidence_kind": "synthetic fixture, not customer outcome"
+  },
+  "security_comparison": {
+    "baseline_commit": "525dcc2b27aa0c745c4ce7b1dfcf8672d4a4abd1",
+    "cases": 17,
+    "baseline_correct": 5,
+    "candidate_correct": 17,
+    "benchmark_type": "security_fixture_regression_not_llm_quality"
+  },
+  "not_verified": [
+    "ChatGPT authenticated live UI setup",
+    "Non-engineer first-task completion within ten minutes",
+    "Live model end-to-end behavior in each supported runtime",
+    "Production authentication/DLP/OS tenant isolation",
+    "Improvement vs general AI workflows on representative real tasks",
+    "Hosted CI results at report generation"
+  ]
+}
