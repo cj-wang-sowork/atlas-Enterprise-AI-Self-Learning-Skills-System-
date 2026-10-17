@@ -70,3 +70,9 @@ vulnerability_reports/
 .DS_Store
 Thumbs.db
 .trash/
+
+# Runtime tenant data must not enter version control
+learn/
+.atlas-state/
+skill-registry/
+learning-state/

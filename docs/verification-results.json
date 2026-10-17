@@ -1,0 +1,70 @@
+{
+  "generated_at_utc": "2026-10-17T04:31:01.004283+00:00",
+  "started_at_utc": "2026-10-17T04:30:04.248018+00:00",
+  "candidate_code_commit": "0542a5204df72aab4f22aeb4e72bc96fc8f375db",
+  "working_tree_note": "Code/tests match committed candidate; documentation-only verification evidence is generated afterward.",
+  "platform": "macOS-26.3-arm64-arm-64bit",
+  "python": "3.9.6",
+  "python_executable": "/Library/Developer/CommandLineTools/usr/bin/python3",
+  "test_command": "python3 -m unittest discover -s tests -v",
+  "test_methods": 63,
+  "methods_by_module": {
+    "test_access_control": 13,
+    "test_benchmark": 1,
+    "test_installer": 17,
+    "test_learning": 22,
+    "test_security": 10
+  },
+  "runner_seconds": 56.495,
+  "wall_seconds": 56.756,
+  "result": "PASS",
+  "shell_syntax": "PASS",
+  "git_diff_check": "PASS",
+  "red_evidence": [
+    {
+      "regression": "non_json_tuple_bypass",
+      "log_path": "atlas-review-container-red.log",
+      "pre_fix_failing_assertions": 3
+    },
+    {
+      "regression": "hex_digest_phone_false_positive",
+      "log_path": "atlas-security-hex-red.txt",
+      "pre_fix_failing_assertions": 1
+    },
+    {
+      "regression": "authorized_runtime_content_bypass",
+      "log_path": "atlas-scoped-loader-red.txt",
+      "pre_fix_failing_assertions": 6
+    },
+    {
+      "regression": "numeric_json_assignment_bypass",
+      "log_path": "atlas-numeric-scanning-red.log",
+      "pre_fix_failing_assertions": 4
+    },
+    {
+      "regression": "unicode_numeric_assignment_bypass",
+      "log_path": "atlas-unicode-numeric-red.log",
+      "pre_fix_failing_assertions": 2
+    }
+  ],
+  "restart_reuse_doc_fixture": {
+    "status": "PASS",
+    "output": "Reviewed fixture reused and compared after restart: True",
+    "evidence_kind": "synthetic fixture, not customer outcome"
+  },
+  "security_comparison": {
+    "baseline_commit": "525dcc2b27aa0c745c4ce7b1dfcf8672d4a4abd1",
+    "cases": 17,
+    "baseline_correct": 5,
+    "candidate_correct": 17,
+    "benchmark_type": "security_fixture_regression_not_llm_quality"
+  },
+  "not_verified": [
+    "ChatGPT authenticated live UI setup",
+    "Non-engineer first-task completion within ten minutes",
+    "Live model end-to-end behavior in each supported runtime",
+    "Production authentication/DLP/OS tenant isolation",
+    "Improvement vs general AI workflows on representative real tasks",
+    "Hosted CI results at report generation"
+  ]
+}

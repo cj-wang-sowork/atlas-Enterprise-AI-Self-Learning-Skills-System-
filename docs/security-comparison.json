@@ -1,0 +1,146 @@
+{
+  "benchmark_type": "security_fixture_regression_not_llm_quality",
+  "baseline_commit": "525dcc2b27aa0c745c4ce7b1dfcf8672d4a4abd1",
+  "cases": 17,
+  "baseline_correct": 5,
+  "candidate_correct": 17,
+  "limitations": "Curated deterministic fixtures; not representative DLP recall, production penetration testing, or evidence ATLAS outperforms a general AI workflow.",
+  "results": [
+    {
+      "id": "clean_prose",
+      "expected_safe": true,
+      "baseline_safe": true,
+      "candidate_safe": true,
+      "baseline_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "id": "clean_scope_description",
+      "expected_safe": true,
+      "baseline_safe": true,
+      "candidate_safe": true,
+      "baseline_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "id": "labelled_password",
+      "expected_safe": false,
+      "baseline_safe": false,
+      "candidate_safe": false,
+      "baseline_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "id": "labelled_email",
+      "expected_safe": false,
+      "baseline_safe": false,
+      "candidate_safe": false,
+      "baseline_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "id": "unlabelled_email",
+      "expected_safe": false,
+      "baseline_safe": true,
+      "candidate_safe": false,
+      "baseline_correct": false,
+      "candidate_correct": true
+    },
+    {
+      "id": "json_key",
+      "expected_safe": false,
+      "baseline_safe": true,
+      "candidate_safe": false,
+      "baseline_correct": false,
+      "candidate_correct": true
+    },
+    {
+      "id": "standalone_openai_shape",
+      "expected_safe": false,
+      "baseline_safe": true,
+      "candidate_safe": false,
+      "baseline_correct": false,
+      "candidate_correct": true
+    },
+    {
+      "id": "standalone_github_shape",
+      "expected_safe": false,
+      "baseline_safe": true,
+      "candidate_safe": false,
+      "baseline_correct": false,
+      "candidate_correct": true
+    },
+    {
+      "id": "standalone_aws_shape",
+      "expected_safe": false,
+      "baseline_safe": true,
+      "candidate_safe": false,
+      "baseline_correct": false,
+      "candidate_correct": true
+    },
+    {
+      "id": "standalone_bearer",
+      "expected_safe": false,
+      "baseline_safe": true,
+      "candidate_safe": false,
+      "baseline_correct": false,
+      "candidate_correct": true
+    },
+    {
+      "id": "traditional_chinese_password",
+      "expected_safe": false,
+      "baseline_safe": true,
+      "candidate_safe": false,
+      "baseline_correct": false,
+      "candidate_correct": true
+    },
+    {
+      "id": "chinese_api_key",
+      "expected_safe": false,
+      "baseline_safe": true,
+      "candidate_safe": false,
+      "baseline_correct": false,
+      "candidate_correct": true
+    },
+    {
+      "id": "format_obfuscation",
+      "expected_safe": false,
+      "baseline_safe": true,
+      "candidate_safe": false,
+      "baseline_correct": false,
+      "candidate_correct": true
+    },
+    {
+      "id": "wide_equals",
+      "expected_safe": false,
+      "baseline_safe": true,
+      "candidate_safe": false,
+      "baseline_correct": false,
+      "candidate_correct": true
+    },
+    {
+      "id": "taiwan_mobile_shape",
+      "expected_safe": false,
+      "baseline_safe": true,
+      "candidate_safe": false,
+      "baseline_correct": false,
+      "candidate_correct": true
+    },
+    {
+      "id": "taiwan_id_shape",
+      "expected_safe": false,
+      "baseline_safe": true,
+      "candidate_safe": false,
+      "baseline_correct": false,
+      "candidate_correct": true
+    },
+    {
+      "id": "private_key_header",
+      "expected_safe": false,
+      "baseline_safe": false,
+      "candidate_safe": false,
+      "baseline_correct": true,
+      "candidate_correct": true
+    }
+  ]
+}

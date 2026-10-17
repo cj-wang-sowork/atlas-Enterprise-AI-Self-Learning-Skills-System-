@@ -2,10 +2,10 @@
 name: atlas-enterprise-ai-self-learning
 description: >
   Portable enterprise agent workspace and skill pack for OpenClaw, Claude Code,
-  Codex CLI, and Qwen Code CLI. Provides reusable brand, research, and content
-  workflows plus a five-layer methodology for safe self-learning across
+  Codex CLI, Qwen Code CLI, and Hermes Agent. Provides reusable brand, research, and content
+  workflows plus a five-layer methodology for reviewed learning across
   enterprise, brand, department, team, and personal context.
-version: "1.2.0"
+version: "1.3.0"
 author: cj-wang-sowork
 license: MIT
 tags:
@@ -13,6 +13,7 @@ tags:
   - claude-code
   - codex-cli
   - qwen-code
+  - hermes-agent
   - agent-workspace
   - skills
   - self-learning
@@ -20,14 +21,14 @@ tags:
   - knowledge-management
   - security
 requirements:
-  - OpenClaw, Claude Code, Codex CLI, or Qwen Code CLI
+  - OpenClaw, Claude Code, Codex CLI, Qwen Code CLI, or Hermes Agent
   - macOS, Linux, or WSL
-  - Python 3 for optional learning modules and installer path normalization
+  - Python 3 for installer checks/backups and optional learning modules
 ---
 
 # ATLAS Enterprise AI Self-Learning
 
-Use this skill when a user wants an agent workspace that can be installed across OpenClaw, Claude Code, Codex CLI, and Qwen Code CLI, or when they need repeatable brand, research, content, and learning workflows.
+Use this skill when a user wants an agent workspace that can be installed across OpenClaw, Claude Code, Codex CLI, Qwen Code CLI, and Hermes Agent, or when they need repeatable brand, research, content, and learning workflows.
 
 ## What This Skill Provides
 
@@ -49,7 +50,7 @@ Use this skill when a user wants an agent workspace that can be installed across
 Activate this skill when the user asks to:
 
 - Set up or migrate an agent workspace
-- Install the workspace for OpenClaw, Claude Code, Codex CLI, or Qwen Code CLI
+- Install the workspace for OpenClaw, Claude Code, Codex CLI, Qwen Code CLI, or Hermes Agent
 - Build reusable team skills or prompts
 - Create brand positioning, market research, or content outputs
 - Explain or apply the ATLAS five-layer learning methodology
@@ -59,9 +60,11 @@ Activate this skill when the user asks to:
 
 1. Identify the target runtime:
    - OpenClaw uses `~/.openclaw/workspace`.
-   - Claude Code uses a project `AGENTS.md` launcher and `.claude/skills/`.
+   - Claude Code uses a project `CLAUDE.md` launcher and `.claude/skills/`.
    - Codex CLI uses project `AGENTS.md` instruction discovery.
    - Qwen Code CLI uses `~/.qwen/skills/` or `.qwen/skills/` skill directories.
+   - Hermes uses `$HERMES_HOME/skills/` (default `~/.hermes/skills/`).
+   - ChatGPT is a separate manual Project Starter Kit, not a shell/backend runtime.
 2. Read the local workspace files before changing behavior:
    - `AGENTS.md`
    - `SOUL.md`
@@ -81,6 +84,8 @@ Activate this skill when the user asks to:
 ./scripts/install-workspace.sh --target claude --dest ~/workspace/your-project
 ./scripts/install-workspace.sh --target codex --dest ~/workspace/your-project
 ./scripts/install-workspace.sh --target qwen
+./scripts/install-workspace.sh --target hermes
+./scripts/install-workspace.sh --target chatgpt --dest ~/Documents/atlas-chatgpt-kit
 ./scripts/install-workspace.sh --target all --dest ~/workspace/your-project
 ```
 
@@ -88,9 +93,25 @@ Activate this skill when the user asks to:
 
 - Prefer simple, explicit instructions over hidden automation.
 - Keep all user-facing documentation in English unless the user asks otherwise.
-- Ask before destructive operations such as overwriting an existing project `AGENTS.md`.
+- Explain managed-file replacement before installation. Existing launchers are backed up, not merged; use `--force` only with explicit approval.
 - Treat `MEMORY.md`, `memory/`, and personal learning files as sensitive.
 - Summarize architectural decisions in a way that future agents can reuse.
+
+## Layout and integration boundaries
+
+In the source/full workspace, the paths above are relative to the workspace
+root. In an installed skill pack, use `templates/workspace/` as that root;
+`assets/skills/` also contains the prompt workflows. The full workspace includes
+all root Python modules, including `skill_registry.py` when supplied.
+References are under `references/`, and full docs under `templates/workspace/docs/`.
+Do not assume skill-relative files exist in the host project's current directory.
+
+This pack is instructions plus optional code, not an automatically connected
+backend. Prompts cannot enforce access control or OS isolation. Authenticate and
+authorize protected backend operations in the actual integration; do not claim
+learning/promotion or external actions without execution evidence. Keep private
+context out of shared prompts. For ChatGPT, use only `starter/chatgpt/` and its
+manual human review steps; no backend pipeline or local shell is wired there.
 
 ## References
 
