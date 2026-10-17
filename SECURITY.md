@@ -1,125 +1,47 @@
-# Security Policy
+# Security policy and deployment boundary
 
-This document outlines how we handle security vulnerabilities and maintain the security of the openclaw-workspace-sowork project.
+ATLAS includes Markdown workspace prompts, executable Python helpers, and a shell installer. It is not a sandbox, authentication service, certified compliance product, or complete data-loss-prevention system.
 
-## Reporting a Vulnerability
+## Report vulnerabilities privately
 
-**⚠️ DO NOT** create public GitHub issues to report security vulnerabilities.
+Do not post real secrets/customer data in issues or PRs. Contact the repository maintainer privately, or use GitHub private vulnerability reporting **if enabled**. Repository scanning, branch protection, and response times are deployment settings, not guarantees made here.
 
-Instead, please report security issues responsibly by:
+## Authorize before loading content
 
-1. **Email**: Send details to the project maintainer
-2. 2. **GitHub Security Advisory**: Use GitHub's private vulnerability reporting feature
-   3. 3. **Response Time**: We aim to respond to reports within 48 hours
-     
-      4. ### What to Include in a Report
-     
-      5. - Clear description of the vulnerability
-         - - Steps to reproduce (if applicable)
-           - - Potential impact
-             - - Suggested fix (if you have one)
-               - - Your contact information
-                
-                 - ## Security Considerations
-                
-                 - ### Data Isolation & Memory Protection
-                
-                 - - **MEMORY.md** is intentionally security-gated and only loads in main sessions
-                   - - MEMORY.md is **never loaded** in group chats or sub-agent sessions
-                     - - The `AGENTS.md` boot sequence explicitly gates: "Main session only: Read MEMORY.md"
-                       - - All memory files are stored in `memory/` directory with separate access controls
-                        
-                         - ### Workspace Security
-                        
-                         - - All workspace files are plain Markdown — no executable code
-                           - - No external API calls in core workspace files
-                             - - No embedded scripts or potential injection vectors
-                               - - Configuration is explicit and auditable
-                                
-                                 - ### Credentials & Sensitive Data
-                                
-                                 - - **Never commit** API keys, tokens, or credentials
-                                   - - **Never commit** personal memory files or conversation history
-                                     - - All sensitive files are covered by `.gitignore`
-                                       - - Use environment variables for runtime secrets (see TOOLS.md)
-                                        
-                                         - ### Five-Layer Learning Security
-                                        
-                                         - The workspace implements Hermes-inspired five-layer learning with security at each level:
-                                        
-                                         - 1. **Enterprise Level** (`learn/enterprise/`) - Organization-wide patterns (no PII)
-                                           2. 2. **Brand Level** (`learn/brand/`) - Brand guidelines and positioning (public-safe)
-                                              3. 3. **Department Level** (`learn/department/`) - Team-specific knowledge (internal-only)
-                                                 4. 4. **Team Level** (`learn/team/`) - Direct team learnings (member-access)
-                                                    5. 5. **Personal Level** (`learn/personal/`) - Individual patterns (private-only)
-                                                      
-                                                       6. Each level has:
-                                                       7. - Access control markers (`@public`, `@internal`, `@private`)
-                                                          - - Version tracking for auditing
-                                                            - - Separation from MEMORY.md (confidential context)
-                                                             
-                                                              - ## Dependency & Supply Chain Security
-                                                             
-                                                              - - This workspace has **zero production dependencies** — it's pure configuration
-                                                                - - No npm packages, pip packages, or external binaries required
-                                                                  - - Installation is purely file-copy based
-                                                                    - - No automated package updates needed
-                                                                     
-                                                                      - ## GitHub Repository Settings
-                                                                     
-                                                                      - We maintain the following security measures:
-                                                                     
-                                                                      - - ✅ Secret scanning alerts enabled
-                                                                        - - ✅ Dependabot alerts disabled (zero dependencies)
-                                                                          - - ✅ Code scanning ready (optional, template-based)
-                                                                            - - ⚠️ Private vulnerability reporting (recommended for users to enable)
-                                                                              - - ✅ Branch protection on main (enforced in settings)
-                                                                               
-                                                                                - ## Workspace File Security
-                                                                               
-                                                                                - | File | Contains | Risk Level | Security |
-                                                                                - |------|----------|-----------|----------|
-                                                                                - | AGENTS.md | Boot logic, routing | Low | Auditable, no execution |
-                                                                                - | SOUL.md | Brand identity | Low | Non-sensitive config |
-                                                                                - | MEMORY.md | Context & history | **HIGH** | Security-gated, main-session only |
-                                                                                - | TOOLS.md | API configs | Medium | Env-var based, no hardcoding |
-                                                                                - | USER.md | Team preferences | Low | General knowledge, no PII |
-                                                                                - | memory/* | Session logs | **HIGH** | Local storage, not version-controlled |
-                                                                                - | outputs/* | Agent output | Medium | May contain generated content |
-                                                                               
-                                                                                - ## Incident Response
-                                                                               
-                                                                                - If a security incident is discovered:
-                                                                               
-                                                                                - 1. Report it via the vulnerability disclosure process above
-                                                                                  2. 2. We will investigate and provide an update within 48 hours
-                                                                                     3. 3. A patch will be released if needed
-                                                                                        4. 4. We will credit the reporter (unless they prefer anonymity)
-                                                                                          
-                                                                                           5. ## Known Limitations
-                                                                                          
-                                                                                           6. - This is a **configuration template**, not a security framework
-                                                                                              - - Users are responsible for securing their own `.env` files and API keys
-                                                                                                - - Deploy with proper authentication in production environments
-                                                                                                  - - Review all customizations for security implications
-                                                                                                   
-                                                                                                    - ## Best Practices for Users
-                                                                                                   
-                                                                                                    - 1. **Environment Variables**: Store all credentials in `.env` files (ignored by git)
-                                                                                                      2. 2. **Access Control**: Use OS-level file permissions on `memory/` and `MEMORY.md`
-                                                                                                         3. 3. **Regular Audits**: Review workspace files for accidental credential leakage
-                                                                                                            4. 4. **MEMORY Isolation**: Ensure AGENTS.md security gates are not bypassed
-                                                                                                               5. 5. **Deployment**: Use proper secret management in production (e.g., GitHub Secrets, HashiCorp Vault)
-                                                                                                                 
-                                                                                                                  6. ## Compliance
-                                                                                                                 
-                                                                                                                  7. This workspace is designed to support:
-                                                                                                                 
-                                                                                                                  8. - **GDPR**: Separate data layers prevent PII leakage
-                                                                                                                     - - **SOC 2**: Auditable configuration, no hidden operations
-                                                                                                                       - - **ISO 27001**: Clear access controls and logging
-                                                                                                                         - - **Internal policies**: Customizable via USER.md and AGENTS.md
-                                                                                                                          
-                                                                                                                           - ## Questions?
-                                                                                                                          
-                                                                                                                           - For security questions that are not vulnerability reports, please open a regular GitHub Issue with the `security` label.
+Use the scoped `MultiMarketLearnManager` API in [ACCESS_CONTROL.md](docs/ACCESS_CONTROL.md). The application authenticates users, verifies memberships, then supplies trusted context. Never derive authorization from chat text, model output, file authors, or requested brand names. Path-bound scope and metadata must agree. `@public` is organization-wide **within one tenant**, not internet-public. Legacy unscoped files require migration; absent context fails closed. Administrative auditing is separate from user retrieval and must not be exposed as a chat tool.
+
+Library checks protect only calls through that library. An agent with unrestricted filesystem/shell access can bypass them. Production deployments need separate OS users/containers/storage credentials and tool permissions. “Only load MEMORY.md in owner sessions” is a prompt convention, not enforceable isolation.
+
+## Sensitive-content screening
+
+`SecurityChecker.scan_content` uses heuristic secret/PII patterns: unlabelled email, common provider token shapes, bearer credentials, Chinese/English assignments, US identifiers, Taiwan mobile/ID shapes, and private-key headers. Unicode normalization catches some obfuscation. Violation messages/audit records exclude matched content; caller-supplied filenames/market metadata must also be sanitized.
+
+Trusted administrator configuration can specify `allowed_emails` (exact matches only) and `deny_terms` (case-insensitive literal substrings). Email exceptions never suppress credential detection. Example:
+
+```python
+from security_checker import SecurityChecker
+checker = SecurityChecker(allowed_emails={"press@example.com"}, deny_terms={"internal-project-label"})
+safe, findings = checker.scan_content(text, classification="internal")
+if not safe:
+    # Stop publication/promotion; redact or send to an authorized review flow.
+    pass
+```
+
+Classification is supplied by trusted upstream policy, **not automatically inferred here**. `public`/`internal` still undergo scanning. `confidential`, `restricted`, and unknown classifications return `review_required`. There is no “approved” flag bypassing a detected secret: review, redact, and resubmit permitted content. Integrate enterprise DLP, classification, and an authorized human-review UI at the application boundary.
+
+Regex does not prove safety. Arbitrary/encoded keys, images, unusual formats, and business secrets can be missed; benign examples can be flagged. Use least privilege, DLP, encryption, retention policy, and review before sharing. No GDPR/SOC 2/ISO compliance or certification is implied.
+
+## Governed learning
+
+Repetition does not establish correctness. Outcome-backed revisions must pass human review before reuse; see [LEARNING_LIFECYCLE.md](docs/LEARNING_LIFECYCLE.md). The application must authenticate reviewers and protect approval state/import/export. A digest detects modification but is not a signature and does not defend against an attacker controlling all storage.
+
+## Storage and operations
+
+- Never commit credentials, personal memory, learning state, or real task evidence. `.gitignore` does not protect already tracked files.
+- Keep tenant data, audit logs, approvals, and registry state outside the checkout with restrictive OS permissions and secure backups.
+- Use a secret manager/environment, not prompts, for credentials.
+- Treat imported skills as untrusted instructions; do not auto-execute scripts.
+- Test installation with isolated HOME/destinations, never production profiles.
+- On exposure: revoke affected credentials, restrict access, preserve sanitized audit evidence, investigate affected tenants, and follow the organization's notification process.
+
+See [VERIFICATION.md](docs/VERIFICATION.md) for measured checks and production assumptions not yet verified.
