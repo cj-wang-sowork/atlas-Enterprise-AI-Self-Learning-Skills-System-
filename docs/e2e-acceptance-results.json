@@ -1,0 +1,123 @@
+{
+  "generated_at_utc": "2026-10-17T06:47:07.269137+00:00",
+  "baseline_main": "8cb5eed2dfa1b8eba2eacc7abdc86a12d4c7535a",
+  "candidate_code_commit": "f9e6afb636551df4e9d54534e8ca00666aa628a0",
+  "working_tree_note": "Runtime code/tests match candidate commit. Only README, research caveat and CI edits were uncommitted during this run.",
+  "suite": {
+    "test_methods": 94,
+    "methods_by_module": {
+      "test_access_control": 13,
+      "test_benchmark": 1,
+      "test_identity_integration": 12,
+      "test_installer": 17,
+      "test_learning": 22,
+      "test_paired_evaluation": 9,
+      "test_security": 10,
+      "test_usability": 10
+    },
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "python": "3.12.12",
+    "platform": "macOS-26.3-arm64-arm-64bit",
+    "dependencies": {
+      "PyJWT": "2.15.1",
+      "cryptography": "50.0.2",
+      "cffi": "2.0.0",
+      "pycparser": "2.23",
+      "typing_extensions": "4.16.0"
+    },
+    "dependencies_loaded_from_isolated_venv": true
+  },
+  "identity_e2e": {
+    "approval": {
+      "digest": "11e38e11d29838534b5b23f688c919c4c6c37796ab8b3d701cbe5ad5a0296052",
+      "reviewer": "fixture-reviewer",
+      "revision": 1,
+      "skill_id": "fixture-skill"
+    },
+    "checks": {
+      "claimed_reviewer_denied": true,
+      "foreign_brand_denied": true,
+      "foreign_tenant_denied": true,
+      "forged_signature_denied": true,
+      "nonce_replay_denied": true,
+      "old_session_denied": true,
+      "pending_not_reusable": true,
+      "removed_membership_denied": true,
+      "revoked_skill_denied": true,
+      "unauthorized_user_denied": true,
+      "unsafe_numeric_denied": true,
+      "wrong_nonce_denied": true
+    },
+    "dependencies": {
+      "PyJWT": "2.15.1",
+      "cryptography": "50.0.2"
+    },
+    "external_idp_configured": false,
+    "fixture_only": true,
+    "passed": true,
+    "process_restart": {
+      "first_exit_code": 0,
+      "first_pid": 79266,
+      "fresh_login_required": true,
+      "second_exit_code": 0,
+      "second_pid": 79267,
+      "verified": true
+    },
+    "resource_owner": "team-library",
+    "reuse": {
+      "actor": "fixture-consumer",
+      "at": "2026-10-17T06:46:54.324064+00:00",
+      "digest": "11e38e11d29838534b5b23f688c919c4c6c37796ab8b3d701cbe5ad5a0296052",
+      "revision": 1,
+      "skill_id": "fixture-skill",
+      "task_id": "fixture-reuse"
+    },
+    "trust_mode": "pinned-rsa-public-key"
+  },
+  "paired_artifact_verification": {
+    "verified": true,
+    "errors": []
+  },
+  "paired_pilot": {
+    "calls": 6,
+    "total_model_invocations_including_smokes": 8,
+    "requested_model": "gpt-6-astra",
+    "summaries": {
+      "baseline": {
+        "runs": 3,
+        "completed": 3,
+        "aggregate_wall_seconds": 27.357,
+        "all_narrow_gates_passed": 2
+      },
+      "atlas_reference": {
+        "runs": 3,
+        "completed": 3,
+        "aggregate_wall_seconds": 30.674,
+        "all_narrow_gates_passed": 3
+      }
+    },
+    "human_evaluation": {
+      "raters": 0,
+      "status": "not_run"
+    },
+    "dollar_cost": null,
+    "claim": "No business-quality benefit established; the baseline lexical gate flag is a false positive and reference arm was slower."
+  },
+  "human_usability": {
+    "status": "not_run",
+    "eligible_humans_started": 0,
+    "success_rate": null,
+    "median_success_seconds": null,
+    "agent_qa_excluded": true
+  },
+  "not_verified": [
+    "Live external IdP and full browser OAuth/PKCE/state/session deployment",
+    "Real non-engineer ChatGPT onboarding trial",
+    "Independent human quality ratings and representative customer/business improvement",
+    "Live workspace installation/discovery in ChatGPT/Claude/Codex",
+    "Hosted CI for this exact head at report generation"
+  ],
+  "environment_note": "This final run clears inherited PYTHONPATH/PYTHONHOME/user-site settings and asserts pinned module versions/venv import origins. An earlier Hermes subprocess preflight inherited other package metadata and is not used as pinned-dependency acceptance evidence."
+}

@@ -31,6 +31,27 @@ production, live-runtime, usability, and business-benefit criteria. See
 [ACCESS_CONTROL.md](docs/ACCESS_CONTROL.md) for the intentional scoped-API migration and
 [LEARNING_LIFECYCLE.md](docs/LEARNING_LIFECYCLE.md) for reviewed versioned reuse.
 
+## Authenticated E2E and measured evaluation milestone
+
+Use a **full source checkout** for these optional integration/research tools; installing
+workspace prompt files does not wire them into a live agent runtime.
+
+- [Trusted identity example](docs/IDENTITY_INTEGRATION.md): pinned RS256 verification,
+  server-owned grants, role checks and genuine subprocess restart/cross-user reuse.
+  The issuer, users and human approvals in acceptance fixtures are synthetic; no
+  production external IdP or browser OAuth flow has been connected.
+- [Controlled paired pilot](studies/paired-pilot/REPORT.md): six actual model task
+  calls on three explicitly fictional marketing briefs, same model/data per pair.
+  It does **not** establish business-quality improvement; the apparent lexical gate
+  advantage contains a false positive, and the reference arm was slower in this pilot.
+- [Non-engineer ChatGPT study](docs/CHATGPT_USABILITY_STUDY.md): participant/observer
+  protocol and durable recorder. No real participant has completed this study;
+  human success/time metrics remain unmeasured, not replaced by agent QA.
+
+See [E2E acceptance](docs/E2E_ACCEPTANCE.md) for executable evidence and outstanding
+human/customer/live-IdP gates. The core library remains standard-library-only;
+optional signature verification installs `integrations/requirements-oidc.txt`.
+
 ## Quick Install
 
 ```bash

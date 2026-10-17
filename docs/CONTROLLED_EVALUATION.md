@@ -127,6 +127,10 @@ copy of `run-20261017/human-scoring.json` and the rubric, not the manifest,
 prompts, report, source snapshot or `unblinding-DO-NOT-SHARE.json`. The form embeds
 original outputs under opaque randomized IDs and leaves all ratings blank.
 Style can still disclose a condition; blinding is attempted, not guaranteed.
+This public repository also contains the unblinding key and report, so it cannot
+provide secrecy from a rater who searches the repository. For a real independent
+study, preregister a fresh study and keep its allocation key/report private until
+separate rater forms are locked; distribute only the isolated blinded bundle.
 
 Recruit at least two independent domain raters. Preserve their separate forms,
 then unblind and report paired differences and disagreement. Record measured
