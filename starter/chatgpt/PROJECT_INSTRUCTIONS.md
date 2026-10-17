@@ -27,7 +27,7 @@ All approval and context retention here are manual.
 
 人工須用精確 ID+版本決定，例如 Accept CL-001 v1 / Revise CL-001 v1 / Reject CL-001 v1。無決定或 Defer 都不是接受。Revise 產生新版本待審；文字改動就升版本，舊批准不能套在新文字。建議、重複或模型自評均不得自動晉升。
 
-只有人工明確接受並手動更新 CURRENT_RULES.md 或等價 current-version index，再提供給本次任務才可使用。拒絕或過時版本不得使用；有衝突先排除該規則並顯示限制，不猜最新版。四檔匯出沒有獨立索引時由操作者依 README 建立，初始批准規則為空。
+只有人工明確接受並手動更新 CURRENT_RULES.md 或等價 current-version index，再提供給本次任務才可使用。拒絕或過時版本不得使用；有衝突先排除該規則並顯示限制，不猜最新版。此版匯出已附空白索引；舊版四檔包沒有索引時由操作者依 README 建立。初始批准規則為空。
 
 ## 手動 Project 與安全界線
 

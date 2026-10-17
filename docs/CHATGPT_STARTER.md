@@ -9,8 +9,10 @@ up-front role/KPI interview. Replace the task line if desired; explicit requeste
 scope and counts take precedence over the default three-company first task.
 
 No terminal, Python, API key, account connection or Project installation is
-required by this reference card. The unchanged four-file export contains the
-same complete card in `README.md`, so users of that export need no missing file.
+required by this reference card. For a ready-source SoWork task, open
+`starter/chatgpt/TRY_SOWORK_NOW.md`; it carries the three public source snapshots.
+The current export includes the first-win cards, empty rule index and public JSON.
+A legacy four-file export retains the complete generic card in `README.md`.
 GitHub files are not fetched automatically: manually copy/download the text.
 
 With browsing, the task requires actual sources. Without browsing it may use a
@@ -83,10 +85,12 @@ Rejecting a weak candidate lesson is a valid outcome.
 ./scripts/install-workspace.sh --target chatgpt --dest ~/Documents/atlas-chatgpt-kit
 ```
 
-The existing four-file export is `README.md`, `PROJECT_INSTRUCTIONS.md`,
-`SAMPLE_BRIEF.md` and `OUTCOME_REVIEW_LOG.md`; the README embeds the complete
-first-win card. `FIRST_WIN.md` and `CURRENT_RULES.md` are separate repository
-references, not extra exported payloads. Existing kit files get distinct sibling
+The current export preflights and copies all visible top-level `.md` and `.json`
+assets in `starter/chatgpt/`, including `FIRST_WIN.md`, `CURRENT_RULES.md`,
+`TRY_SOWORK_NOW.md` and `SOWORK_DEMO_SOURCES.json`. It keeps the four original
+files; a legacy four-file export can use the complete generic card embedded in
+its README. Hidden files, executable code, symlinks and special-file assets are
+not exported. Existing kit files get distinct sibling
 backups unless `--force` is explicitly requested. The installer does not log in,
 create a Project, upload files or run backend Python in ChatGPT. `all` installs
 local runtime context including starter references, not a standalone ChatGPT kit.
@@ -98,7 +102,9 @@ evidence gates, visible state, manual versioned decisions and preserved security
 limits. Installer tests exercise actual sandbox exports/backups and unsafe paths.
 They do not execute a ChatGPT conversation or prove model compliance, retrieval,
 setup time, commercial superiority or human learning rounds. Live behavior and
-usability remain unverified until a person tries the task and reviews evidence.
+formal timing/independent usability scores remain unmeasured. The user's actual
+qualitative first-use feedback is acknowledged; it is not three reviewed business
+learning rounds or a timed study of this revised card.
 
 Backend-only boundaries remain documented in `ACCESS_CONTROL.md`,
 `LEARNING_LIFECYCLE.md` and `VERIFICATION.md`; this manual kit activates none of them.

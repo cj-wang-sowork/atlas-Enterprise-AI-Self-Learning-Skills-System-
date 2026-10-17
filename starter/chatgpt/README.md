@@ -1,5 +1,14 @@
 # ATLAS ChatGPT Starter — first value before setup
 
+## Fastest SoWork try-out
+
+Open [TRY_SOWORK_NOW.md](TRY_SOWORK_NOW.md) and paste its complete card into one
+new chat. It includes three genuinely checked public-source snapshots, so the
+first task can begin even without live browsing. They are research candidates,
+not confirmed buying opportunities; review the per-source limitations.
+
+For another business or live research, use the generic self-contained card below.
+
 ## Start in one chat
 
 Copy the complete card below into a single chat. It includes the operating rules
@@ -46,9 +55,11 @@ Accept / Revise / Reject with exact ID+version, records the decision in
 `OUTCOME_REVIEW_LOG.md` and manually retains only the accepted current version.
 Revise creates a new pending candidate. Repetition and suggestions do not approve.
 
-`CURRENT_RULES.md` is an optional repository reference, initially empty. The
-unchanged four-file export embeds this complete task card here; if the separate
-index is unavailable, create an equivalent local index starting with:
+`CURRENT_RULES.md` is an initially empty human-maintained template. The current
+export includes all visible top-level Markdown/JSON starter assets after complete
+preflight. A legacy four-file export still works because this README embeds the
+complete generic card; if its separate index is unavailable, initialize a local
+index with:
 
 **Approved rules: EMPTY (0)**
 

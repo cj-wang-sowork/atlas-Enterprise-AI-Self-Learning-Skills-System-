@@ -13,6 +13,16 @@ The same repository can be installed for:
 | Hermes Agent | Installs a `SKILL.md` pack under `$HERMES_HOME/skills` (default `~/.hermes/skills`) |
 | ChatGPT | **Manual Starter Kit** for Project instructions and sanitized context; no local/backend execution |
 
+## Try the first job before installing
+
+For the shortest SoWork demonstration, copy the single card in
+[TRY_SOWORK_NOW.md](starter/chatgpt/TRY_SOWORK_NOW.md). It supplies three checked
+public-source snapshots and asks for actual first work plus QA, not five rounds
+of role/KPI setup. This is chat-local prompt context, **not** a backend connection,
+automatic learning, guaranteed cross-chat retrieval or proven product uplift.
+The [generic first-win card](starter/chatgpt/FIRST_WIN.md) works for other tasks;
+Project setup and manual rule retention come after evaluating the first output.
+
 ## What You Get
 
 - A clear agent boot sequence in `AGENTS.md`

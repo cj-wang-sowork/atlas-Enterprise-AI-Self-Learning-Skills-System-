@@ -1,5 +1,10 @@
 # Preregistered SoWork acquisition / first-value pilot
 
+Revision 2, still before any model-trial or preflight call: permits at most one
+nonsecret model/config preflight in addition to the four task calls (five total
+model invocations). A failed preflight is retained and stops execution, not replaced
+by a guessed model or fabricated output.
+
 Status at registration: no model-trial calls performed. The user supplied genuine qualitative first-use feedback (too many planning turns before useful work). That is not an observer-timed study, independent quality score, or three approved business-learning cycles.
 
 ## Product change to test
