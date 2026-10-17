@@ -28,7 +28,11 @@ def now():
 
 def scan_safe(checker, value):
     """Scan decoded strings as well as field assignments (JSON quotes hide keys)."""
-    canonical(value)
+    # Screen the exact transport representation, including numeric leaves and
+    # field assignments, then also scan decoded strings below (JSON escapes can
+    # otherwise hide sensitive Unicode or labelled credentials).
+    if not checker.scan_content(canonical(value))[0]:
+        raise ValueError("unsafe learning content")
     if isinstance(value, str):
         if not checker.scan_content(value)[0]:
             raise ValueError("unsafe learning content")

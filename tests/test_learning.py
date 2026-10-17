@@ -32,6 +32,47 @@ def draft(adapter, task="task-1", skill_id=None):
 
 
 class StructuredSafetyTests(unittest.TestCase):
+    def test_numeric_json_values_and_assignments_are_screened(self):
+        from skill_registry import scan_safe
+        from security_checker import SecurityChecker
+        checker = SecurityChecker()
+        samples = ({'password': 2468}, {'nested': [{'phone': 2025550123}]},
+                   {'api_key': 123456}, {'nested': [2025550123]})
+        for value in samples:
+            with self.subTest(value=value):
+                self.assertFalse(checker.scan_content(json.dumps(value))[0])
+                with self.assertRaises(ValueError):
+                    scan_safe(checker, value)
+        scan_safe(checker, {'baseline': 5, 'candidate': 1, 'success': True})
+
+    def test_numeric_sensitive_data_is_blocked_at_all_learning_boundaries(self):
+        # Explicit test-only policy constructs a legacy unsafe fixture so the
+        # default policy can be exercised on observations, restart and import.
+        class LegacyFixturePolicy:
+            def scan_content(self, content):
+                return True, []
+
+        for values in ({'password': 2468}, {'nested': [{'phone': 2025550123}]}):
+            with self.subTest(values=values), TemporaryDirectory() as directory:
+                consumer = governed()
+                with self.assertRaises(ValueError):
+                    consumer.learn_market_behavior('us-en', values)
+                self.assertEqual(consumer.patterns, {})
+                producer = governed(data_dir=directory, security_checker=LegacyFixturePolicy())
+                producer.learn_market_behavior('us-en', values)
+                evidence(producer)
+                lesson = producer.draft_lesson(next(iter(producer.patterns)), 'Verify sources.', ['task-1'])
+                producer.review_skill(lesson['skill_id'], 1, reviewer='human:alice', decision='approve')
+                bundle = Path(directory) / 'legacy-fixture.json'
+                producer.export_patterns(str(bundle))
+                with self.assertRaises(ValueError):
+                    governed(data_dir=directory)
+                with self.assertRaises(ValueError):
+                    consumer.import_patterns(str(bundle))
+                self.assertEqual(consumer.patterns, {})
+                assert consumer.registry is not None
+                self.assertEqual(consumer.registry.list_skills(), [])
+
     def test_non_json_containers_cannot_bypass_observation_screening(self):
         from skill_registry import scan_safe
         from security_checker import SecurityChecker
