@@ -63,6 +63,6 @@ test_unlabelled_and_multilingual_credentials_are_sensitive (test_security.Securi
 test_unlabelled_email_is_sensitive (test_security.SecurityRegressionTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 63 tests in 58.183s
+Ran 63 tests in 60.440s
 
 OK
