@@ -49,6 +49,8 @@ test_reject_revoke_edit_and_rollback_require_new_reviews (test_learning.Reviewed
 test_unverified_failed_or_nonimproving_tasks_cannot_be_approved (test_learning.ReviewedLifecycleTests) ... ok
 test_verified_outcome_then_human_approval_allows_reuse (test_learning.ReviewedLifecycleTests) ... ok
 test_non_json_containers_cannot_bypass_observation_screening (test_learning.StructuredSafetyTests) ... ok
+test_numeric_json_values_and_assignments_are_screened (test_learning.StructuredSafetyTests) ... ok
+test_numeric_sensitive_data_is_blocked_at_all_learning_boundaries (test_learning.StructuredSafetyTests) ... ok
 test_access_marker_is_exact_frontmatter_not_body_substring (test_security.SecurityRegressionTests) ... ok
 test_audit_does_not_contain_detected_values (test_security.SecurityRegressionTests) ... ok
 test_classification_review_and_deny_terms_fail_closed (test_security.SecurityRegressionTests) ... ok
@@ -61,6 +63,6 @@ test_unlabelled_and_multilingual_credentials_are_sensitive (test_security.Securi
 test_unlabelled_email_is_sensitive (test_security.SecurityRegressionTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 61 tests in 59.584s
+Ran 63 tests in 58.183s
 
 OK

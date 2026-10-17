@@ -11,7 +11,7 @@ This is **implementation-level automated acceptance**, not a production security
 Run from a full Git checkout with Python 3.9+ on POSIX:
 
 ```sh
-TMPDIR=/Users/soworkaiteam/.hermes/cache/scratch python3 -m unittest discover -s tests -v
+python3 -m unittest discover -s tests -v
 sh -n scripts/install-workspace.sh
 git diff --check
 python3 scripts/compare_security.py
@@ -21,11 +21,11 @@ The comparison requires the pinned baseline Git object; use a full clone or fetc
 
 ## Automated acceptance results
 
-The recorded run collected **61 test methods** (not 61 independent business trials):
+The recorded run collected **63 test methods** (not 63 independent business trials):
 
 - Scoped access: **13 methods PASS**. Tenant/brand/department/team/personal separation, trusted-context requirement, malformed scope/header, authorized hierarchy, traversal and symlink denial; body-read spies check denial before content retrieval. Authorized enterprise/brand/personal content is screened before direct/list/market returns; safe owner-personal files remain readable.
 - Sensitive content: **10 methods PASS**. Unlabelled email, provider-key shapes, English/Chinese/JSON assignments, Unicode obfuscation, Taiwan PII shapes (including adjacent Chinese prose), exact email exceptions, deny terms, classification review gate, non-echoing audit, shared learning audit policy, and a deterministic hexadecimal-digest negative control.
-- Learning lifecycle: **20 methods PASS**. Repeated failures do not authorize reuse; distinct verified outcomes and human review gate promotion; immutable revisions, rejection/revocation, rollback, stale-instance protection, imports, persistence/tampering, version-bound reuse/outcome comparison, and rejection of nested non-JSON tuples before observation storage.
+- Learning lifecycle: **22 methods PASS**. Repeated failures do not authorize reuse; distinct verified outcomes and human review gate promotion; immutable revisions, rejection/revocation, rollback, stale-instance protection, imports, persistence/tampering, version-bound reuse/outcome comparison, rejection of nested non-JSON tuples before observation storage, numeric credential/PII screening, and no-mutation/default restart/import rejection of legacy unsafe numeric data.
 - Installation: **17 methods PASS**, with multiple target subcases. Real shell execution for OpenClaw, Claude, Codex, Qwen, Hermes, `all`, and manual ChatGPT export; isolated homes, importable installed Python modules, backups/repeats/force, preflight conflicts and unsafe paths. No actual runtime profile was modified.
 - Comparative harness: **1 method PASS**. Same 17 deterministic fixtures against baseline `525dcc2b27aa0c745c4ce7b1dfcf8672d4a4abd1` and the candidate: **5/17 → 17/17 correct**. These are curated detector fixtures with benign negative controls, not a representative DLP recall estimate.
 
@@ -48,6 +48,8 @@ The first integrated installer run failed because macOS's default temporary path
    files; offline audits report invalid resources. The regression first failed all
    six enterprise/brand/personal × provider-key/email subcases. Safe owner access and
    authorize-before-open/bounded-header checks remain covered.
+
+3. **Numeric JSON bypass:** valid numeric values were not screened as credential assignments or PII. The checker now scans the exact canonical JSON representation as well as decoded strings. Four previously failing numeric/nested cases are covered, together with observation no-mutation, protected snapshot reopen rejection, and atomic import rejection. An explicitly permissive test-only policy constructs legacy unsafe fixtures; the default policy must reject them.
 
 During integration, a random SHA-256 substring also triggered the Taiwan mobile
 pattern and caused a flaky persistence failure. A deterministic digest negative-control

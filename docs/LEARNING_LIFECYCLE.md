@@ -76,6 +76,12 @@ are denied and no reusable rules are returned. The `user` scope field identifies
 application-authorized resource owner, not the name of a worker role. No scope wildcard,
 inheritance, cross-tenant, cross-brand, cross-team, or cross-user import is implemented.
 
+Structured content is screened twice: its exact canonical JSON transport representation
+(including numeric credentials and PII/field assignments), and recursively decoded
+strings (including escaped Unicode). Unsupported containers such as tuples are
+rejected rather than being silently serialized to a representation the scanner skipped.
+The same gate protects observations, draft/persisted artifacts, imports, and reuse.
+
 `SecurityChecker` is constructed by default and scans decoded content, structured field
 assignments, evidence references, observations, imports, and persisted records. Unsafe
 input is rejected, not stored or silently redacted into a different approved artifact.
