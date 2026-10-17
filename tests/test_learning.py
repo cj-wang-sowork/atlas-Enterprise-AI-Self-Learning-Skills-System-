@@ -37,10 +37,11 @@ class StructuredSafetyTests(unittest.TestCase):
         from security_checker import SecurityChecker
         checker = SecurityChecker()
         samples = ({'password': 2468}, {'nested': [{'phone': 2025550123}]},
-                   {'api_key': 123456}, {'nested': [2025550123]})
+                   {'api_key': 123456}, {'nested': [2025550123]},
+                   {'pass\u200bword': 2468}, {'密碼': 2468})
         for value in samples:
             with self.subTest(value=value):
-                self.assertFalse(checker.scan_content(json.dumps(value))[0])
+                self.assertFalse(checker.scan_content(json.dumps(value, ensure_ascii=False))[0])
                 with self.assertRaises(ValueError):
                     scan_safe(checker, value)
         scan_safe(checker, {'baseline': 5, 'candidate': 1, 'success': True})

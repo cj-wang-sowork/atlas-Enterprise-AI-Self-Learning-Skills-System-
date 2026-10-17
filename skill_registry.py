@@ -41,8 +41,11 @@ def scan_safe(checker, value):
             if not isinstance(key, str):
                 raise ValueError("JSON string keys required")
             scan_safe(checker, key)
-            if isinstance(item, str):
-                scan_safe(checker, key + ":" + item)
+            # Pair the decoded key with every JSON value, not only strings:
+            # ensure_ascii transport escaping can hide multilingual/obfuscated
+            # credential labels when their value is numeric, boolean or null.
+            assignment = item if isinstance(item, str) else canonical(item)
+            scan_safe(checker, key + ":" + assignment)
             scan_safe(checker, item)
     elif isinstance(value, list):
         for item in value:
