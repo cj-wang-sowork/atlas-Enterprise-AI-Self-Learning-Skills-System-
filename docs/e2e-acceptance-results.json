@@ -1,17 +1,17 @@
 {
-  "generated_at_utc": "2026-10-17T06:47:07.269137+00:00",
+  "generated_at_utc": "2026-10-17T07:09:52.897838+00:00",
   "baseline_main": "8cb5eed2dfa1b8eba2eacc7abdc86a12d4c7535a",
-  "candidate_code_commit": "f9e6afb636551df4e9d54534e8ca00666aa628a0",
-  "working_tree_note": "Runtime code/tests match candidate commit. Only README, research caveat and CI edits were uncommitted during this run.",
+  "candidate_code_commit": "0cfd3757a8662cd8a10831be76288b5a2a0dc6d5",
+  "working_tree_note": "Runtime code/tests match candidate commit. Only CI/report/documentation edits were uncommitted during this execution.",
   "suite": {
-    "test_methods": 94,
+    "test_methods": 103,
     "methods_by_module": {
       "test_access_control": 13,
       "test_benchmark": 1,
       "test_identity_integration": 12,
       "test_installer": 17,
       "test_learning": 22,
-      "test_paired_evaluation": 9,
+      "test_paired_evaluation": 18,
       "test_security": 10,
       "test_usability": 10
     },
@@ -31,7 +31,7 @@
   },
   "identity_e2e": {
     "approval": {
-      "digest": "11e38e11d29838534b5b23f688c919c4c6c37796ab8b3d701cbe5ad5a0296052",
+      "digest": "7613f3df3220e9ce4266a2be19a267451ff353dc5eac90db7a9e1f7d2e7c4ea5",
       "reviewer": "fixture-reviewer",
       "revision": 1,
       "skill_id": "fixture-skill"
@@ -59,17 +59,17 @@
     "passed": true,
     "process_restart": {
       "first_exit_code": 0,
-      "first_pid": 79266,
+      "first_pid": 35716,
       "fresh_login_required": true,
       "second_exit_code": 0,
-      "second_pid": 79267,
+      "second_pid": 35718,
       "verified": true
     },
     "resource_owner": "team-library",
     "reuse": {
       "actor": "fixture-consumer",
-      "at": "2026-10-17T06:46:54.324064+00:00",
-      "digest": "11e38e11d29838534b5b23f688c919c4c6c37796ab8b3d701cbe5ad5a0296052",
+      "at": "2026-10-17T07:09:52.794769+00:00",
+      "digest": "7613f3df3220e9ce4266a2be19a267451ff353dc5eac90db7a9e1f7d2e7c4ea5",
       "revision": 1,
       "skill_id": "fixture-skill",
       "task_id": "fixture-reuse"
@@ -119,5 +119,15 @@
     "Live workspace installation/discovery in ChatGPT/Claude/Codex",
     "Hosted CI for this exact head at report generation"
   ],
-  "environment_note": "This final run clears inherited PYTHONPATH/PYTHONHOME/user-site settings and asserts pinned module versions/venv import origins. An earlier Hermes subprocess preflight inherited other package metadata and is not used as pinned-dependency acceptance evidence."
+  "environment_note": "This final run clears inherited PYTHONPATH/PYTHONHOME/user-site settings and asserts pinned module versions/venv import origins. An earlier Hermes subprocess preflight inherited other package metadata and is not used as pinned-dependency acceptance evidence.",
+  "source_module_sha256": {
+    "evaluation/paired.py": "bcf607b9aad350eb0c1222d4a6e9da94aafe296148a362ee0adc2bdbc96bb133",
+    "evaluation/usability.py": "37d907096de82a598bcf3a5852b5992064f420faa590d802da2ee9250617f0b8",
+    "integrations/trusted_identity.py": "039e5134538c4b100ef26452dd710c01f334b451a5f1693d163bbc1d55fc3711"
+  },
+  "paired_runner_review_regressions": {
+    "new_local_subprocess_test_methods": 9,
+    "original_six_trial_artifacts_unchanged": true,
+    "additional_provider_calls": 0
+  }
 }

@@ -2,7 +2,7 @@
 
 The **72-test** record in `verification.json` is the historical isolated paired-
 evaluation checkpoint, not the integrated suite total. Subsequent integrated
-acceptance ran **94 tests with zero skips**; see [E2E acceptance](../../docs/E2E_ACCEPTANCE.md).
+acceptance ran **103 tests with zero skips**; see [E2E acceptance](../../docs/E2E_ACCEPTANCE.md).
 Original model outputs and the historical checkpoint are preserved unchanged.
 
 ## Outcome and claim boundary

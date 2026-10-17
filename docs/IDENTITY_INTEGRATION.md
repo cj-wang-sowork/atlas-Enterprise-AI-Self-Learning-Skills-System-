@@ -143,7 +143,7 @@ cffi **2.0.0**, pycparser **2.23** and typing_extensions **4.16.0** on macOS arm
 Installed metadata requires Python >=3.9 for PyJWT and cryptography (cryptography
 excludes 3.9.0/3.9.1). Other platforms/interpreters were not exercised at that
 checkpoint. Versions are pinned as a tested set, not a claim to be latest.
-The subsequent **integrated acceptance** ran CPython **3.12.12 / 94 tests / zero
+The subsequent **integrated acceptance** ran CPython **3.12.12 / 103 tests / zero
 skips**; see [current integrated evidence](E2E_ACCEPTANCE.md) and its machine result.
 
 ```sh

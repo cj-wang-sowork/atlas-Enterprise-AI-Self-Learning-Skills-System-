@@ -4,12 +4,23 @@ This is executable reference-implementation evidence, **not a production-readine
 
 ## Evidence actually executed
 
-- [Machine-readable acceptance result](e2e-acceptance-results.json): **94 test methods, 0 failures, 0 errors, 0 skips**, on macOS/CPython 3.12.12 with asserted pinned optional dependency versions. [Complete unittest output](e2e-unittest.txt).
+- [Machine-readable acceptance result](e2e-acceptance-results.json): **103 test methods, 0 failures, 0 errors, 0 skips**, on macOS/CPython 3.12.12 with asserted pinned optional dependency versions. [Complete unittest output](e2e-unittest.txt).
 - A separate real two-process identity demo returned exit code 0 in both workers. A different authenticated synthetic consumer reused the **identical reviewed Skill digest** after restart; 12 negative checks passed, including forged signatures, foreign scope, nonce replay, removed membership, revoked Skill and unsafe numeric data.
 - [Six real model task outputs and paired-pilot report](../studies/paired-pilot/REPORT.md), three explicitly fictional marketing tasks × two conditions. Artifact verification returned `verified: true` with no errors. The execution-time harness is preserved separately from later validation hardening.
 - [Recorder CLI QA evidence](../studies/usability/agent-qa-report.json): actual start/step/finish/reopen/report operations, explicitly excluded from human-usability metrics. **No real human has participated.**
 
 The runtime code/test commit at local execution is recorded in the machine result. Later README/CI/report edits do not retrospectively alter original model outputs or make hosted CI already executed. GitHub CI must pass for the final PR head before integration.
+
+## Independent-review regression hardening
+
+Independent quality review identified two paired-runner defects: terminal protocol
+failure could be marked completed, and event-only fallback evidence could be
+reconstructed from redacted diagnostics. Both were fixed using observed failing
+synthetic **local-subprocess** regressions. Nine additional regression methods now
+cover truthful failure/incomplete-study exit states, verifier consistency and exact
+response preservation while keeping diagnostic logs sanitized. These are not
+additional model trials. The original six pilot outputs, logs, frozen gates and
+execution-time harness snapshot remain unchanged.
 
 ## Acceptance status by requirement
 
@@ -44,7 +55,7 @@ unset PYTHONPATH PYTHONHOME PYTHONUSERBASE PYTHONSTARTUP
 export PYTHONNOUSERSITE=1
 python -m pip install -r integrations/requirements-oidc.txt
 python -m pip check
-python -c 'import jwt, cryptography, unittest; r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.discover("tests")); raise SystemExit(0 if r.wasSuccessful() and r.testsRun >= 94 and not r.skipped else 1)'
+python -c 'import jwt, cryptography, unittest; r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.discover("tests")); raise SystemExit(0 if r.wasSuccessful() and r.testsRun >= 103 and not r.skipped else 1)'
 python examples/authenticated-team/demo.py
 python -m evaluation.paired verify studies/paired-pilot/run-20261017
 ```

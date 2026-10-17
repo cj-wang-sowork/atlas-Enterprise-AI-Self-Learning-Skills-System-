@@ -71,6 +71,15 @@ test_blinded_bundle_contains_only_exact_outputs_not_condition_keys (test_paired_
 test_dry_run_pins_prompts_and_failure_accounting_does_not_drop_arms (test_paired_evaluation.RunnerTests.test_dry_run_pins_prompts_and_failure_accounting_does_not_drop_arms) ... ok
 test_event_usage_is_actual_or_unknown_and_tools_are_detected (test_paired_evaluation.RunnerTests.test_event_usage_is_actual_or_unknown_and_tools_are_detected) ... ok
 test_verifier_checks_task_locks_beyond_resealed_manifest (test_paired_evaluation.RunnerTests.test_verifier_checks_task_locks_beyond_resealed_manifest) ... ok
+test_cli_complete_local_execution_succeeds (test_paired_evaluation.SyntheticProtocolRegressionTests.test_cli_complete_local_execution_succeeds) ... ok
+test_cli_dry_plan_succeeds_without_executing_command (test_paired_evaluation.SyntheticProtocolRegressionTests.test_cli_dry_plan_succeeds_without_executing_command) ... ok
+test_cli_executed_budget_exhaustion_is_nonzero_even_without_failed_calls (test_paired_evaluation.SyntheticProtocolRegressionTests.test_cli_executed_budget_exhaustion_is_nonzero_even_without_failed_calls) ... ok
+test_cli_terminal_failure_returns_nonzero_and_retains_both_arms (test_paired_evaluation.SyntheticProtocolRegressionTests.test_cli_terminal_failure_returns_nonzero_and_retains_both_arms) ... ok
+test_error_event_after_completed_also_invalidates_run (test_paired_evaluation.SyntheticProtocolRegressionTests.test_error_event_after_completed_also_invalidates_run) ... ok
+test_event_only_preserves_exact_answer_before_log_redaction_and_scoring (test_paired_evaluation.SyntheticProtocolRegressionTests.test_event_only_preserves_exact_answer_before_log_redaction_and_scoring) ... ok
+test_output_file_bytes_take_precedence_over_event_message (test_paired_evaluation.SyntheticProtocolRegressionTests.test_output_file_bytes_take_precedence_over_event_message) ... ok
+test_terminal_failure_after_completed_invalidates_run_and_retains_evidence (test_paired_evaluation.SyntheticProtocolRegressionTests.test_terminal_failure_after_completed_invalidates_run_and_retains_evidence) ... ok
+test_verifier_rejects_completed_status_hiding_terminal_failure_with_resealed_counts (test_paired_evaluation.SyntheticProtocolRegressionTests.test_verifier_rejects_completed_status_hiding_terminal_failure_with_resealed_counts) ... ok
 test_real_subprocess_captures_exit_timeout_and_redacts_log_secrets (test_paired_evaluation.TransportTests.test_real_subprocess_captures_exit_timeout_and_redacts_log_secrets) ... ok
 test_access_marker_is_exact_frontmatter_not_body_substring (test_security.SecurityRegressionTests.test_access_marker_is_exact_frontmatter_not_body_substring) ... ok
 test_audit_does_not_contain_detected_values (test_security.SecurityRegressionTests.test_audit_does_not_contain_detected_values) ... ok
@@ -94,8 +103,8 @@ test_sensitive_pseudonyms_are_rejected_without_saving (test_usability.UsabilityT
 test_success_needs_all_steps_and_sanitized_regular_evidence (test_usability.UsabilityTests.test_success_needs_all_steps_and_sanitized_regular_evidence) ... ok
 
 ----------------------------------------------------------------------
-Ran 94 tests in 29.708s
+Ran 103 tests in 30.177s
 
 OK
 
-ACCEPTANCE_JSON={"test_methods": 94, "methods_by_module": {"test_access_control": 13, "test_benchmark": 1, "test_identity_integration": 12, "test_installer": 17, "test_learning": 22, "test_paired_evaluation": 9, "test_security": 10, "test_usability": 10}, "failures": 0, "errors": 0, "skipped": 0, "python": "3.12.12", "platform": "macOS-26.3-arm64-arm-64bit", "dependencies": {"PyJWT": "2.15.1", "cryptography": "50.0.2", "cffi": "2.0.0", "pycparser": "2.23", "typing_extensions": "4.16.0"}, "dependencies_loaded_from_isolated_venv": true}
+ACCEPTANCE_JSON={"test_methods": 103, "methods_by_module": {"test_access_control": 13, "test_benchmark": 1, "test_identity_integration": 12, "test_installer": 17, "test_learning": 22, "test_paired_evaluation": 18, "test_security": 10, "test_usability": 10}, "failures": 0, "errors": 0, "skipped": 0, "python": "3.12.12", "platform": "macOS-26.3-arm64-arm-64bit", "dependencies": {"PyJWT": "2.15.1", "cryptography": "50.0.2", "cffi": "2.0.0", "pycparser": "2.23", "typing_extensions": "4.16.0"}, "dependencies_loaded_from_isolated_venv": true}
