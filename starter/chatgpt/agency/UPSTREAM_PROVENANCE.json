@@ -1,0 +1,431 @@
+{
+  "schema_version": 1,
+  "pack_version": "1.0.0-agency.1",
+  "repository": "cj-wang-sowork/brand-to-social-os",
+  "source_url": "https://github.com/cj-wang-sowork/brand-to-social-os",
+  "commit": "a230b7f6f5ed987fefbb8f4933c411681701c8ed",
+  "as_of": "2026-10-18",
+  "distribution": "adaptation-not-full-vendor",
+  "runtime_upstream_fetch": false,
+  "original_repository_modified": false,
+  "upstream_tracked_file_count": 52,
+  "license": {
+    "spdx": "MIT",
+    "source_path": "LICENSE",
+    "local_path": "UPSTREAM_LICENSE.txt",
+    "copyright": "Copyright (c) 2026 SoWork",
+    "sha256": "1ec1873af4d67f337dd9c63cb79c794949886e9963831ca5c29dd7f441a0faa0",
+    "preservation": "exact-full-bytes"
+  },
+  "upstream_files": [
+    {
+      "path": ".gitignore",
+      "bytes": 38,
+      "sha256": "5d4215f51140c0fd10da8d3756ee6dc534222ae1628eab5c8f18ce7ec981dc21"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 6932,
+      "sha256": "e634423430650f61f904b05b94981c583aa798bd8772574e1df72f8fd6cbea47"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 755,
+      "sha256": "700e2dd07d7b6ed86ec6813dd2c1da93b71b19d6656e5fe188bb4b2feadae95f"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1063,
+      "sha256": "1ec1873af4d67f337dd9c63cb79c794949886e9963831ca5c29dd7f441a0faa0"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8285,
+      "sha256": "17672b2479f72d9eec6184efc069b44ce2f01244a8757a836b1a6c709bf18ef0"
+    },
+    {
+      "path": "SECURITY.md",
+      "bytes": 393,
+      "sha256": "61720c1ff1d0b98a919e1189da1b30f38aa0d1834141b50198b6fe947d59f903"
+    },
+    {
+      "path": "SETUP.md",
+      "bytes": 967,
+      "sha256": "17eb8656ccccb3ceefa0269578fdae10fc90411f1774a3eeef520eaef6e0954c"
+    },
+    {
+      "path": "docs/market-opportunity.md",
+      "bytes": 1870,
+      "sha256": "a47e1a464b603923cf84b0b5c7f49a18c684a8acd3d2bd7e1501627c0a3ce397"
+    },
+    {
+      "path": "docs/methodology-overview.md",
+      "bytes": 1412,
+      "sha256": "d1f0007fbb6b4e37d87f2916e88983a7bbf562808e73cadf51924c9acdc9e8c3"
+    },
+    {
+      "path": "docs/public-launch-checklist.md",
+      "bytes": 1336,
+      "sha256": "b1c97a6381217aa5cee214c0afd94717c8eb9f1393bf0031bab1817fe69bed0d"
+    },
+    {
+      "path": "docs/roadmap.md",
+      "bytes": 2454,
+      "sha256": "703a936a609b802fbc5f6499a2cd4d96cad59ad9d5d77c2c4dff905f974a869a"
+    },
+    {
+      "path": "docs/sanitization-policy.md",
+      "bytes": 712,
+      "sha256": "bbfaf652674bf714e505ac748d2683df2b6c78426f21d9c9916c88c9687cedae"
+    },
+    {
+      "path": "examples/2-week-linkedin-x-calendar.md",
+      "bytes": 785,
+      "sha256": "493397d93ef93422ef41ecabf11008598fb09c1628f992efc06bebf1d8a7a28a"
+    },
+    {
+      "path": "examples/brand-positioning-example.md",
+      "bytes": 872,
+      "sha256": "c542f7a16068ca528f08ef0047bcb8bcc2978310217821de86b952e6a6e506ab"
+    },
+    {
+      "path": "examples/demo-cases.md",
+      "bytes": 2425,
+      "sha256": "282b69128d1f164fd6d487ba5dfdef103344ba8c1ed57b1ec441539934c4bce7"
+    },
+    {
+      "path": "examples/product-positioning-example.md",
+      "bytes": 800,
+      "sha256": "9b46e3ab1292eab3cb88758870805dcd25a751185cbde2704c87ef65d53793c5"
+    },
+    {
+      "path": "install.bat",
+      "bytes": 270,
+      "sha256": "2c78301f46dbf1c98b6004e6775d006902aba0e7c08ad7a7688dd7191bd8eff9"
+    },
+    {
+      "path": "install.sh",
+      "bytes": 275,
+      "sha256": "a1f6972b24bab22495692857237c7fee6a194d06242b792a8fcda32a5999524e"
+    },
+    {
+      "path": "skills/01-brand-positioning/CHECKLIST.md",
+      "bytes": 1676,
+      "sha256": "4ee48af01f8651b71e2a0a11c78ce3fabc1e3599fe341a9a456d0d25c35cf519"
+    },
+    {
+      "path": "skills/01-brand-positioning/SKILL.md",
+      "bytes": 9930,
+      "sha256": "f02b3fd0cbe98ce4e614bdd40c6077c3ab5a59cc3b5ed5270a889e4de0966daa"
+    },
+    {
+      "path": "skills/01-brand-positioning/example-output.md",
+      "bytes": 2081,
+      "sha256": "09402a9671a7f1bf4e2dff5995bcac62fadc3b8a54453d20910b46b46fdd9109"
+    },
+    {
+      "path": "skills/01-brand-positioning/prompt.md",
+      "bytes": 2143,
+      "sha256": "0fe8c7ffdba204e786598e01fa86f803034235eefdaf1a031f469daa8f3e4484"
+    },
+    {
+      "path": "skills/02-product-positioning/CHECKLIST.md",
+      "bytes": 1677,
+      "sha256": "dc8bfc4a4273cf79aa85aa53536a52cbe81fe29c4eefc4b66df73697e41463e5"
+    },
+    {
+      "path": "skills/02-product-positioning/SKILL.md",
+      "bytes": 9797,
+      "sha256": "a7d54307b79496b016e483c704ece5989f022dd65b669c1d47510334ec5e3677"
+    },
+    {
+      "path": "skills/02-product-positioning/example-output.md",
+      "bytes": 3342,
+      "sha256": "20612c9aa6e1940e7c753f23eb2040bf380577f0dbe0981f19c4871a24d64b74"
+    },
+    {
+      "path": "skills/02-product-positioning/prompt.md",
+      "bytes": 2133,
+      "sha256": "8491ddc97170611e5553efcefbff456bd376012842f8cc22080055148d393e84"
+    },
+    {
+      "path": "skills/03-social-operating-system/CHECKLIST.md",
+      "bytes": 1527,
+      "sha256": "c116dc62f8c8569b5f8980dc7e4f8b075b5d712a1c3d80f091d52d99bede3017"
+    },
+    {
+      "path": "skills/03-social-operating-system/SKILL.md",
+      "bytes": 11952,
+      "sha256": "20129acb885bfc5ea46137364ea2b192d262730e97b8e92edb63bfe81b1df5c7"
+    },
+    {
+      "path": "skills/03-social-operating-system/example-output.md",
+      "bytes": 2333,
+      "sha256": "46438f7fb5746de8d71a5d3b141cf157490859fdab7c3d26edb5c875b672989d"
+    },
+    {
+      "path": "skills/03-social-operating-system/prompt.md",
+      "bytes": 2223,
+      "sha256": "ce40b8e8102b43b6170b99658020cd5ddcec9b02ad475be19969820010f708a4"
+    },
+    {
+      "path": "skills/04-content-pillar-design/CHECKLIST.md",
+      "bytes": 1021,
+      "sha256": "d927fe369e1ddd00cd8efda6cd162a4687eafbe0a1ba58d5615894f7757a34c3"
+    },
+    {
+      "path": "skills/04-content-pillar-design/SKILL.md",
+      "bytes": 12709,
+      "sha256": "b830fcf75ad5a01c5caa3d4865455c82e81a44875d2d029004a1961507d03df0"
+    },
+    {
+      "path": "skills/04-content-pillar-design/example-output.md",
+      "bytes": 2116,
+      "sha256": "27ebe7a9bca3ca34e3a34615ab6382cdcb24c1cba05529fe1e33e01ec8ad2273"
+    },
+    {
+      "path": "skills/04-content-pillar-design/prompt.md",
+      "bytes": 1103,
+      "sha256": "9cb9f6b0120ee36c90855a18a775c129dd95e3d49fd5920ceedd907e9dba5b24"
+    },
+    {
+      "path": "skills/05-performance-review/CHECKLIST.md",
+      "bytes": 880,
+      "sha256": "dde1ecf6b7fd005617872803c6aaea851efdedbc908b45fdfaca313f88035e22"
+    },
+    {
+      "path": "skills/05-performance-review/SKILL.md",
+      "bytes": 12025,
+      "sha256": "3576b9b0a2b559c8c699ca691eda9f591f733921e6a898c960cd8cd1fe193e8d"
+    },
+    {
+      "path": "skills/05-performance-review/example-output.md",
+      "bytes": 1639,
+      "sha256": "9b44201c9afe3f99bce907a1953a9624207b9eeb473b4661fb31a8f4be4439e1"
+    },
+    {
+      "path": "skills/05-performance-review/prompt.md",
+      "bytes": 1528,
+      "sha256": "fbd0682f844bf03ae8415547c48e7c4d0dd62be9d0fb1be1eb33180afdef1615"
+    },
+    {
+      "path": "skills/06-linkedin-operator-pack/CHECKLIST.md",
+      "bytes": 1321,
+      "sha256": "2f159e2796cfb2cbe1ae4304910b48659e36194cbd9ac97e4cbff11e0b6c4b70"
+    },
+    {
+      "path": "skills/06-linkedin-operator-pack/SKILL.md",
+      "bytes": 12083,
+      "sha256": "8978fa5394a3a2ad74a86a7ea1f664dec8990171f3da0c803ddd0e6d83785950"
+    },
+    {
+      "path": "skills/06-linkedin-operator-pack/example-output.md",
+      "bytes": 2179,
+      "sha256": "6ecd955bfa214e9bcbefd7bb5846b7dac08e6692a46adf8067316acbe586d400"
+    },
+    {
+      "path": "skills/06-linkedin-operator-pack/prompt.md",
+      "bytes": 1436,
+      "sha256": "7a7a1c178615b8fb374cd8bc0e5fc3d866c0bfd9527f7f592249766b48c6e2f5"
+    },
+    {
+      "path": "skills/references/benchmarks-taiwan-global.md",
+      "bytes": 9003,
+      "sha256": "819910a57cd6a251af7fda7063a739016827006e7a6101933d1fafee8997630d"
+    },
+    {
+      "path": "skills/references/hook-formulas.md",
+      "bytes": 9763,
+      "sha256": "d1ce4bff60b7f26370e9b26225594c4d5eb5cfc4236f6d2373f83acef2ac2e3c"
+    },
+    {
+      "path": "skills/references/positioning-frameworks.md",
+      "bytes": 8353,
+      "sha256": "4cb15abd74d24f0f61da6308a6dd4834bd048ca5c522a1cc57237d324bab68d0"
+    },
+    {
+      "path": "skills/references/quality-gates.md",
+      "bytes": 11252,
+      "sha256": "a289047c28d8a54d2ef0d35a52e2ecc21e2a5078891b6e4bd65f3679e9ad1ca5"
+    },
+    {
+      "path": "skills/references/taiwan-global-playbook.md",
+      "bytes": 8684,
+      "sha256": "c323af7585f0d26de294b8c563a6742e32679fb0bbf4489ac3742cbca59db8e7"
+    },
+    {
+      "path": "templates/brand-input.md",
+      "bytes": 398,
+      "sha256": "e047aca8c75e81f71d5b48e811ca3d57bb5f4157d25a40859968fecdbeedf723"
+    },
+    {
+      "path": "templates/content-pillar-template.md",
+      "bytes": 786,
+      "sha256": "c9b288f58f9f15c0f240fc4a618ab2d5e94c4064ad5e9df7edc074b6dc08ea89"
+    },
+    {
+      "path": "templates/experiment-scorecard.md",
+      "bytes": 236,
+      "sha256": "63ba7c8beb5b5bb9f0e388e119b9eaf1f272b18209783b08acf214616de13a04"
+    },
+    {
+      "path": "templates/product-brief.md",
+      "bytes": 282,
+      "sha256": "5f88dcc98c0e0a0c21f5fd6fc0390627438e92c05fe149d37e01ec39edfc3445"
+    },
+    {
+      "path": "templates/weekly-social-calendar.csv",
+      "bytes": 459,
+      "sha256": "5e85215d9804dc1eed9cfb4ed28921e43785b5745552446bc4ece750156cd122"
+    }
+  ],
+  "skills": [
+    {
+      "id": "01-brand-positioning",
+      "upstream_version": "1.0.0",
+      "adaptation_version": "1.0.0-agency.1",
+      "source_path": "skills/01-brand-positioning/SKILL.md",
+      "supporting_paths": [
+        "skills/01-brand-positioning/CHECKLIST.md",
+        "skills/01-brand-positioning/prompt.md",
+        "skills/01-brand-positioning/example-output.md"
+      ],
+      "frameworks": [
+        "Strategic Contrast"
+      ],
+      "reference_paths": [
+        "skills/references/quality-gates.md",
+        "skills/references/positioning-frameworks.md"
+      ]
+    },
+    {
+      "id": "02-product-positioning",
+      "upstream_version": "1.0.0",
+      "adaptation_version": "1.0.0-agency.1",
+      "source_path": "skills/02-product-positioning/SKILL.md",
+      "supporting_paths": [
+        "skills/02-product-positioning/CHECKLIST.md",
+        "skills/02-product-positioning/prompt.md",
+        "skills/02-product-positioning/example-output.md"
+      ],
+      "frameworks": [
+        "JTBD",
+        "Message Hierarchy"
+      ],
+      "reference_paths": [
+        "skills/references/quality-gates.md",
+        "skills/references/positioning-frameworks.md"
+      ]
+    },
+    {
+      "id": "03-social-operating-system",
+      "upstream_version": "1.0.0",
+      "adaptation_version": "1.0.0-agency.1",
+      "source_path": "skills/03-social-operating-system/SKILL.md",
+      "supporting_paths": [
+        "skills/03-social-operating-system/CHECKLIST.md",
+        "skills/03-social-operating-system/prompt.md",
+        "skills/03-social-operating-system/example-output.md"
+      ],
+      "frameworks": [
+        "Weekly Publishing Loop",
+        "Topic Scoring",
+        "Repurposing Ladder"
+      ],
+      "reference_paths": [
+        "skills/references/quality-gates.md"
+      ]
+    },
+    {
+      "id": "04-content-pillar-design",
+      "upstream_version": "1.0.0",
+      "adaptation_version": "1.0.0-agency.1",
+      "source_path": "skills/04-content-pillar-design/SKILL.md",
+      "supporting_paths": [
+        "skills/04-content-pillar-design/CHECKLIST.md",
+        "skills/04-content-pillar-design/prompt.md",
+        "skills/04-content-pillar-design/example-output.md"
+      ],
+      "frameworks": [
+        "Five-pillar Content Model"
+      ],
+      "reference_paths": [
+        "skills/references/quality-gates.md",
+        "skills/references/positioning-frameworks.md"
+      ]
+    },
+    {
+      "id": "05-performance-review",
+      "upstream_version": "1.0.0",
+      "adaptation_version": "1.0.0-agency.1",
+      "source_path": "skills/05-performance-review/SKILL.md",
+      "supporting_paths": [
+        "skills/05-performance-review/CHECKLIST.md",
+        "skills/05-performance-review/prompt.md",
+        "skills/05-performance-review/example-output.md"
+      ],
+      "frameworks": [
+        "Winners / Losers",
+        "Audience Quality",
+        "Business Relevance",
+        "Experiment Review"
+      ],
+      "reference_paths": [
+        "skills/references/quality-gates.md"
+      ]
+    },
+    {
+      "id": "06-linkedin-operator-pack",
+      "upstream_version": "1.0.0",
+      "adaptation_version": "1.0.0-agency.1",
+      "source_path": "skills/06-linkedin-operator-pack/SKILL.md",
+      "supporting_paths": [
+        "skills/06-linkedin-operator-pack/CHECKLIST.md",
+        "skills/06-linkedin-operator-pack/prompt.md",
+        "skills/06-linkedin-operator-pack/example-output.md"
+      ],
+      "frameworks": [
+        "Six Hook Formulas",
+        "Hook / Body / CTA"
+      ],
+      "reference_paths": [
+        "skills/references/quality-gates.md",
+        "skills/references/positioning-frameworks.md",
+        "skills/references/hook-formulas.md"
+      ]
+    }
+  ],
+  "adaptation_notes": [
+    "Six real upstream skills retained as skills, not six autonomous agents.",
+    "Traditional Chinese agency procedures are an adaptation, not byte-identical upstream vendoring.",
+    "Sources are an immutable provenance snapshot, never a runtime link loader.",
+    "Research verification and manual version handoff are agency-added methods.",
+    "Unsupported algorithm, distribution, benchmark and revenue numbers are not adopted.",
+    "Public fictional examples are not private client wins or outcome evidence.",
+    "MIT software/templates notice retained; no third-party images or brand assets copied."
+  ],
+  "acceptance": {
+    "static_offline_contracts": "tested separately; not model behavior or business efficacy",
+    "non_engineer_ui": "PENDING human observation",
+    "multi_member_handoff": "PENDING human observation",
+    "cross_conversation_reuse": "PENDING human observation"
+  },
+  "reference_policy": {
+    "skills/references/quality-gates.md": "adapted as editable internal quality rubrics, not empirical business scores",
+    "skills/references/positioning-frameworks.md": "useful framework structures restated inline; numbering is not relied upon",
+    "skills/references/hook-formulas.md": "six hook forms adapted; unsupported numeric/algorithm claims excluded",
+    "skills/references/benchmarks-taiwan-global.md": "reviewed but quantitative benchmarks not adopted as verified facts or targets",
+    "skills/references/taiwan-global-playbook.md": "problem-centric, audience-aware communication adapted; fixed timelines and growth expectations excluded"
+  },
+  "local_artifacts": {
+    "SKILL_PACK.md": {
+      "bytes": 43038,
+      "sha256": "91eb8f9e0fa9af930d3f94a5c9d49bd3801e4395b75348b08ca53ba981ea7483"
+    },
+    "UPSTREAM_LICENSE.txt": {
+      "bytes": 1063,
+      "sha256": "1ec1873af4d67f337dd9c63cb79c794949886e9963831ca5c29dd7f441a0faa0"
+    }
+  },
+  "manifest_hash_policy": "exclude-self-to-avoid-circular-digest"
+}
