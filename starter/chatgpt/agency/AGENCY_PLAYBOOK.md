@@ -107,7 +107,7 @@ CURRENT_RULES 初始 Approved rules: EMPTY (0)。只使用索引中同客戶／�
 
 | 角色 | 主交付物 | 使用本包技能 | 責任與下一手 |
 |---|---|---|---|
-| AccountManager | ClientBrief | 01、03 的輸入整理 | 記錄原需求、目標、限制與假設，交 MarketResearcher；首輪可立即並行起草 |
+| AccountManager | ClientBrief | 01、03 的輸入整理 | 記錄原需求、目標、限制與假設，交 MarketResearcher；首輪按五階段依序交接起草 |
 | MarketResearcher | ResearchBrief | 01、02、04 的證據輸入；Agency ADDED | 做下節查證，不宣稱上游有獨立研究技能；交 BrandStrategist |
 | BrandStrategist | StrategyBrief | 01、02、04 | 產出品牌、產品訊息與支柱，同一文件分區；交 ContentPlanner |
 | ContentPlanner | ContentCalendar | 04、03、06 | 依支柱排程並寫完整稿；06 的 LinkedIn 寫法可另做渠道改編，交 QAReviewer |

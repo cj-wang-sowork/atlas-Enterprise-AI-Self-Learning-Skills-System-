@@ -45,6 +45,22 @@ class AgencyBundleTests(unittest.TestCase):
             self.assertIn('HUMAN_APPROVED', text, name)
         self.assertIn('CURRENT_RULES', (kit / 'SKILL_PACK.md').read_text())
 
+    def test_first_round_role_handoff_is_sequential_not_parallel(self):
+        for name in ('SKILL_PACK.md', 'AGENCY_PLAYBOOK.md'):
+            text = (ROOT / 'starter/chatgpt/agency' / name).read_text()
+            self.assertNotIn('首輪可立即並行起草', text)
+            self.assertIn('首輪按五階段依序交接起草', text)
+
+    def test_changed_example_dependencies_require_new_artifact_and_task_card_versions(self):
+        example = (ROOT / 'examples/agency/first-round.md').read_text()
+        self.assertNotIn('DEMO-CC v1 保留，來源依據升為 DEMO-SB v2', example)
+        self.assertIn('DEMO-CC v1 保留原依賴 DEMO-SB v1，不可改寫', example)
+        self.assertIn('DEMO-CC v2', example)
+        self.assertIn('source_versions=DEMO-SB v2', example)
+        self.assertIn('DEMO-T-001 任務卡 v2', example)
+        self.assertIn('DEMO-RR v2', example)
+        self.assertIn('DEMO-RR v1 保留原版', example)
+
     def isolated_repository(self):
         directory = tempfile.TemporaryDirectory()
         self.addCleanup(directory.cleanup)

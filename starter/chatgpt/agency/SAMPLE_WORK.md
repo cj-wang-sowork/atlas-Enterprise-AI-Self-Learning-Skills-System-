@@ -192,7 +192,7 @@ QAReviewer 完成文件自我檢核，任務狀態 READY_FOR_REVIEW；不等於�
 - Task/output evidence：DEMO-T-001，DEMO-SB v1「三個內容支柱」一行；修正形成 DEMO-SB v2，證據為本段修正前後。
 - 修正前：「三個內容支柱：①自己的時間（D1、D5）；②整理偏好與資訊（D2、D4、D6）；③社群對話與回顧（D3、D7）。」
 - 修正後：「這週分三種聊天主題：留給自己的時間（D1、D5）、整理偏好與資訊（D2、D4、D6），以及一起聊聊這一週（D3、D7）。」
-- 下游影響：七篇正文無術語、不需新增產品說法；DEMO-CC v1 保留，來源依據升為 DEMO-SB v2 的修訂段落，需人工維護者檢查後手動更新任務卡。DEMO-RR v1 本節記載此次修訂，並未批准任何稿件。
+- 下游影響：七篇正文無術語、不需新增產品說法；DEMO-CC v1 保留原依賴 DEMO-SB v1，不可改寫。若採用修訂策略，另建 DEMO-CC v2（七篇正文不變，source_versions=DEMO-SB v2，status=DRAFT），以 DEMO-T-001 任務卡 v2 記錄新版本、依賴與修訂證據，待人工維護者核對後手動更新索引。DEMO-RR v1 保留原版；本段另為 DEMO-RR v2 草稿審查紀錄，引用 DEMO-SB v2 與 DEMO-CC v2，並未批准任何稿件。
 
 ### fictional Candidate｜CL-001 v1｜非核准規則
 - client_id/scope：DEMO-SKIN-001／本示範社群文字口吻，不能用於真實客戶。

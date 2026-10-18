@@ -1,6 +1,6 @@
 {
   "scope": "Agency Edition v1.0 manual workflow implementation; not human or live-platform acceptance",
-  "checked_at_utc": "2026-10-18T03:53:35.145813+00:00",
+  "checked_at_utc": "2026-10-18T04:02:54.311266+00:00",
   "baseline": "690ae8249cd38dd2fdb70043da0dd5b91d2985d7",
   "preserved_baseline_files": 149,
   "changed_baseline_paths_allowed": [
@@ -9,23 +9,23 @@
     "scripts/install-workspace.sh"
   ],
   "full_suite": {
-    "tests": 141,
+    "tests": 143,
     "failures": 0,
     "errors": 0,
     "skips": 0,
     "python": "3.12.12",
-    "log_sha256": "e5b4661904a861923a30d3a1a07e5c5676a55a9e71d3b2b4553307a5496086c2"
+    "log_sha256": "fea21c2a37c1b593c14cff7242492891e0821e6aaed37f71bf040740a315e508"
   },
   "asset_count": 13,
   "asset_sha256": {
     "AGENT_ROLES.md": "5903c4be067c17468cf97b0ee81761297b685c6c390d82e381c4065b99641174",
-    "UPSTREAM_PROVENANCE.json": "508ff6ae63b314f059c27afe7552f74a0cd8a50b637e9229adf0984fa583f323",
-    "AGENCY_PLAYBOOK.md": "fefa49e360603a313f7d12e5ebade5338a586c451c741a41c3cfe2cf6a709433",
+    "UPSTREAM_PROVENANCE.json": "b7301fac8dbac7e46d5d72003a38e48d6dd52f4401644799a6db9569a287856b",
+    "AGENCY_PLAYBOOK.md": "379f112e977e6b13a29a0ec74e843fb7fe47cca6ae41334bad1eb2846cee629d",
     "REVIEW_LOG.md": "e0c36eff6ba6cec488f5df35526681336b12eb16426ea7ba440c3d2d457afafb",
-    "SAMPLE_WORK.md": "174d6358d59153d5c47cc09120bb74bce75d762a2086413a841a0908a53e73e3",
+    "SAMPLE_WORK.md": "f676d2d1cce29d5ac9d7e71d84425321548dde526e72f5b43a04c8b7f893eec8",
     "PROJECT_INSTRUCTIONS.md": "c62d756464a815d400ba1e764034c4d06f1875b9b97eb85a5887875eca502466",
     "CLIENT_BRIEF.md": "353cdc27c1928d9219fd9d5a361712890838436839bd5b3341d62dc72e796895",
-    "SKILL_PACK.md": "cbc3981a01b477f833f15b52522f566873f161728b70c5e21243cf9344040623",
+    "SKILL_PACK.md": "f343a1b9f215aded3ac6154d3cc2dbb8307a8c2c5f433469ab9e0fbfe3e02c8b",
     "WORKFLOW.md": "df1eed11528146c19261bfb83f33509d00ad5fa2622f3aadf050ffc7aca37ef4",
     "TASK_BOARD.md": "f3e642e016c36d70cdda08fc1c6e40e1b135ea43d379cc52a6fa243358228766",
     "UPSTREAM_LICENSE.txt": "1ec1873af4d67f337dd9c63cb79c794949886e9963831ca5c29dd7f441a0faa0",
@@ -81,5 +81,16 @@
     ],
     "observed_red_then_green": true,
     "demo_client_data_excluded_from_upload_playbook": true
+  },
+  "spec_review": {
+    "reviewed_head": "8cb436fbc7eaeec27786fc71426866105cdca8f5",
+    "implementation_pass": true,
+    "full_empirical_milestone_complete": false,
+    "blocking_gaps": [],
+    "nonblocking_suggestions_implemented": [
+      "sequential first-round role handoff",
+      "immutable downstream dependency versions"
+    ],
+    "suggestions_observed_red_then_green": true
   }
 }
