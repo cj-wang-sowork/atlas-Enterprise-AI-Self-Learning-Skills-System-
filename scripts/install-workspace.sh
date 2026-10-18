@@ -18,6 +18,7 @@ Usage:
   ./scripts/install-workspace.sh --target hermes [--dest PATH] [--force]
   ./scripts/install-workspace.sh --target all --dest PATH [--force]
   ./scripts/install-workspace.sh --target chatgpt --dest PATH [--force]
+  ./scripts/install-workspace.sh --target chatgpt-agency --dest PATH [--force]
 
 Targets:
   openclaw  Install the workspace files into ~/.openclaw/workspace by default
@@ -25,12 +26,13 @@ Targets:
   codex     Install an AGENTS.md launcher plus .atlas-workspace/ into a Codex CLI project root (requires --dest)
   qwen      Install a Qwen skill pack into ~/.qwen/skills/atlas-enterprise-ai-self-learning by default
   hermes    Install a Hermes skill pack into ~/.hermes/skills/openclaw-imports/openclaw-workspace-sowork by default (honors HERMES_HOME)
-  all       Install openclaw + claude + codex + qwen + hermes (requires --dest for Claude/Codex; excludes ChatGPT)
-  chatgpt   Export only manual Project starter text files (requires --dest); no ChatGPT login or execution
+  all       Install openclaw + claude + codex + qwen + hermes (requires --dest for Claude/Codex; excludes ChatGPT kits)
+  chatgpt   Export only generic manual Project starter text files (requires --dest); no ChatGPT login or execution
+  chatgpt-agency  Export the separate Agency Edition v1.0 manual Project kit (requires --dest)
 
 Options:
-  --target TARGET   One of: openclaw, claude, codex, qwen, hermes, all, chatgpt
-  --dest PATH       Destination path (required for claude/codex/all/chatgpt, optional otherwise)
+  --target TARGET   One of: openclaw, claude, codex, qwen, hermes, all, chatgpt, chatgpt-agency
+  --dest PATH       Destination path (required for claude/codex/all/chatgpt/chatgpt-agency, optional otherwise)
   --force           Overwrite existing files instead of creating timestamped backups
   -h, --help        Show this help message
 EOF
@@ -299,12 +301,22 @@ def check_tree(path):
                     fail("Symlink or special file in managed tree: " + str(child))
 
 # Verify source payloads before touching any runtime home.
-if target == "chatgpt":
-    core = {"README.md", "PROJECT_INSTRUCTIONS.md", "SAMPLE_BRIEF.md", "OUTCOME_REVIEW_LOG.md"}
-    cards = {path.name for pattern in ("*.md", "*.json")
-             for path in (source / "starter/chatgpt").glob(pattern)
+if target in ("chatgpt", "chatgpt-agency"):
+    if target == "chatgpt":
+        bundle = "starter/chatgpt"
+        core = {"README.md", "PROJECT_INSTRUCTIONS.md", "SAMPLE_BRIEF.md", "OUTCOME_REVIEW_LOG.md"}
+        patterns = ("*.md", "*.json")
+    else:
+        bundle = "starter/chatgpt/agency"
+        core = {"AGENCY_SETUP.md", "PROJECT_INSTRUCTIONS.md", "CLIENT_BRIEF.md",
+                "AGENT_ROLES.md", "WORKFLOW.md", "TASK_BOARD.md", "CURRENT_RULES.md",
+                "REVIEW_LOG.md", "SKILL_PACK.md", "UPSTREAM_LICENSE.txt",
+                "UPSTREAM_PROVENANCE.json", "AGENCY_PLAYBOOK.md", "SAMPLE_WORK.md"}
+        patterns = ("*.md", "*.json", "*.txt")
+    cards = {path.name for pattern in patterns
+             for path in (source / bundle).glob(pattern)
              if not path.name.startswith(".")}
-    source_items = ["starter/chatgpt/" + name for name in sorted(core | cards)]
+    source_items = [bundle + "/" + name for name in sorted(core | cards)]
 else:
     source_items = workspace + modules + required_modules
 for name in set(source_items):
@@ -332,7 +344,7 @@ for index, destination in enumerate(roots):
         if ancestor.exists() and not ancestor.is_dir():
             fail("Destination parent is not a directory: " + str(ancestor))
     runtime = ("openclaw", "project", "qwen", "hermes")[index] if target == "all" else target
-    if runtime == "chatgpt":
+    if runtime in ("chatgpt", "chatgpt-agency"):
         managed = [destination / Path(name).name for name in source_items]
     elif runtime == "openclaw":
         managed = [destination / name for name in workspace + modules]
@@ -371,7 +383,7 @@ case "$TARGET" in
     [ -n "$DEST" ] || fail "--target all requires --dest"
     preflight "$HOME/.openclaw/workspace" "$DEST" "$HOME/.qwen/skills/atlas-enterprise-ai-self-learning" "$HERMES_ROOT/skills/openclaw-imports/openclaw-workspace-sowork"
     ;;
-  claude|codex|chatgpt)
+  claude|codex|chatgpt|chatgpt-agency)
     [ -n "$DEST" ] || fail "$TARGET requires --dest"
     preflight "$DEST"
     ;;
@@ -384,19 +396,33 @@ esac
 HERMES_ROOT=$(normalize_path "$HERMES_ROOT")
 
 case "$TARGET" in
-  chatgpt)
+  chatgpt|chatgpt-agency)
+    if [ "$TARGET" = "chatgpt-agency" ]; then
+      bundle_dir="$REPO_ROOT/starter/chatgpt/agency"
+    else
+      bundle_dir="$REPO_ROOT/starter/chatgpt"
+    fi
     mkdir -p "$DEST"
     # Match Python's preflight set, regardless of inherited shell preferences.
     unset GLOBIGNORE
     if command -v shopt >/dev/null 2>&1; then
       shopt -u dotglob nullglob failglob nocaseglob
     fi
-    for item in "$REPO_ROOT"/starter/chatgpt/*.md "$REPO_ROOT"/starter/chatgpt/*.json; do
+    for item in "$bundle_dir"/*.md "$bundle_dir"/*.json; do
       [ -e "$item" ] || continue
       copy_item "$item" "$DEST"
     done
-    log "Exported manual ChatGPT Starter Kit -> $DEST"
-    log "Open README.md; upload/copy manually. No ChatGPT configuration or backend code was executed."
+    if [ "$TARGET" = "chatgpt-agency" ]; then
+      for item in "$bundle_dir"/*.txt; do
+        [ -e "$item" ] || continue
+        copy_item "$item" "$DEST"
+      done
+      log "Exported manual Agency Edition v1.0 -> $DEST"
+      log "Open AGENCY_SETUP.md; no Project was created, no client data uploaded, and no backend was executed."
+    else
+      log "Exported manual ChatGPT Starter Kit -> $DEST"
+      log "Open README.md; upload/copy manually. No ChatGPT configuration or backend code was executed."
+    fi
     ;;
   openclaw)
     install_openclaw "$DEST"
