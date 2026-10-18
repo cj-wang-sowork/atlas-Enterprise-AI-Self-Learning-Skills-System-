@@ -1,0 +1,513 @@
+"""Controlled reference-skill prompt evaluation, standard library only."""
+import hashlib
+import json
+import random
+import re
+import os
+import pty
+import selectors
+import signal
+import subprocess
+import time
+from pathlib import Path
+
+
+def sanitize(text):
+    text = re.sub(r'\x1b\[[0-?]*[ -/]*[@-~]', '', text)
+    text = text.replace(str(Path.home()), '<HOME>')
+    text = re.sub(r'(?i)(Bearer\s+)[A-Za-z0-9._~+/=-]+', r'\1<REDACTED>', text)
+    text = re.sub(r'\b(?:sk|sess)-[A-Za-z0-9_-]{12,}', '<REDACTED>', text)
+    return text.replace('\r\n', '\n')
+
+
+def run_command(argv, cwd, timeout):
+    """Run an explicit argv (never a shell) on a PTY with a process-group deadline."""
+    started = time.monotonic()
+    master, slave = pty.openpty()
+    data = bytearray()
+    timed_out = False
+    output_limited = False
+    proc = None
+    try:
+        # No credentials/config are copied or printed. Existing CLI auth stays at
+        # the existing HOME/CODEX_HOME. Child inherits the same process environment.
+        proc = subprocess.Popen(argv, cwd=cwd, stdin=slave, stdout=slave, stderr=slave,
+                                start_new_session=True, close_fds=True)
+        os.close(slave)
+        slave = -1
+        with selectors.DefaultSelector() as selector:
+            selector.register(master, selectors.EVENT_READ)
+            while True:
+                remaining = timeout - (time.monotonic() - started)
+                if remaining <= 0 or len(data) > 2_000_000:
+                    timed_out = remaining <= 0
+                    output_limited = len(data) > 2_000_000
+                    try:
+                        os.killpg(proc.pid, signal.SIGKILL)
+                    except ProcessLookupError:
+                        pass
+                    break
+                ready = selector.select(min(remaining, 0.1))
+                if ready:
+                    try:
+                        chunk = os.read(master, 65536)
+                    except OSError:
+                        break  # PTY EOF is EIO on macOS/Linux.
+                    if not chunk:
+                        break
+                    data.extend(chunk)
+                elif proc.poll() is not None:
+                    break
+        try:
+            proc.wait(timeout=max(0.001, timeout - (time.monotonic() - started)))
+        except subprocess.TimeoutExpired:
+            timed_out = True
+            try:
+                os.killpg(proc.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            proc.wait(timeout=5)
+    except OSError as error:
+        data.extend(str(error).encode())
+    finally:
+        os.close(master)
+        if slave != -1:
+            os.close(slave)
+    raw_transcript = data.decode('utf-8', errors='replace')
+    # Extract only the response before redacting diagnostics. Never persist the
+    # raw transport/auth log or reconstruct response evidence from a redacted log.
+    final_message = parse_events(raw_transcript)['final_message']
+    return {'exit_code': proc.returncode if proc else None,
+            'wall_seconds': time.monotonic() - started, 'timed_out': timed_out,
+            'output_limited': output_limited,
+            'transcript': sanitize(raw_transcript), 'final_message': final_message}
+
+
+def score_output(task, text, tool_calls=0):
+    """Narrow deterministic checks, NOT a measurement of business quality.
+
+    Claim allowlist covers the explicit claims array only. Creative prose can
+    still contain unsupported implications and requires independent human review.
+    """
+    names = ('format', 'source_refs', 'claim_allowlist', 'required_facts',
+             'forbidden_claims', 'tool_free')
+    gates: dict = dict.fromkeys(names, False)
+    gates['tool_free'] = tool_calls == 0
+    try:
+        obj = json.loads(text)
+        if not (isinstance(obj, dict)
+                and obj.get('task_id') == task['task_id'] and obj.get('status') == 'draft'
+                and isinstance(obj.get('positioning'), str)
+                and 0 < len(obj['positioning'].split()) <= 15
+                and isinstance(obj.get('headlines'), list) and len(obj['headlines']) == 3
+                and all(isinstance(h, str) and 0 < len(h.split()) <= 8 for h in obj['headlines'])
+                and isinstance(obj.get('cta'), str) and obj['cta'].strip()
+                and isinstance(obj.get('gaps'), list) and obj['gaps']
+                and all(isinstance(g, str) and g.strip() for g in obj['gaps'])
+                and isinstance(obj.get('claims'), list) and obj['claims']
+                and all(isinstance(c, dict) and isinstance(c.get('text'), str)
+                        and isinstance(c.get('source_ids'), list) and c['source_ids']
+                        and all(isinstance(s, str) for s in c['source_ids']) for c in obj['claims'])):
+            raise ValueError('Output does not satisfy the draft contract')
+        gates['format'] = True
+        sources = {s['id']: s['text'] for s in task['sources']}
+        gates['source_refs'] = all(s in sources for c in obj['claims'] for s in c['source_ids'])
+        gates['claim_allowlist'] = all(c['text'] == sources.get(s)
+                                       for c in obj['claims'] for s in c['source_ids'])
+        claim_text = '\n'.join(c['text'] for c in obj['claims'])
+        gates['required_facts'] = all(f in claim_text for f in task['rubric']['required_facts'])
+        gates['forbidden_claims'] = not any(re.search(p, text, re.IGNORECASE)
+                                             for p in task['rubric']['forbidden_patterns'])
+    except (ValueError, KeyError, AssertionError, TypeError):
+        pass
+    gates['all_passed'] = all(gates[name] for name in names)
+    return gates
+
+
+def digest_json(value):
+    return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True,
+                                     separators=(',', ':')).encode()).hexdigest()
+
+
+def validate_dataset(dataset):
+    if dataset.get('schema_version') != 1 or not dataset.get('tasks'):
+        raise ValueError('Expected schema_version=1 and nonempty tasks')
+    ids = set()
+    for task in dataset['tasks']:
+        task_id = task.get('task_id')
+        if not isinstance(task_id, str) or not task_id or task_id in ids:
+            raise ValueError('Task identifiers must be unique nonempty strings')
+        ids.add(task_id)
+        if task.get('source_kind') not in {'fictional', 'anonymized', 'public', 'customer_authorized'}:
+            raise ValueError('Explicit source_kind required')
+        if not task.get('brief') or not task.get('sources') or not task.get('rubric'):
+            raise ValueError('Each task requires brief, sources and rubric')
+        sources = task['sources']
+        if any(not x.get('id') or not x.get('text') for x in sources):
+            raise ValueError('Sources require id and text')
+        if len({x['id'] for x in sources}) != len(sources):
+            raise ValueError('Source ids must be unique within a task')
+        rubric = task['rubric']
+        facts, patterns = rubric.get('required_facts'), rubric.get('forbidden_patterns')
+        if (not isinstance(facts, list) or not facts
+                or not all(isinstance(f, str) and f for f in facts)
+                or not isinstance(patterns, list)
+                or not all(isinstance(p, str) and p for p in patterns)):
+            raise ValueError('Rubric requires nonempty facts and a list of regex patterns')
+        for pattern in patterns:
+            try:
+                re.compile(pattern)
+            except re.error as error:
+                raise ValueError('Invalid forbidden pattern') from error
+
+
+def make_schedule(dataset, seed=17):
+    validate_dataset(dataset)
+    tasks = list(dataset['tasks'])
+    random.Random(seed).shuffle(tasks)
+    schedule = []
+    for index, task in enumerate(tasks):
+        arms = ['baseline', 'atlas_reference']
+        if index % 2:
+            arms.reverse()
+        for arm in arms:
+            schedule.append({'task_id': task['task_id'], 'arm': arm,
+                             'position': len(schedule) + 1,
+                             'within_pair_position': arms.index(arm) + 1})
+    return schedule
+
+
+COMMON_INSTRUCTIONS = '''Complete this marketing draft using only the supplied source records.
+Do not call tools, inspect files, browse, access memory/skills, or execute commands.
+Do not publish or save an approved policy. No authenticated application scope or
+human-approved brand guideline is supplied. This is a fictional offline draft,
+not a protected client-knowledge operation; flag the missing approval in gaps.
+Use only facts in the records. Ideas are proposals, never measured outcomes.
+Return only one JSON object with: task_id (exact), status ("draft"), positioning
+(nonempty, at most 15 whitespace-separated words), headlines (exactly three
+nonempty strings, each at most 8 words), cta (nonempty string), claims (nonempty
+array of {"text": exact verbatim source-record text, "source_ids": [that record id]}),
+gaps (nonempty string array, including missing approval and any evidence gaps).
+Include the requested product facts in claims. Claims must be source-locked;
+creative copy must not imply unprovided superiority, customer results or approvals.
+Use English. The response schema above overrides any reference report template.
+'''
+
+
+def build_prompt(task, packet=None):
+    text = COMMON_INSTRUCTIONS + '\nTASK AND SOURCE RECORDS:\n' + json.dumps(
+        {k: task[k] for k in ('task_id', 'source_kind', 'brief', 'sources')},
+        ensure_ascii=False, sort_keys=True, indent=2)
+    if packet is not None:
+        text += ('\n\nREFERENCE-SKILL PROMPT CONDITION:\nUse the checked-in reference workflow below '
+                 'within the tool-free draft boundaries above. Do not claim its '
+                 'approval/authentication steps were performed.\n' + packet)
+    return text + '\n'
+
+
+def parse_events(transcript):
+    events = []
+    for line in transcript.splitlines():
+        try:
+            event = json.loads(line)
+            if isinstance(event, dict):
+                events.append(event)
+        except ValueError:
+            continue
+    completed = [e for e in events if e.get('type') == 'turn.completed']
+    items = [e.get('item', {}) for e in events if e.get('type') == 'item.completed']
+    # Treat any unrecognized completed item as a possible tool, not as proof of isolation.
+    tools = [i for i in items if i.get('type') not in {'agent_message', 'reasoning', 'plan'}]
+    messages = [i['text'] for i in items if i.get('type') == 'agent_message' and 'text' in i]
+    errors = [e for e in events if e.get('type') in {'error', 'turn.failed'}]
+    return {'usage': completed[-1].get('usage') if completed else None,
+            'turn_completed': bool(completed), 'tool_calls': len(tools),
+            'errors': errors, 'final_message': messages[-1] if messages else None}
+
+
+def digest_bytes(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def _save_json(path, obj):
+    path.write_text(json.dumps(obj, ensure_ascii=False, sort_keys=True, indent=2) + '\n')
+
+
+def _locked_write(root, relative, data, locks):
+    path = root / relative
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+    locks[relative] = digest_bytes(data)
+
+
+def codex_argv(binary, model='gpt-6-astra'):
+    return [str(binary), 'exec', '--ignore-user-config', '--ignore-rules', '--ephemeral',
+            '--skip-git-repo-check', '--sandbox', 'read-only', '--json', '--color', 'never',
+            '--model', model, '-c', 'model_reasoning_effort="low"',
+            '-c', 'model_provider="openai"', '-c', 'project_doc_max_bytes=0',
+            '--output-last-message', '{output}', '{prompt}']
+
+
+def run_study(dataset, packet, output_dir, scratch_root, *, execute=False,
+              provider_argv=None, provider_label='codex', model='gpt-6-astra',
+              seed=17, max_calls=6, timeout_seconds=120, total_timeout_seconds=720,
+              runtime_metadata=None):
+    """Prepare by default; actual argv execution requires explicit execute=True.
+
+    External provider argv must implement Codex JSONL events and write {output}.
+    Shell expansion is never used. No transport retries are performed here.
+    """
+    import datetime
+    import platform
+    import tempfile
+    import sys
+    validate_dataset(dataset)
+    schedule = make_schedule(dataset, seed)
+    if execute and (max_calls < len(schedule) or max_calls > 8):
+        raise ValueError('Call budget must cover all planned arms and be <=8')
+    if timeout_seconds <= 0 or total_timeout_seconds <= 0:
+        raise ValueError('Timeouts must be positive')
+    if not packet.strip():
+        raise ValueError('Reference packet must not be empty')
+    if provider_argv is None:
+        provider_argv = codex_argv('codex', model)
+    if not isinstance(provider_argv, list) or not provider_argv or not all(
+            isinstance(x, str) and x for x in provider_argv):
+        raise ValueError('Provider command must be a nonempty argv string list')
+    output_dir, scratch_root = Path(output_dir), Path(scratch_root).resolve()
+    for ancestor in [scratch_root, *scratch_root.parents]:
+        if (ancestor / '.git').exists():
+            raise ValueError('Task working directories must be outside all repositories')
+    output_dir.mkdir(parents=True, exist_ok=False)
+    scratch_root.mkdir(parents=True, exist_ok=True)
+    workroot = Path(tempfile.mkdtemp(prefix='paired-', dir=scratch_root)) if execute else None
+    locks = {}
+    _locked_write(output_dir, 'dataset.json', (json.dumps(dataset, ensure_ascii=False,
+                  sort_keys=True, indent=2) + '\n').encode(), locks)
+    _locked_write(output_dir, 'reference-packet.txt', packet.encode(), locks)
+    now = lambda: datetime.datetime.now(datetime.timezone.utc).isoformat()
+    report = {'schema_version': 1, 'study_type': 'reference_skill_prompt_condition',
+              'created_at': now(), 'dataset_digest': digest_json(dataset),
+              'reference_packet_digest': digest_bytes(packet.encode()),
+              'config': {'model_requested': model, 'model_observed': None,
+                         'reasoning_effort': 'low', 'provider': provider_label,
+                         'provider_argv_template': [sanitize(x) for x in provider_argv],
+                         'timeout_seconds': timeout_seconds,
+                         'total_timeout_seconds': total_timeout_seconds, 'max_calls': max_calls,
+                         'seed': seed, 'temperature': 'provider_default_not_exposed',
+                         'tools': 'prompt_forbidden; read-only sandbox; observed events checked',
+                         'runtime_metadata': runtime_metadata or {},
+                         'python': sys.version.split()[0], 'platform': platform.platform()},
+              'schedule': schedule, 'runs': [], 'artifact_digests': locks,
+              'human_evaluation': {'status': 'not_run', 'raters': 0},
+              'cost_usd': None, 'cost_note': 'No billing evidence; subscription is not a dollar estimate.'}
+    tasks = {t['task_id']: t for t in dataset['tasks']}
+    for step in schedule:
+        run_id = f"run-{step['position']:02d}"
+        prompt_path = f'prompts/{run_id}.txt'
+        task = tasks[step['task_id']]
+        prompt = build_prompt(task, packet if step['arm'] == 'atlas_reference' else None)
+        _locked_write(output_dir, prompt_path, prompt.encode(), locks)
+        report['runs'].append({**step, 'run_id': run_id, 'task_digest': digest_json(task),
+                               'prompt_path': prompt_path, 'prompt_digest': locks[prompt_path],
+                               'status': 'not_run', 'failure_reason': None,
+                               'wall_seconds': None, 'started_at': None, 'ended_at': None,
+                               'usage': None, 'cost_usd': None, 'human_scores': None,
+                               'output_path': None, 'output_digest': None, 'gates': None,
+                               'log_path': None, 'exit_code': None, 'tool_calls': None})
+    start = time.monotonic()
+    aborted = False
+    for run in report['runs']:
+        if not execute:
+            continue
+        remaining = total_timeout_seconds - (time.monotonic() - start)
+        if remaining <= 0 or aborted:
+            run['failure_reason'] = 'prior_provider_failure' if aborted else 'total_timeout_budget'
+            continue
+        cwd = workroot / run['run_id']
+        cwd.mkdir()
+        final = cwd / 'final.txt'
+        prompt = (output_dir / run['prompt_path']).read_text()
+        argv = [x.replace('{output}', str(final)).replace('{prompt}', prompt) for x in provider_argv]
+        run['started_at'] = now()
+        result = run_command(argv, cwd, min(timeout_seconds, remaining))
+        run['ended_at'] = now()
+        run['wall_seconds'] = result['wall_seconds']
+        run['exit_code'] = result['exit_code']
+        log_path = f"logs/{run['run_id']}.jsonl"
+        _locked_write(output_dir, log_path, result['transcript'].encode(), locks)
+        run['log_path'] = log_path
+        events = parse_events(result['transcript'])
+        run['usage'] = events['usage']
+        run['tool_calls'] = events['tool_calls']
+        # Never create a plausible substitute for a missing provider answer.
+        content = final.read_bytes() if final.exists() else None
+        if content is None and result['final_message'] is not None:
+            content = result['final_message'].encode('utf-8')
+        if content is not None:
+            relative = f"outputs/{run['run_id']}.txt"
+            _locked_write(output_dir, relative, content, locks)
+            run['output_path'] = relative
+            run['output_digest'] = locks[relative]
+        failed = (result['exit_code'] != 0 or result['timed_out'] or result['output_limited']
+                  or events['errors'] or not events['turn_completed']
+                  or not content or events['tool_calls'] > 0)
+        run['status'] = 'failed' if failed else 'completed'
+        if failed:
+            run['failure_reason'] = ('timeout' if result['timed_out'] else 'output_limit'
+                                     if result['output_limited'] else 'tool_call_detected'
+                                     if events['tool_calls'] else 'provider_or_protocol_failure')
+        if content:
+            run['gates'] = score_output(tasks[run['task_id']], content.decode('utf-8', errors='replace'),
+                                       events['tool_calls'])
+        aborted = bool(events['errors'])
+        report['summary'] = summarize(report['runs'])
+        _save_json(output_dir / 'manifest.json', report)
+    report['summary'] = summarize(report['runs'])
+    report['finished_at'] = now()
+    report['study_wall_seconds'] = time.monotonic() - start if execute else None
+    form, mapping = human_form(report, tasks, seed, output_dir)
+    _locked_write(output_dir, 'human-scoring.json', (json.dumps(form, indent=2) + '\n').encode(), locks)
+    _locked_write(output_dir, 'unblinding-DO-NOT-SHARE.json',
+                  (json.dumps(mapping, indent=2) + '\n').encode(), locks)
+    _save_json(output_dir / 'manifest.json', report)
+    # Integrity, not a cryptographic signature. Git commit anchors the manifest itself.
+    (output_dir / 'manifest.sha256').write_text(digest_bytes((output_dir / 'manifest.json').read_bytes()) + '\n')
+    return report
+
+
+def summarize(runs):
+    summary: dict = {'planned_calls': len(runs),
+               'attempted_calls': sum(r['status'] != 'not_run' for r in runs),
+               'completed_calls': sum(r['status'] == 'completed' for r in runs),
+               'failed_calls': sum(r['status'] == 'failed' for r in runs),
+               'not_run_calls': sum(r['status'] == 'not_run' for r in runs)}
+    summary['arms'] = {}
+    for arm in ('baseline', 'atlas_reference'):
+        selected = [r for r in runs if r['arm'] == arm]
+        summary['arms'][arm] = {
+            'planned': len(selected),
+            'completed': sum(r['status'] == 'completed' for r in selected),
+            'gate_passed': sum(bool(r['gates'] and r['gates']['all_passed'])
+                               and r['status'] == 'completed' for r in selected),
+            'wall_seconds': sum(r['wall_seconds'] or 0 for r in selected)}
+    return summary
+
+
+def human_form(report, tasks, seed, root=None):
+    """Opaque randomized labels; do not share manifest/key/prompts with raters.
+
+    Style may reveal the condition: blinding is attempted, not guaranteed.
+    """
+    runs = list(report['runs'])
+    random.Random(seed + 1000).shuffle(runs)
+    rows, mapping = [], {}
+    for index, run in enumerate(runs):
+        label = f'X{index + 1:03d}'
+        mapping[label] = {'run_id': run['run_id'], 'arm': run['arm'], 'task_id': run['task_id']}
+        rows.append({'anonymous_output_id': label, 'task': tasks[run['task_id']],
+                     'execution_status': run['status'], 'output_digest': run['output_digest'],
+                     'output': ((Path(root) / run['output_path']).read_text()
+                                if root is not None and run.get('output_path') else None),
+                     'rater_id': None, 'scores': {
+                         'factual_accuracy': None, 'brand_fit': None, 'actionability': None,
+                         'clarity': None, 'risk_control': None},
+                     'editing_minutes_measured': None, 'review_notes': None})
+    # Outputs filled from exact artifacts by caller-side preparation, never synthesized.
+    return {'status': 'not_run', 'independent_raters_required': 2,
+            'scale': '1=unusable; 2=major edits; 3=usable with edits; 4=minor edits; 5=ready as draft',
+            'rows': rows}, mapping
+
+
+def verify_study(root):
+    root = Path(root).resolve()
+    report = json.loads((root / 'manifest.json').read_text())
+    errors = []
+    expected = (root / 'manifest.sha256').read_text().strip()
+    if digest_bytes((root / 'manifest.json').read_bytes()) != expected:
+        errors.append('manifest digest mismatch')
+    for relative, digest in report['artifact_digests'].items():
+        path = (root / relative).resolve()
+        if not path.is_relative_to(root) or not path.is_file() or digest_bytes(path.read_bytes()) != digest:
+            errors.append(f'artifact digest mismatch: {relative}')
+    if report['summary'] != summarize(report['runs']):
+        errors.append('summary/count mismatch')
+    dataset = json.loads((root / 'dataset.json').read_text())
+    validate_dataset(dataset)
+    if digest_json(dataset) != report['dataset_digest']:
+        errors.append('canonical dataset digest mismatch')
+    if digest_bytes((root / 'reference-packet.txt').read_bytes()) != report['reference_packet_digest']:
+        errors.append('reference packet digest mismatch')
+    expected_schedule = make_schedule(dataset, report['config']['seed'])
+    if report['schedule'] != expected_schedule or len(report['runs']) != len(expected_schedule):
+        errors.append('paired schedule/count mismatch')
+    tasks = {t['task_id']: t for t in dataset['tasks']}
+    for run, step in zip(report['runs'], expected_schedule):
+        if any(run.get(k) != v for k, v in step.items()):
+            errors.append(f"paired order mismatch: {run['run_id']}")
+        if run['task_digest'] != digest_json(tasks[step['task_id']]):
+            errors.append(f"task digest mismatch: {run['run_id']}")
+        if run['status'] == 'completed':
+            log = (root / (run.get('log_path') or '')).resolve()
+            output = (root / (run.get('output_path') or '')).resolve()
+            events = parse_events(log.read_text()) if log.is_relative_to(root) and log.is_file() else None
+            if (run.get('exit_code') != 0 or run.get('failure_reason')
+                    or run.get('tool_calls') != 0 or not events
+                    or not events['turn_completed'] or events['errors'] or events['tool_calls']
+                    or not output.is_relative_to(root) or not output.is_file()
+                    or not output.stat().st_size):
+                errors.append(f"completed run contradicts execution evidence: {run['run_id']}")
+        for kind in ('prompt', 'output'):
+            path = run.get(kind + '_path')
+            if path and run[kind + '_digest'] != report['artifact_digests'].get(path):
+                errors.append(f"{kind} lock mismatch: {run['run_id']}")
+    return errors
+
+
+def main(argv=None):
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    sub = parser.add_subparsers(dest='action', required=True)
+    run = sub.add_parser('run', help='Dry plan by default; --execute performs provider calls')
+    run.add_argument('--dataset', type=Path, required=True)
+    run.add_argument('--packet', type=Path, required=True)
+    run.add_argument('--output', type=Path, required=True)
+    run.add_argument('--scratch-root', type=Path, required=True)
+    run.add_argument('--execute', action='store_true')
+    run.add_argument('--codex-binary', default='codex')
+    run.add_argument('--provider-command-json', help='Opt-in external argv; no shell; Codex JSONL contract')
+    run.add_argument('--model', default='gpt-6-astra')
+    run.add_argument('--seed', type=int, default=17)
+    run.add_argument('--max-calls', type=int, default=6)
+    run.add_argument('--timeout-seconds', type=float, default=120)
+    run.add_argument('--total-timeout-seconds', type=float, default=720)
+    verify = sub.add_parser('verify')
+    verify.add_argument('directory', type=Path)
+    args = parser.parse_args(argv)
+    if args.action == 'verify':
+        errors = verify_study(args.directory)
+        print(json.dumps({'verified': not errors, 'errors': errors}))
+        return 1 if errors else 0
+    provider_argv = json.loads(args.provider_command_json) if args.provider_command_json else codex_argv(
+        args.codex_binary, args.model)
+    metadata = {}
+    if not args.provider_command_json:
+        version = subprocess.run([args.codex_binary, '--version'], capture_output=True, text=True, timeout=15)
+        metadata['cli_version'] = sanitize(version.stdout.strip() or version.stderr.strip())
+        metadata['cli_version_exit_code'] = version.returncode
+        binary = Path(args.codex_binary)
+        if binary.is_file():
+            metadata['launcher_sha256'] = digest_bytes(binary.read_bytes())
+    report = run_study(json.loads(args.dataset.read_text()), args.packet.read_text(), args.output,
+                       args.scratch_root, execute=args.execute, provider_argv=provider_argv,
+                       provider_label='external_codex_jsonl' if args.provider_command_json else 'codex_openai',
+                       model=args.model, seed=args.seed, max_calls=args.max_calls,
+                       timeout_seconds=args.timeout_seconds,
+                       total_timeout_seconds=args.total_timeout_seconds, runtime_metadata=metadata)
+    print(json.dumps(report['summary'], indent=2))
+    incomplete = report['summary']['completed_calls'] != report['summary']['planned_calls']
+    return 1 if args.execute and incomplete else 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

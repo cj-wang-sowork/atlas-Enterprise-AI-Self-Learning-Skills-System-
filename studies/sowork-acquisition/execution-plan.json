@@ -1,0 +1,52 @@
+{
+  "status": "dry_plan_no_calls",
+  "config": {
+    "code_source_head": "9f73ac8669c7223de0fc1f49c95eddb54b0c26e9",
+    "runner_sha256": "30a93fe4c5b041278d99252242b802a135249a909695e9eab7f0d80fc2f9d261",
+    "model_requested": "gpt-6-astra",
+    "reasoning_effort": "low",
+    "provider": "openai via existing authorized Codex CLI",
+    "cli_version": "codex-cli 0.163.0",
+    "cli_sha256": "61b0194f3bb6534439c8d26a3ed57d0805f84b884588b761795323eeb92fcf70",
+    "protocol_sha256": "5a8cfbf16260af59de12c01820c1eca0b060cad3c5799171a7520d90aeebd7af",
+    "source_pool_sha256": "f4fb9ee52a1dbe8c4887718cd2ac2fb7b9edc6dc90dd00db414d62cbba2f3a44",
+    "operating_packet_sha256": "2830e5de1cb284e4c648bc1ddec980b3997960fce97d279aab11ccb6a34e95b4",
+    "paired_transport_sha256": "bcf607b9aad350eb0c1222d4a6e9da94aafe296148a362ee0adc2bdbc96bb133",
+    "prompt_sha256": {
+      "run-01": "3f2a1007bf8c6f6dd974285d28db8b398e81b471d9d0992c0eefee70c6320585",
+      "run-02": "18a4f5d1dfbd0719d0e3fff8af11c611dbe9624be971e8ba225224fe0a9dfc3f",
+      "run-03": "52e05a9d9083d0bbbb62ac547e93cced0551f5ca8a25dba35c2009cd553b828b",
+      "run-04": "03197fab0661be7f8d79a78b8bd66cc1368399bad18a4b7ae28f8ac30f42e8c4"
+    },
+    "model_build_observed": null,
+    "dollar_cost": null,
+    "task_call_cap": 4,
+    "preflight_call_cap": 1,
+    "order": [
+      {
+        "id": "run-01",
+        "arm": "A",
+        "task": "first_response"
+      },
+      {
+        "id": "run-02",
+        "arm": "B",
+        "task": "first_response"
+      },
+      {
+        "id": "run-03",
+        "arm": "B",
+        "task": "acquisition_20"
+      },
+      {
+        "id": "run-04",
+        "arm": "A",
+        "task": "acquisition_20"
+      }
+    ],
+    "platform_boundary": "Codex prompt-behavior proxy, NOT actual ChatGPT UI",
+    "approved_learning_cycles": 0,
+    "C_status": "blocked_not_run",
+    "human_ratings": null
+  }
+}

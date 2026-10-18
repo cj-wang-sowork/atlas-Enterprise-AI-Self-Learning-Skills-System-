@@ -1,0 +1,47 @@
+{
+  "python": "3.12.12",
+  "platform": "darwin",
+  "dependencies": {
+    "PyJWT": "2.15.1",
+    "cryptography": "50.0.2",
+    "cffi": "2.0.0",
+    "pycparser": "2.23",
+    "typing_extensions": "4.16.0"
+  },
+  "tests": 119,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "passed": true,
+  "raw_local_test_log_sha256": "386e82cce72f9dcfd42fb615e940f1be37320567d782a418ab75164f8a611026",
+  "historical_prior_core_tests": 103,
+  "spec_review_checkpoint_tests": 116,
+  "initial_quality_checkpoint_tests": 118,
+  "portability_fix_entrypoints": [
+    {
+      "entrypoint": [
+        "declared_executable"
+      ],
+      "exit_code": 0,
+      "assets": 8,
+      "all_bytes_equal": true
+    },
+    {
+      "entrypoint": [
+        "sh"
+      ],
+      "exit_code": 0,
+      "assets": 8,
+      "all_bytes_equal": true
+    },
+    {
+      "entrypoint": [
+        "/bin/dash"
+      ],
+      "exit_code": 0,
+      "assets": 8,
+      "all_bytes_equal": true
+    }
+  ],
+  "test_scope": "Core plus first-value contracts, declared POSIX entry/exporter isolation and frozen study integrity; not UI or human outcome acceptance."
+}

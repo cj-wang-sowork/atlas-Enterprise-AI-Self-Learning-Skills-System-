@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "wall_seconds": 5.677365084,
+  "timed_out": false,
+  "output_limited": false,
+  "transcript": "{\"type\":\"thread.started\",\"thread_id\":\"01a14882-1a64-7252-addd-6df3ad7f8680\"}\n{\"type\":\"turn.started\"}\n{\"type\":\"item.completed\",\"item\":{\"id\":\"item_0\",\"type\":\"agent_message\",\"text\":\"ATLAS_PILOT_SMOKE_OK\"}}\n{\"type\":\"turn.completed\",\"usage\":{\"input_tokens\":16280,\"cached_input_tokens\":12288,\"cache_write_input_tokens\":0,\"output_tokens\":12,\"reasoning_output_tokens\":0}}\n"
+}

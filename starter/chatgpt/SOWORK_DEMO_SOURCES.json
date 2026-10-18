@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "scope": "First-work demonstration from actual public sources, not a model-trial output or verified sales opportunity",
+  "snapshot_date": "2026-10-17",
+  "service_context_source": "https://sowork.ai/",
+  "service_context": "市場研究、品牌定位、內容經營系統、定期情報與AI工作流；官網服務範圍已由瀏覽器核對，未採用效益數字。",
+  "approved_business_lessons": [],
+  "candidate_count": 3,
+  "candidates": [
+    {
+      "id": "qnap",
+      "company": "QNAP",
+      "official_domain": "qnap.com",
+      "signal_date": "2026-09-21",
+      "signal_url": "https://www.qnap.com/en-us/news/2026/qnap-launches-hdp-for-business-beta-transforms-nas-into-a-zero-trust-ransomware-resilient-backup-center",
+      "signal_summary": "公布 HDP for Business Beta 企業備份方案。",
+      "source_access": "first_party_accessible_live_html",
+      "country_basis_url": "https://www.qnap.com/en-us/contact-us",
+      "country_basis": "官方聯絡頁明載台灣總部；已讀取原頁。",
+      "headquarters_evidence": "first_party_accessible",
+      "public_contact_url": "https://www.qnap.com/en-us/contact-us",
+      "need_hypothesis": "可驗證企業備份情境、買方教育與產品差異化訊息是否有內容需求；不是已確認委案。",
+      "outreach_draft": "看到貴司公布 HDP for Business Beta。若正在整理企業買方教育內容，SoWork 可用公開素材先做一頁備份情境與訊息盤點，協助檢視產品差異是否清楚。",
+      "snapshot_sha256": "acae4ce19699ed9ab1d64685914713b706cdd1e2121a30b9d33feb8219c75166",
+      "verified_at_utc": "2026-10-17T08:29:01.386799+00:00",
+      "status": "research_candidate_not_contacted",
+      "unknowns": [
+        "是否需要外部供應商",
+        "預算",
+        "決策窗口",
+        "是否已是既有商務關係"
+      ],
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "id": "aver_information",
+      "company": "AVer Information",
+      "official_domain": "aver.com",
+      "signal_date": "2026-08-11",
+      "signal_url": "https://www.aver.com/press-release/tr322-launch",
+      "signal_summary": "發表 TR322 雙鏡頭自動追蹤攝影機，面向企業及教育等場景。",
+      "source_access": "first_party_accessible_live_html",
+      "country_basis_url": "https://www.aver.com/page/about-us",
+      "country_basis": "官方頁索引明載總部位於台灣新北市；直接讀取公司頁受阻，未當成已取得原頁。",
+      "headquarters_evidence": "official_snippet_only",
+      "public_contact_url": null,
+      "need_hypothesis": "可驗證跨產業使用案例、比較內容與產品定位訊息需求；不是已確認委案。",
+      "outreach_draft": "看到 TR322 發表。針對企業與教育的不同買方，SoWork 可先用公開資訊做一頁使用情境與訊息差異盤點，討論是否值得延伸成案例內容。",
+      "snapshot_sha256": "0520d04b623af00fee1c6b0d619c417294e969184798ec7ac8495c6cbebf6caf",
+      "verified_at_utc": "2026-10-17T08:29:01.386799+00:00",
+      "status": "research_candidate_not_contacted",
+      "unknowns": [
+        "是否需要外部供應商",
+        "預算",
+        "決策窗口",
+        "是否已是既有商務關係"
+      ],
+      "outreach_status": "draft_not_sent"
+    },
+    {
+      "id": "asustor",
+      "company": "ASUSTOR 華芸科技",
+      "official_domain": "asustor.com",
+      "signal_date": "2026-03-03",
+      "signal_url": "https://www.asustor.com/zh-tw/news/news_detail?id=35832",
+      "signal_summary": "繁中新聞稿宣布 24 槽 AS7224RDX（Lockerstor 24R Pro Gen2）上市。",
+      "source_access": "first_party_accessible_live_browser",
+      "country_basis_url": "https://www.asustor.com/zh-tw/about/contact_us",
+      "country_basis": "官方聯絡頁的台北公司地址已由瀏覽器讀取；未把單一辦公室地址當成獨立總部證明。",
+      "headquarters_evidence": "office_verified_hq_not_independently_confirmed",
+      "public_contact_url": "https://www.asustor.com/zh-tw/about/contact_us",
+      "need_hypothesis": "可驗證企業儲存情境、經銷商內容與技術賣點轉譯需求；不是已確認委案。",
+      "outreach_draft": "看到 AS7224RDX 上市資訊。若需讓企業買方更快理解機架式儲存情境，SoWork 可先用公開資料做一頁訊息盤點，協助檢視技術賣點與使用場景的連結。",
+      "snapshot_sha256": "a3d8cb9e98636ac1ff787578e695d1f732367ba92af4b74fbd449b40e2557177",
+      "locale_note": "採繁中頁實際日期2026-03-03；英文索引顯示不同地區日期，不混用。",
+      "verified_at_utc": "2026-10-17T08:29:01.386799+00:00",
+      "status": "research_candidate_not_contacted",
+      "unknowns": [
+        "是否需要外部供應商",
+        "預算",
+        "決策窗口",
+        "是否已是既有商務關係"
+      ],
+      "outreach_status": "draft_not_sent"
+    }
+  ]
+}

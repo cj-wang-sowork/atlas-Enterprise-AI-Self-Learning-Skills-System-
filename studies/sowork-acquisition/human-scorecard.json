@@ -1,0 +1,30 @@
+{
+  "status": "not_rated",
+  "independent_raters": 0,
+  "rows": [
+    {
+      "arm": "A",
+      "task": "acquisition_20",
+      "factual_accuracy": null,
+      "icp_fit": null,
+      "signal_support": null,
+      "outreach_quality": null,
+      "measured_human_editing_minutes": null
+    },
+    {
+      "arm": "B",
+      "task": "acquisition_20",
+      "factual_accuracy": null,
+      "icp_fit": null,
+      "signal_support": null,
+      "outreach_quality": null,
+      "measured_human_editing_minutes": null
+    }
+  ],
+  "blinding": "Not guaranteed; allocation and reports are public. Use a new private allocation before any independent future study.",
+  "C": {
+    "status": "blocked_not_run",
+    "completed_reviewed_cycles": 0,
+    "scores": null
+  }
+}

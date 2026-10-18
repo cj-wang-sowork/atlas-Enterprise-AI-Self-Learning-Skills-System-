@@ -1,0 +1,133 @@
+{
+  "generated_at_utc": "2026-10-17T07:09:52.897838+00:00",
+  "baseline_main": "8cb5eed2dfa1b8eba2eacc7abdc86a12d4c7535a",
+  "candidate_code_commit": "0cfd3757a8662cd8a10831be76288b5a2a0dc6d5",
+  "working_tree_note": "Runtime code/tests match candidate commit. Only CI/report/documentation edits were uncommitted during this execution.",
+  "suite": {
+    "test_methods": 103,
+    "methods_by_module": {
+      "test_access_control": 13,
+      "test_benchmark": 1,
+      "test_identity_integration": 12,
+      "test_installer": 17,
+      "test_learning": 22,
+      "test_paired_evaluation": 18,
+      "test_security": 10,
+      "test_usability": 10
+    },
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "python": "3.12.12",
+    "platform": "macOS-26.3-arm64-arm-64bit",
+    "dependencies": {
+      "PyJWT": "2.15.1",
+      "cryptography": "50.0.2",
+      "cffi": "2.0.0",
+      "pycparser": "2.23",
+      "typing_extensions": "4.16.0"
+    },
+    "dependencies_loaded_from_isolated_venv": true
+  },
+  "identity_e2e": {
+    "approval": {
+      "digest": "7613f3df3220e9ce4266a2be19a267451ff353dc5eac90db7a9e1f7d2e7c4ea5",
+      "reviewer": "fixture-reviewer",
+      "revision": 1,
+      "skill_id": "fixture-skill"
+    },
+    "checks": {
+      "claimed_reviewer_denied": true,
+      "foreign_brand_denied": true,
+      "foreign_tenant_denied": true,
+      "forged_signature_denied": true,
+      "nonce_replay_denied": true,
+      "old_session_denied": true,
+      "pending_not_reusable": true,
+      "removed_membership_denied": true,
+      "revoked_skill_denied": true,
+      "unauthorized_user_denied": true,
+      "unsafe_numeric_denied": true,
+      "wrong_nonce_denied": true
+    },
+    "dependencies": {
+      "PyJWT": "2.15.1",
+      "cryptography": "50.0.2"
+    },
+    "external_idp_configured": false,
+    "fixture_only": true,
+    "passed": true,
+    "process_restart": {
+      "first_exit_code": 0,
+      "first_pid": 35716,
+      "fresh_login_required": true,
+      "second_exit_code": 0,
+      "second_pid": 35718,
+      "verified": true
+    },
+    "resource_owner": "team-library",
+    "reuse": {
+      "actor": "fixture-consumer",
+      "at": "2026-10-17T07:09:52.794769+00:00",
+      "digest": "7613f3df3220e9ce4266a2be19a267451ff353dc5eac90db7a9e1f7d2e7c4ea5",
+      "revision": 1,
+      "skill_id": "fixture-skill",
+      "task_id": "fixture-reuse"
+    },
+    "trust_mode": "pinned-rsa-public-key"
+  },
+  "paired_artifact_verification": {
+    "verified": true,
+    "errors": []
+  },
+  "paired_pilot": {
+    "calls": 6,
+    "total_model_invocations_including_smokes": 8,
+    "requested_model": "gpt-6-astra",
+    "summaries": {
+      "baseline": {
+        "runs": 3,
+        "completed": 3,
+        "aggregate_wall_seconds": 27.357,
+        "all_narrow_gates_passed": 2
+      },
+      "atlas_reference": {
+        "runs": 3,
+        "completed": 3,
+        "aggregate_wall_seconds": 30.674,
+        "all_narrow_gates_passed": 3
+      }
+    },
+    "human_evaluation": {
+      "raters": 0,
+      "status": "not_run"
+    },
+    "dollar_cost": null,
+    "claim": "No business-quality benefit established; the baseline lexical gate flag is a false positive and reference arm was slower."
+  },
+  "human_usability": {
+    "status": "not_run",
+    "eligible_humans_started": 0,
+    "success_rate": null,
+    "median_success_seconds": null,
+    "agent_qa_excluded": true
+  },
+  "not_verified": [
+    "Live external IdP and full browser OAuth/PKCE/state/session deployment",
+    "Real non-engineer ChatGPT onboarding trial",
+    "Independent human quality ratings and representative customer/business improvement",
+    "Live workspace installation/discovery in ChatGPT/Claude/Codex",
+    "Hosted CI for this exact head at report generation"
+  ],
+  "environment_note": "This final run clears inherited PYTHONPATH/PYTHONHOME/user-site settings and asserts pinned module versions/venv import origins. An earlier Hermes subprocess preflight inherited other package metadata and is not used as pinned-dependency acceptance evidence.",
+  "source_module_sha256": {
+    "evaluation/paired.py": "bcf607b9aad350eb0c1222d4a6e9da94aafe296148a362ee0adc2bdbc96bb133",
+    "evaluation/usability.py": "37d907096de82a598bcf3a5852b5992064f420faa590d802da2ee9250617f0b8",
+    "integrations/trusted_identity.py": "039e5134538c4b100ef26452dd710c01f334b451a5f1693d163bbc1d55fc3711"
+  },
+  "paired_runner_review_regressions": {
+    "new_local_subprocess_test_methods": 9,
+    "original_six_trial_artifacts_unchanged": true,
+    "additional_provider_calls": 0
+  }
+}

@@ -1,0 +1,7 @@
+# Optional only: verified together on CPython 3.9.6, macOS arm64.
+# Core ATLAS modules remain standard-library-only.
+PyJWT[crypto]==2.15.1
+cryptography==50.0.2
+cffi==2.0.0
+pycparser==2.23
+typing_extensions==4.16.0

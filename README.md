@@ -13,6 +13,19 @@ The same repository can be installed for:
 | Hermes Agent | Installs a `SKILL.md` pack under `$HERMES_HOME/skills` (default `~/.hermes/skills`) |
 | ChatGPT | **Manual Starter Kit** for Project instructions and sanitized context; no local/backend execution |
 
+## Try the first job before installing
+
+For the shortest SoWork demonstration, copy the single card in
+[TRY_SOWORK_NOW.md](starter/chatgpt/TRY_SOWORK_NOW.md). It supplies three checked
+public-source snapshots and asks for actual first work plus QA, not five rounds
+of role/KPI setup. This is chat-local prompt context, **not** a backend connection,
+automatic learning, guaranteed cross-chat retrieval or proven product uplift.
+The [generic first-win card](starter/chatgpt/FIRST_WIN.md) works for other tasks;
+Project setup and manual rule retention come after evaluating the first output.
+See the [real SoWork A/B prompt-proxy report](studies/sowork-acquisition/REPORT.md)
+for original outputs and the 20-company comparison sheet. It is not a ChatGPT UI
+test or proof of better sales outcomes; C remains blocked pending real reviews.
+
 ## What You Get
 
 - A clear agent boot sequence in `AGENTS.md`
@@ -25,11 +38,32 @@ The same repository can be installed for:
 
 ## Verified implementation and boundaries
 
-The current regression evidence is in [VERIFICATION.md](docs/VERIFICATION.md), including
+The earlier core-hardening regression evidence is in [VERIFICATION.md](docs/VERIFICATION.md), including
 collected tests, the pinned detector-fixture comparison, and explicit unverified
 production, live-runtime, usability, and business-benefit criteria. See
 [ACCESS_CONTROL.md](docs/ACCESS_CONTROL.md) for the intentional scoped-API migration and
 [LEARNING_LIFECYCLE.md](docs/LEARNING_LIFECYCLE.md) for reviewed versioned reuse.
+
+## Authenticated E2E and measured evaluation milestone
+
+Use a **full source checkout** for these optional integration/research tools; installing
+workspace prompt files does not wire them into a live agent runtime.
+
+- [Trusted identity example](docs/IDENTITY_INTEGRATION.md): pinned RS256 verification,
+  server-owned grants, role checks and genuine subprocess restart/cross-user reuse.
+  The issuer, users and human approvals in acceptance fixtures are synthetic; no
+  production external IdP or browser OAuth flow has been connected.
+- [Controlled paired pilot](studies/paired-pilot/REPORT.md): six actual model task
+  calls on three explicitly fictional marketing briefs, same model/data per pair.
+  It does **not** establish business-quality improvement; the apparent lexical gate
+  advantage contains a false positive, and the reference arm was slower in this pilot.
+- [Non-engineer ChatGPT study](docs/CHATGPT_USABILITY_STUDY.md): participant/observer
+  protocol and durable recorder. No real participant has completed this study;
+  human success/time metrics remain unmeasured, not replaced by agent QA.
+
+See [E2E acceptance](docs/E2E_ACCEPTANCE.md) for executable evidence and outstanding
+human/customer/live-IdP gates. The core library remains standard-library-only;
+optional signature verification installs `integrations/requirements-oidc.txt`.
 
 ## Quick Install
 

@@ -1,0 +1,6 @@
+# Frozen trial inputs/logs/answers must retain their exact byte hashes on checkout.
+studies/sowork-acquisition/** -text
+# Provider Markdown hard-break spaces are original evidence, not lintable source.
+studies/sowork-acquisition/run-20261017/outputs/*.txt -whitespace
+# Preserve UTF-8 BOM and derived CSV record boundaries across platforms.
+outputs/sowork-acquisition-20-comparison.csv -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

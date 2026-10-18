@@ -1,0 +1,259 @@
+{
+  "candidate_count": 20,
+  "source_access_counts": {
+    "first_party_accessible": 16,
+    "first_party_body_tls_unverified": 2,
+    "official_snippet_only": 2
+  },
+  "tls_status_counts": {
+    "verified": 13,
+    "disabled_after_certificate_failure": 2,
+    "live_browser_not_separately_audited": 1,
+    "verified_live_html": 2,
+    "not_observed_official_snippet_only": 2
+  },
+  "verified_evidence_references": 34,
+  "source_pool_sha256": "f4fb9ee52a1dbe8c4887718cd2ac2fb7b9edc6dc90dd00db414d62cbba2f3a44",
+  "evidence_checks": [
+    {
+      "file": "asus-signal.txt",
+      "sha256": "ad8f1c2a22fbe37311f8a6f8d7361b64f846d2a44d731805b60dfaa826a0eaf8",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "asus-hq.txt",
+      "sha256": "20b854ddc60036fd3e2334e2a2b3d3f5b331a56920e0457683be9667b58bf9e3",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "acer-signal.txt",
+      "sha256": "0eb9604a220f181144f909d3bf4a9f83d4e01afa7e18b4f2f53e91338df05660",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "acer-hq.txt",
+      "sha256": "3286ef6db397732291d38d5ed949f80cf82adfed8dd797f34792421fb9ee6257",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "msi-signal.txt",
+      "sha256": "8d40e2bbb74610c48635563f2e7b6b4b4c314cf4877da1e081b8f0b640bd7b9a",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "msi-hq.txt",
+      "sha256": "94f0dad6b8cb683c652f25e3f03986917fe956215d7f1af4866db623ecd33811",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "gigabyte-signal.txt",
+      "sha256": "bfd6bdae19cfcdab6ad139f6081f55a40f0b46ac65baade9b530f1362cc469b8",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "gigabyte-hq.txt",
+      "sha256": "8bb5a689457b695814b86bfb5f58fe1ac0ac7a2dea7097939bd5872ea852cabf",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "asrock-signal.txt",
+      "sha256": "9281735415f50bf982535f5b1da808867dba24da895c7a3453b53b165e78865e",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "asrock-hq.txt",
+      "sha256": "c10c9454e95469eb59616e44b643b8a11fbaa739fd66cd76e1e122e877a94cc5",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "advantech-signal.txt",
+      "sha256": "5db59b7219774589bea3a6d839d120078f06d27f04bc9b629fa72c2d495334a0",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "advantech-hq.txt",
+      "sha256": "503ffbe1c69ff692206cf5e751a5798f7d08238a45c3847c7f50520e56b7de99",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "aaeon-signal.txt",
+      "sha256": "25d5a02fb8b305b886eeb0ac973ccd2b1dd3543fdbd0879dab96620e7b7fb241",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "aaeon-hq.txt",
+      "sha256": "c445ea84456a98c0973ecf311f31c8fc1b82e35ead2c050c69008518e51c4c74",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "dfi-signal.txt",
+      "sha256": "4bf2e76fd033949df134a5dcb72210f5ac005cb02f554fc0d7ee1ba0097404d7",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "dfi-hq.txt",
+      "sha256": "b586e0b78651427f4491241e9bfe0b217297c757e2fad4b117a3d7f345500a38",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "innodisk-signal.txt",
+      "sha256": "f95575cbd8545106449093e34fc9c2eedba1dab23705eee66e9caf759185a590",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "innodisk-hq.txt",
+      "sha256": "e666a9d9e01a4f0778dd9c51ee8ff2a42f105c2fb1e477be4ef83d6e988f5904",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "transcend-signal.txt",
+      "sha256": "4a2e48d88bb032cadbf7490c7d31ff161bd66b9c74b2e6b5169c5d03a2a11ef7",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "transcend-hq.txt",
+      "sha256": "53c83c61298747579856d90cb5c2fda4b133362aaadb9a0b48f88b6039641044",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "avermedia_signal.json",
+      "sha256": "c510dc7578ebd60653130888135c24e2d6b722259f4ba3e9fadf8f316d5b831a",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "avermedia_hq.json",
+      "sha256": "d7a85e0fa918b4367e4b9f932d49af3913f2b04dd44f9b72b76e12d383ebce09",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "cyberlink_signal.json",
+      "sha256": "3a0f9ebbe30088a8bbb1e90d4d8986ec8ab62da45eb147d3d4a538f5093c191c",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "cyberlink_contact.json",
+      "sha256": "dd2a56704ad4baef99dfab6c715c3dae1649f4a5536f42da08fbc29f4226fdc9",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "teamgroup_signal.json",
+      "sha256": "a0265883729bbcbc0fa9b445bf515c2ff226f3cd7e66be6db2598eefc54a292e",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "teamgroup_hq.json",
+      "sha256": "756b1dcafcc3899208a855fe659a515498e0af9dad2eb53b4230bc178d5ce36d",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "adata_signal.json",
+      "sha256": "03e048ceeeff501699c6cfd96344be174963bfac3619026b41e16b958edafa7b",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "adata_hq_official_search_snippet.json",
+      "sha256": "d9af5e829ad0aadef57efcd77657800dbce884aa65fbc63558db04b25cb5e76f",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "benq_signal.json",
+      "sha256": "c129a07e0f66ea8e836eead14644ad91ca608f55ab8e1a66559974f0197972d3",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "benq_hq.json",
+      "sha256": "43105ebe5400a344584167f3c4e57b45c73ba058245321f99d99b54e2add1ea9",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "eink_signal.json",
+      "sha256": "52370da51303e405be647dd950b6ae6c26bf448eb89c31452d8b8a33ceadfa24",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "eink_hq.json",
+      "sha256": "a23180f6abc1ff269347d355efc9ab1c5544f9047a6114d14d83231c43f2cccc",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "auo_signal.json",
+      "sha256": "0915f210fedae54bea2433ea59c3829029bba3b7fe6365d384ec50f646826a16",
+      "match_kind": [
+        "file_bytes"
+      ]
+    },
+    {
+      "file": "auo_hq.json",
+      "sha256": "dd3a7d8ab1b1f6da70a5564a8c94bd6bccaf212abb85979560b125bb93926bfe",
+      "match_kind": [
+        "file_bytes"
+      ]
+    }
+  ],
+  "no_contact_sent": true,
+  "unqualified_buying_intent_preserved": true
+}

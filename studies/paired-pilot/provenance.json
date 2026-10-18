@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "repository_baseline_revision": "8cb5eed2dfa1b8eba2eacc7abdc86a12d4c7535a",
+  "harness_at_execution": {
+    "path": "runner-at-execution.py.txt",
+    "sha256": "5792412435f958e8970f350ac7076b88b027302cb71aa46530da5073775996fd",
+    "revision_note": "New uncommitted harness at execution; exact source snapshot preserved before post-pilot edits."
+  },
+  "reference_source": {
+    "path": "skills/brand-positioning.md",
+    "revision": "8cb5eed2dfa1b8eba2eacc7abdc86a12d4c7535a",
+    "sha256": "271413d56bf96e96af39df0acc3177f2e500e7ae520f8c608e14ebd50f8f69f3",
+    "approval_note": "Checked-in reference workflow only; not an authenticated reviewer approval of a learned revision or brand guideline."
+  },
+  "fixture_sha256": "8c9a0aa690ebd59e75fa3380ef182f990c89aab5d7afe9e56fb3c3533f4a306f",
+  "dataset_canonical_sha256": "efaf7037a453606a12158b10e367bfb667f4287ade445803ef5f535653e3f7b0",
+  "isolated_cli": {
+    "package": "@openai/codex",
+    "version": "0.163.0",
+    "registry_verified_via": "npm view @openai/codex version dist.integrity --json",
+    "dist_integrity": "sha512-HNd7vR9oTK6M2ikxFnvNDCdYUgAsyo9VVnd5KnEd2ON0GYI++7MiX9XNPUkhtdgGKFPsWS+CEppQ1UU63uVhUw==",
+    "install_scope": "scratch-only npm exec cache; no global upgrade; existing authorized auth reused"
+  },
+  "model_call_ledger": [
+    {
+      "kind": "smoke",
+      "cli_version": "0.133.0",
+      "requested_model": "gpt-6-astra",
+      "reasoning_effort": "low",
+      "status": "failed",
+      "failure": "Requested model requires a newer Codex CLI",
+      "wall_seconds": null,
+      "usage": null,
+      "evidence": "smoke-initial-codex-0.133.0.log"
+    },
+    {
+      "kind": "smoke",
+      "cli_version": "0.163.0",
+      "requested_model": "gpt-6-astra",
+      "reasoning_effort": "low",
+      "status": "completed",
+      "wall_seconds": 5.677365084,
+      "evidence": "smoke-isolated-codex-0.163.0.json"
+    },
+    {
+      "kind": "paired_task",
+      "run_id": "run-01",
+      "status": "completed",
+      "evidence": "run-20261017/logs/run-01.jsonl"
+    },
+    {
+      "kind": "paired_task",
+      "run_id": "run-02",
+      "status": "completed",
+      "evidence": "run-20261017/logs/run-02.jsonl"
+    },
+    {
+      "kind": "paired_task",
+      "run_id": "run-03",
+      "status": "completed",
+      "evidence": "run-20261017/logs/run-03.jsonl"
+    },
+    {
+      "kind": "paired_task",
+      "run_id": "run-04",
+      "status": "completed",
+      "evidence": "run-20261017/logs/run-04.jsonl"
+    },
+    {
+      "kind": "paired_task",
+      "run_id": "run-05",
+      "status": "completed",
+      "evidence": "run-20261017/logs/run-05.jsonl"
+    },
+    {
+      "kind": "paired_task",
+      "run_id": "run-06",
+      "status": "completed",
+      "evidence": "run-20261017/logs/run-06.jsonl"
+    }
+  ],
+  "actual_cli_model_invocations": 8,
+  "paired_task_calls": 6,
+  "smoke_calls": 2,
+  "human_participant_status": "not_selected",
+  "human_ratings": "not_run",
+  "notes": [
+    "Initial smoke wall time not measured by the harness and is unknown.",
+    "Internal failure notifications are not human participant responses.",
+    "Model requested explicitly; backend model version was not returned by JSONL and remains unknown.",
+    "No task executions were retried; no model outputs were invented or substituted."
+  ]
+}

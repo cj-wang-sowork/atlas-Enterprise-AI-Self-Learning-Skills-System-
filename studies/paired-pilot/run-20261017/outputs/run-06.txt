@@ -1,0 +1,32 @@
+{
+  "task_id": "sprout-crate",
+  "status": "draft",
+  "positioning": "Sprout Pantry’s $42 pantry starter kit offers Austin apartment residents a Thursday pickup option.",
+  "headlines": [
+    "Meet Your $42 Pantry Starter Kit",
+    "Rice, Lentils and Oats: Thursday Pickup",
+    "Bring Your Glass Jars Back Next Pickup"
+  ],
+  "cta": "See this week's kit.",
+  "claims": [
+    {
+      "text": "Sprout Pantry offers a $42 pantry starter kit in Austin containing rice, lentils and oats.",
+      "source_ids": ["P1"]
+    },
+    {
+      "text": "Kits are available for pickup on Thursdays from 5 pm to 7 pm.",
+      "source_ids": ["P2"]
+    },
+    {
+      "text": "The kit uses returnable glass jars; customers can bring the jars back at a later pickup.",
+      "source_ids": ["P3"]
+    }
+  ],
+  "gaps": [
+    "No human-approved brand guideline or draft approval is supplied; this remains proposed copy.",
+    "No authenticated application scope is supplied; authentication and approval steps were not performed.",
+    "The fictional source records are the sole evidence; no independent verification or performance results are supplied.",
+    "Pickup address, kit quantities and this week's availability are not supplied.",
+    "No competitor evidence is supplied to support comparative differentiation."
+  ]
+}

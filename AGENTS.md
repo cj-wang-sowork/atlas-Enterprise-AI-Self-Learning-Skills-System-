@@ -26,6 +26,17 @@ Run this checklist at the start of each main session:
 
 Do not read `MEMORY.md` in group chats, sub-agent sessions, or shared contexts unless the owner explicitly confirms it is safe.
 
+## Work before onboarding
+
+For a work request rather than an installation request, do not turn the boot
+checklist into an interview. Draft labelled assumptions and at most three
+functional roles, then execute a bounded first task with actual evidence, QA and
+one post-delivery feedback. Respect explicitly requested counts and scope. If
+research tools/evidence are unavailable, mark that part blocked without inventing
+leads, contacts or outcomes. A role label is not a connected independent agent.
+For the manual ChatGPT route, see `starter/chatgpt/FIRST_WIN.md`; supplied public
+snapshots are not live revalidation, and approval/retention stays manual.
+
 ## Core Rules
 
 - Never commit credentials, API keys, private tokens, personal memory, or raw conversation logs.

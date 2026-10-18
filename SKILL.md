@@ -5,7 +5,7 @@ description: >
   Codex CLI, Qwen Code CLI, and Hermes Agent. Provides reusable brand, research, and content
   workflows plus a five-layer methodology for reviewed learning across
   enterprise, brand, department, team, and personal context.
-version: "1.3.0"
+version: "1.4.0"
 author: cj-wang-sowork
 license: MIT
 tags:
@@ -55,6 +55,17 @@ Activate this skill when the user asks to:
 - Create brand positioning, market research, or content outputs
 - Explain or apply the ATLAS five-layer learning methodology
 - Audit whether agent memory or learning files are safe to share
+
+## First useful work before setup
+
+If the request is a business task rather than an installation, do not open with
+an organizational/KPI interview. Use labelled draft assumptions, no more than
+three functional roles, actual bounded first work and source/uncertainty QA, then
+one feedback. Respect requested counts. Never replace missing research with
+invented companies or claim that prompt-only roles are real connected agents.
+ChatGPT's one-paste entry is `starter/chatgpt/FIRST_WIN.md`; the ready-source
+SoWork card is `starter/chatgpt/TRY_SOWORK_NOW.md`. Manual context is not backend
+learning. Real feedback plus evidence may create a Candidate, never an approval.
 
 ## Workflow
 

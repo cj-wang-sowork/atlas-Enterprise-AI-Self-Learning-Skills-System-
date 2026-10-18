@@ -1,0 +1,21 @@
+{
+  "generated_at_utc": "2026-10-17T06:33:56.342251+00:00",
+  "execution_kind": "agent_qa",
+  "scope": "Actual recorder CLI start/step/finish/reopen/report transport QA only; no live ChatGPT UI session or human participation.",
+  "study_code_sha256": "37d907096de82a598bcf3a5852b5992064f420faa590d802da2ee9250617f0b8",
+  "evidence_kind": "Actual recorder CLI --help stdout (not a ChatGPT output)",
+  "recorder_qa_session_finished": true,
+  "human_test_status": "not_run",
+  "report": {
+    "total_sessions": 1,
+    "eligible_humans_started": 0,
+    "completed_successfully": 0,
+    "completed_within_600_seconds": 0,
+    "success_rate": null,
+    "ten_minute_success_rate": null,
+    "median_success_seconds": null,
+    "unfinished_or_failed": 0,
+    "blocked_steps": {},
+    "note": "Observer declarations are not cryptographic human identity proof; agent QA is excluded."
+  }
+}
