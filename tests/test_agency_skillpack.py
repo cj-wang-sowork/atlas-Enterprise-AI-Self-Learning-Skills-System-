@@ -103,7 +103,7 @@ class AgencySkillPackTests(unittest.TestCase):
         for rule in (
             "Agency ADDED", "不是第七個上游技能", "五種角色不是六個新代理",
             "方法已內嵌", "來源連結只供溯源", "不會自動抓取 GitHub",
-            "人工維護", "CurrentVersions", "superseded", "跨對話", "DRAFT",
+            "人工維護", "TASK_BOARD", "superseded", "跨對話", "DRAFT",
             "不需正式品牌核准才能起草", "客戶提供不等於獨立查證", "只先問安全關鍵問題",
             "不會寫入 .agents/", "不會啟動後端", "不會更新模型權重",
         ):

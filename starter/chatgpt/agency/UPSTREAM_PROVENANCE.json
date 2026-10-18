@@ -419,8 +419,8 @@
   },
   "local_artifacts": {
     "SKILL_PACK.md": {
-      "bytes": 43038,
-      "sha256": "91eb8f9e0fa9af930d3f94a5c9d49bd3801e4395b75348b08ca53ba981ea7483"
+      "bytes": 43391,
+      "sha256": "cbc3981a01b477f833f15b52522f566873f161728b70c5e21243cf9344040623"
     },
     "UPSTREAM_LICENSE.txt": {
       "bytes": 1063,

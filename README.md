@@ -13,6 +13,51 @@ The same repository can be installed for:
 | Hermes Agent | Installs a `SKILL.md` pack under `$HERMES_HOME/skills` (default `~/.hermes/skills`) |
 | ChatGPT | **Manual Starter Kit** for Project instructions and sanitized context; no local/backend execution |
 
+## ATLAS for ChatGPT — Agency Edition v1.0
+
+**Build Your AI Marketing Team Inside ChatGPT.**
+下載 ATLAS，在 ChatGPT 建立你的 AI 行銷團隊，讓每個客戶都有一支專屬團隊。
+
+Start with the [Agency setup](starter/chatgpt/agency/AGENCY_SETUP.md), or download
+[the manual-workflow preview ZIP](https://github.com/cj-wang-sowork/atlas-Enterprise-AI-Self-Learning-Skills-System-/releases/download/agency-v1.0.0-preview.1/ATLAS-Agency-Edition-v1.0.zip): one client,
+one Project; paste Project instructions and upload five authoritative working
+files. The supplied instructions direct ChatGPT through five sequential professional
+work stages, requesting an editable seven-day social plan and seven complete copy
+drafts before optional setup interviews. Five roles are simulated by one ChatGPT workflow, not five
+deployed independent agents.
+
+- [Source-pinned Agency Skill Pack](starter/chatgpt/agency/SKILL_PACK.md): six
+  adapted Brand to Social OS workflows, retained MIT license and source hashes;
+  the original repository is unchanged. Required methods are included, not loaded
+  automatically from GitHub.
+- [Task board](starter/chatgpt/agency/TASK_BOARD.md), manual reviewer log and
+  initially empty approved-rule index: separate task conversations, shared
+  reviewed artifacts, exact-version decisions and human-maintained updates.
+- [Complete fictional first round](starter/chatgpt/agency/SAMPLE_WORK.md): five
+  filled draft artifacts and seven complete posts. Use only in a separate demo
+  Project, never as the actual client's facts. The upload playbook excludes demo
+  client data and example posts.
+- [Acceptance and limits](docs/AGENCY_EDITION_ACCEPTANCE.md): static/export tests
+  are not live ChatGPT setup, two-human collaboration or observed cross-chat
+  learning. Sharing/memory access is governed by the platform, not this kit's
+  manual review agreement. No automatic file write-back, scheduler, CRM,
+  email/social publishing or backend connection is installed.
+
+Maintainers can export the separate text-only kit without touching local agent
+workspaces:
+
+```sh
+./scripts/install-workspace.sh --target chatgpt-agency --dest /path/to/agency-kit
+```
+
+Open `AGENCY_SETUP.md` in the export. `PROJECT_INSTRUCTIONS.md` is pasted into
+Project settings; the five primary uploads are `CLIENT_BRIEF.md`,
+`AGENCY_PLAYBOOK.md`, `TASK_BOARD.md`, `CURRENT_RULES.md`, and `REVIEW_LOG.md`.
+Do not upload the three duplicate authoring references alongside the compiled
+playbook. `python scripts/build-agency-bundle.py --check` verifies generated
+uploads; explicit `--write` is a release-authoring action, not automatic learning.
+The original eight-file generic export remains `--target chatgpt`.
+
 ## Try the first job before installing
 
 For the shortest SoWork demonstration, copy the single card in

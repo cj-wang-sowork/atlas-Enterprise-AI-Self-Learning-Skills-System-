@@ -28,11 +28,13 @@ jobs:
       - name: Full acceptance suite (identity lane must not skip)
         env:
           PYTHONDONTWRITEBYTECODE: '1'
-        run: python -c 'import jwt, cryptography, unittest; s=unittest.defaultTestLoader.discover("tests"); r=unittest.TextTestRunner(verbosity=2).run(s); raise SystemExit(0 if r.wasSuccessful() and r.testsRun >= 119 and not r.skipped else 1)'
+        run: python -c 'import jwt, cryptography, unittest; s=unittest.defaultTestLoader.discover("tests"); r=unittest.TextTestRunner(verbosity=2).run(s); raise SystemExit(0 if r.wasSuccessful() and r.testsRun >= 141 and not r.skipped else 1)'
       - name: Authenticated subprocess restart acceptance (synthetic IdP)
         run: python examples/authenticated-team/demo.py --evidence "$RUNNER_TEMP/atlas-identity-evidence.json"
       - name: Verify frozen real-model pilot artifacts (no model calls)
         run: python -m evaluation.paired verify studies/paired-pilot/run-20261017
+      - name: Verify compiled Agency uploads and excluded demo data
+        run: python scripts/build-agency-bundle.py --check
       - name: Installer shell syntax
         run: sh -n scripts/install-workspace.sh
       - name: Reproduce pinned security fixture comparison
