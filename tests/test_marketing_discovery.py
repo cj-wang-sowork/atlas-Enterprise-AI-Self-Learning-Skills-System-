@@ -657,6 +657,16 @@ class CLITests(unittest.TestCase):
         self.assertEqual(report['discovery']['errors'][0]['code'], 'NETWORK_UNAVAILABLE')
         nested = (b'{"x":' * 1100) + b'0' + (b'}' * 1100)
         report = discover_task('SEO', client=GitHubClient(transport=lambda *a: Response(200, {}, nested)))
+        # CPython versions differ in JSON nesting capacity. Either parser rejection
+        # or the later search-schema rejection must fail closed, never approve data.
+        self.assertIn(report['discovery']['errors'][0]['code'],
+                      ('INVALID_JSON', 'INVALID_SEARCH_RESPONSE'))
+        self.assertEqual(report['discovery']['status'], 'UNAVAILABLE')
+        self.assertEqual(report['discovery']['candidates'], [])
+        self.assertEqual(report['discovery']['offline_fallback']['method_ids'],
+                         ['04-content-pillar-design'])
+        malformed = b'{"x":not-a-json-value}'
+        report = discover_task('SEO', client=GitHubClient(transport=lambda *a: Response(200, {}, malformed)))
         self.assertEqual(report['discovery']['errors'][0]['code'], 'INVALID_JSON')
         self.assertNotIn('private-secret', json.dumps(report))
 
