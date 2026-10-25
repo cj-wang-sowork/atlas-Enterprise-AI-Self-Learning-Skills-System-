@@ -1,6 +1,40 @@
-# ATLAS Enterprise AI Self-Learning Skills System
+# ATLAS Marketing Team
 
-ATLAS is a portable agent workspace, reusable prompt pack, and optional Python reference implementation for reviewed learning from repeated work. It is **not a production-ready multi-tenant service**: copying instructions does not enforce privacy, authenticate users, or connect a runtime to the Python backend. Start with sanitized examples and verify the integration you actually use.
+**Turn a brand brief into one week of social content: complete copy, visual
+briefs, CTAs and a review checklist.** An open-source marketing workflow preview,
+not a production service or a replacement for accountable human review.
+
+Start with one outcome rather than choosing agents or installing a catalog.
+The assistant uses the bundled methods first and explores suitable public GitHub
+methods when a new need or capability gap warrants it. Small edits reuse the
+current workflow instead of searching again. Sources, assumptions and unavailable
+tools stay visible; drafts are not published automatically.
+
+## Try one real task
+
+**Recommended first trial: [use the ChatGPT trial guide](docs/TRY_IN_CHATGPT.md).**
+Use the text Project package to start one conversation with your own authorized
+brand brief. ZIP reading is conditional on actual file tools; this is not a
+promise of native installation or durable memory. The guide includes a direct
+file-upload fallback, not a setup interview.
+
+There is also a **localhost-only personal web demo** for inspecting the actual
+workflow and a live model response in a browser:
+
+```sh
+python3 -m native_demo --port 8766
+```
+
+Open the loopback URL printed by the server. The demo uses your own locally
+installed and signed-in Codex CLI, not a shared hosted account; no model result
+is prewritten. It is not a public or multi-user AI backend, does not provide
+account connectors, and must not be exposed through a public tunnel. If the
+runner is unavailable, it reports the blocker rather than inventing a result.
+
+The older enterprise workspace and optional reviewed-learning Python modules
+remain in this repository for compatibility. They are not automatically connected
+to this marketing workflow. Prompt files do not enforce privacy or authenticate
+users; use sanitized examples and verify the actual host setup.
 
 ## Adaptive Marketing Team
 

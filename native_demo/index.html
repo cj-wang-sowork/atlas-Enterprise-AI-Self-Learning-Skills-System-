@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="atlas-csrf" content="__ATLAS_CSRF__">
+<title>ATLAS — 第一份有用的作品</title>
+<link rel="stylesheet" href="/app.css"><script src="/app.js" defer></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/" aria-label="ATLAS 首頁"><span class="brand-mark">A<span>✳</span></span>ATLAS<span class="brand-sub">MARKETING STUDIO</span></a><span class="local-badge"><i></i> 個人本機試作 <span>· LOCAL ONLY</span></span></header>
+<main>
+<section class="hero"><div><p class="eyebrow">A LITTLE DIRECTION. REAL FIRST WORK.</p><h1>少一點設定，<br>先做出<span>第一份作品。</span></h1><p class="intro">把需求交給 ATLAS。依任務選方法、起草、檢查，<br class="desktop">交回一份你可以繼續修改的行銷草稿。</p></div><div class="hero-note"><span class="compass" aria-hidden="true">↗</span><div><span class="eyebrow">YOUR BRIEF → YOUR DRAFT</span><p>不是預製成果展示。<br>這次按下開始，才會真的生成。</p></div></div></section>
+<div class="workspace">
+<section class="brief card" aria-labelledby="brief-title"><div class="section-head"><span class="number">01</span><h2 id="brief-title">這次想完成什麼？</h2></div><p class="subtle">不用先填完整品牌問卷，一句需求也能開始。</p>
+<form id="brief-form"><label for="task">任務需求 <span class="required">必填</span></label><textarea id="task" name="task" required maxlength="10000" rows="6" placeholder="例如：幫我把這段咖啡店 IG 貼文，改寫成三種不同開場。請給完整文案，不要只列主題。"></textarea><button id="sample" type="button" class="sample-button">↗ 填入虛構咖啡品牌範例</button>
+<div class="context-heading"><label for="context">品牌背景</label><span class="optional">選填 · 與方法分開</span></div><textarea id="context" name="context" maxlength="6000" rows="4" placeholder="有什麼必須知道的？品牌、受眾、語氣、不能說的話。留白也可以；未知資訊會以假設處理。"></textarea>
+<p class="privacy-note">不放密碼、個資或機密檔案。你輸入的文字將送至已登入的 Codex 模型服務；本機程式不保留歷史。</p>
+<button id="generate" type="submit" class="primary">開始製作草稿 <span>↗</span></button><button id="clear" type="button" class="text-button">清空這次工作</button></form>
+<div class="boundary"><span>個人試用邊界</span><p>只使用擁有者的 Codex 帳號，不能公開分享後端或當作多人 SaaS。不會連接社群帳號、發文、投放或自動學習。</p></div></section>
+<section class="work card" aria-labelledby="work-title"><div class="work-top"><div class="section-head"><span class="number">02</span><h2 id="work-title">你的工作稿</h2></div><span class="draft-tag">DRAFT · 未發佈</span></div>
+<div id="status" class="status" role="status" aria-live="polite">尚未開始 · 等你的一句需求</div>
+<div id="empty" class="empty"><div class="paper-icon" aria-hidden="true"><span>✳</span><b></b><b></b><b></b></div><h3>先有一份能討論的版本。</h3><p>這裡會顯示模型的實際回應，<br>不是範例截圖，也不會預填漂亮的成效。</p><div class="empty-foot">可編輯文字 <span>／</span> 真實來源狀態 <span>／</span> 人工審核</div></div>
+<div id="loading" class="loading" hidden><span class="spinner" aria-hidden="true"></span><h3>正在等待後端回應</h3><p>後端會依任務決定是否進行唯讀方法搜尋，接著呼叫 Codex。<br>目前未提供逐步進度；這不是模擬的工作流程。</p><span id="elapsed">已等待 0 秒</span></div>
+<div id="error" class="error" role="alert" hidden></div>
+<div id="delivery" hidden><div class="method-box"><p class="mini-heading">這次採用的方法與工作分工</p><div id="workstreams" class="chips"></div><div id="methods" class="method-list"></div><p class="subtle small">由一個模型協調功能分工，不代表已連線真人或獨立 Agent。</p></div><div class="editor-heading"><label for="result">可編輯的 Markdown 原稿</label><span id="edited" class="subtle small">模型原始回應</span></div><textarea id="result" rows="22" spellcheck="false" aria-label="模型產生的可編輯工作稿"></textarea><div class="output-actions"><button id="copy" type="button" class="secondary">複製文字</button><button id="download" type="button" class="secondary">下載 .md <span>↓</span></button><span id="action-status" aria-live="polite" class="subtle small"></span></div><div class="evidence-grid"><details open><summary>來源與方法搜尋</summary><p id="discovery-status" class="subtle small"></p><div id="sources"></div></details><details open><summary>待人工確認</summary><ul id="reviews"></ul></details></div></div>
+</section></div>
+<footer><span>ATLAS / PERSONAL FIELD TEST</span><p>作品先行，證據跟上。草稿不是核准；未知不是成果。</p><span>不保留伺服器工作歷史</span></footer>
+</main></body></html>

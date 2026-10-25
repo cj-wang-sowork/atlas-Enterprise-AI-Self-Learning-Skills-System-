@@ -17,8 +17,14 @@ editable result. Reply in the user's language, including Traditional Chinese.
    Do not start with a ten-question setup. Ask only safety-critical blockers before
    working; otherwise make reversible labelled assumptions and produce a first draft.
 2. For each NEW need, proactively capability-check using
-   `resources/capabilities.md`, then perform bounded public GitHub method discovery
-   using `resources/discovery.md` or available built-in web tools. Use generic
+   `resources/capabilities.md`. Perform bounded public GitHub method discovery
+   when there is a capability or method gap, explicit research/new-source need,
+   or a request for latest/hot/search evidence. For small revisions (rewriting,
+   shortening, editing or resizing) supported by bundled or visibly reviewed
+   methods, reuse them without another repository search; mark `SKIPPED_REUSE`
+   and never claim newly researched repositories. A research/freshness need
+   overrides revision reuse. Use `resources/discovery.md` or built-in web tools
+   when discovery is needed. Use generic
    category keywords only: never send client/task secrets to search services.
    Discovery hints in `catalog.json` are not pre-approved execution or proof of
    current popularity, licensing, suitability or availability.
@@ -56,10 +62,13 @@ Only if Python 3.9+ execution is available, invoke from the extracted skill root
 ```text
 python3 -m marketing_team plan --task "Generic marketing category"
 python3 -m marketing_team discover --task "Generic marketing category" --max-results 3
+python3 -m marketing_team discover --task "Shorten copy" --force-search
 ```
 
-Do not pass private client details to discovery. `plan` is a local aid, not work
-execution; `discover` is a bounded source-research aid, not source approval or
+Do not pass private client details to discovery. `plan` is a local rules-based
+helper, not semantic AI or work execution. Its `discovery_policy` explains whether
+a new search is needed; `--force-search` explicitly overrides reuse. `discover`
+is a bounded source-research aid, not source approval or
 permission to run repository code. Inspect actual command results and capabilities;
 without Python, follow the same process using available web tools and resources.
 The ChatGPT Project text-only fallback does not include an executable helper.

@@ -1,6 +1,16 @@
 # Bounded method discovery
 
-For each NEW need, capability-check first. With Python and network available,
+For each NEW need, capability-check first. Search proactively for a capability or method gap,
+an explicit research/new-source need, or a latest/hot/search request. For small revisions
+(rewriting, shortening, editing or resizing) supported by bundled or visibly reviewed
+methods, reuse them instead: report `SKIPPED_REUSE` / `BUNDLED_METHOD_REUSE`, no search
+attempt and no newly researched repositories. Research and freshness requirements
+override revision reuse; do not skip "重新研究市場" or "改寫並查最新趨勢".
+The optional rules-based helper exposes `discovery_policy`; `discover --force-search`
+overrides reuse. This is not semantic AI, a sticky cache, source approval or installation.
+Each required search is fresh; reuse does not establish current facts or analytics.
+
+With Python and network available,
 use the packaged discover command from the skill root. Otherwise use the host's
 actual built-in search and browsing tools. Neither path authorizes code execution
 from a discovered repository. If tools are unavailable, blocked, rate-limited or

@@ -37,6 +37,18 @@ inputs, output IDs and approvals. Do not upload a competing legacy role kit.
 This route is not a native plugin install and includes no executable package.
 No auto-learning, cross-chat state sync, publishing or client isolation guarantee.
 
+## Ordinary-chat trial (conditional, not an install)
+
+For one first task, attach the text Project ZIP in a new conversation only if the
+session can actually read and unpack files. Ask it to read PROJECT_INSTRUCTIONS.md
+and PLAYBOOK.md, then supply an authorized brand brief and the actual requested
+output. If extraction fails, unzip locally, upload PLAYBOOK.md and paste the
+instructions; never claim a ZIP was read or installed without evidence. This is
+not permanent installation or guaranteed cross-chat memory. A useful first trial
+is seven complete social drafts with visual directions, CTAs and QA, not an agent
+setup interview. Keep private data out unless appropriate consent and platform
+controls have been confirmed.
+
 ## Acceptance checks after setup
 
 In a clean session request one concrete output, then a different task type.
