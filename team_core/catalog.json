@@ -1,0 +1,10 @@
+{
+  "version": "0.1.0",
+  "status": "discovery-hints-only",
+  "research_checkpoint": "2026-10-25",
+  "notice": "MIT reported at research checkpoint only; verify current commit, license, environment and popularity live before selection. No auto-execution approval.",
+  "seeds": [
+    {"repository": "coreyhaines31/marketingskills", "url": "https://github.com/coreyhaines31/marketingskills", "category": "marketing methods", "requires_live_revalidation": true},
+    {"repository": "msitarzewski/agency-agents", "url": "https://github.com/msitarzewski/agency-agents", "category": "agency workstream perspectives", "requires_live_revalidation": true}
+  ]
+}

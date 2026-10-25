@@ -2,7 +2,53 @@
 
 ATLAS is a portable agent workspace, reusable prompt pack, and optional Python reference implementation for reviewed learning from repeated work. It is **not a production-ready multi-tenant service**: copying instructions does not enforce privacy, authenticate users, or connect a runtime to the Python backend. Start with sanitized examples and verify the integration you actually use.
 
-The same repository can be installed for:
+## Adaptive Marketing Team
+
+**One marketing core. Task-specific workflows. Fresh, read-only GitHub discovery.**
+
+The new [adaptive team guide](docs/MARKETING_TEAM.md) is the entry point for
+marketers who want to describe an outcome instead of assembling agents. The
+director selects relevant workstreams, checks current capabilities, searches for
+suitable public repositories, reviews source-pinned instructions, and applies
+usable methods to an actual draft deliverable. Popularity is one signal, not a
+quality or safety certificate. Roles are coordinated work stages of the host
+model, **not independently deployed agents**.
+
+The canonical instructions and resources live in `team_core/`. The
+standard-library Python helper in `marketing_team/` provides adaptive routing and
+bounded GitHub API discovery; it does not run downloaded code or create marketing
+content by itself. Inside a supported assistant, the host model uses the reviewed
+methods to do the work. Generic category queries keep raw briefs and client
+identifiers out of public search. If live search is unavailable, report
+`LIVE_SEARCH_UNAVAILABLE` and use the bundled methods without inventing a search.
+
+From a source checkout, inspect the plan or perform a real public-source search:
+
+```sh
+python3 -m marketing_team plan --task "Plan a product launch social campaign"
+python3 -m marketing_team discover --task "Audit SEO and landing page conversion" --max-results 3
+```
+
+Release authors generate three platform layouts from the same canonical source.
+Choose a new destination outside the checkout; the builder refuses overwrites:
+
+```sh
+python3 scripts/build-marketing-team.py --check
+python3 scripts/build-marketing-team.py --target claude --dest /absolute/output/ATLAS-Marketing-Team-Claude.zip
+python3 scripts/build-marketing-team.py --target chatgpt-plugin --dest /absolute/output/ATLAS-Marketing-Team-ChatGPT-Plugin.zip
+python3 scripts/build-marketing-team.py --target chatgpt-project --dest /absolute/output/ATLAS-Marketing-Team-ChatGPT-Project.zip
+```
+
+Upload the Claude skill through its Skills interface with the required file/code
+capabilities enabled. ChatGPT native plugin ZIP upload depends on the available
+surface, plan and workspace permission; use the manual Project layout when that
+entry is unavailable. Dropping an archive into an ordinary chat is **not a permanent installation**.
+These exports do not add account authorization, background workers, social
+publishing, ad spend or automatic rule write-back. Native ChatGPT/Claude UI
+installation and live model task adherence remain separate acceptance gates.
+The earlier Agency Edition below remains available and unchanged.
+
+The same repository also supports these earlier workspace editions:
 
 | Runtime | Support model |
 | --- | --- |
@@ -11,7 +57,8 @@ The same repository can be installed for:
 | Codex CLI | Uses Codex's `AGENTS.md` instruction discovery |
 | Qwen Code CLI | Installs a `SKILL.md` pack under `~/.qwen/skills` |
 | Hermes Agent | Installs a `SKILL.md` pack under `$HERMES_HOME/skills` (default `~/.hermes/skills`) |
-| ChatGPT | **Manual Starter Kit** for Project instructions and sanitized context; no local/backend execution |
+| ChatGPT | Adaptive skills-only plugin package where supported, or manual Project/Starter Kit; tools and authorization remain platform-dependent |
+| Claude (web/app) | Adaptive custom skill ZIP; requires the platform's Skills and file/code capabilities |
 
 ## ATLAS for ChatGPT — Agency Edition v1.0
 
@@ -127,7 +174,7 @@ Install for one runtime:
 ./scripts/install-workspace.sh --target hermes
 ```
 
-ChatGPT users: download the repository ZIP, open `starter/chatgpt/README.md`, and follow the manual Project setup. The [walkthrough](docs/CHATGPT_STARTER.md) targets a first task in about 10 minutes, but this is not a measured or guaranteed result. Live ChatGPT UI setup has not been verified.
+ChatGPT users: prefer the [adaptive team guide](docs/MARKETING_TEAM.md) for the new core. For the earlier generic manual edition, download the repository ZIP, open `starter/chatgpt/README.md`, and follow the Project setup. Its [walkthrough](docs/CHATGPT_STARTER.md) targets a first task in about 10 minutes, not a measured or guaranteed result. Live native UI setup has not been verified.
 
 Install for all five local agent runtimes (not ChatGPT):
 
@@ -258,7 +305,7 @@ Core Python modules:
 | `skill_registry.py` | Scoped revision history, human approvals, persistence, revocation, and import distrust |
 | `market_intelligence.py` | Cross-market insights, anomalies, and health reports |
 
-The installer includes **all root `*.py` modules**, including `skill_registry.py` when present. Full workspace bundles contain them at the workspace root; skill packs contain them in `templates/workspace/`. Run code explicitly from that directory or integrate it yourself. Installing prompts does not invoke the backend or automatically observe/review/promote lessons. ChatGPT uses manual text context only.
+The earlier workspace installer includes **all root `*.py` modules**, including `skill_registry.py` when present. Full workspace bundles contain them at the workspace root; skill packs contain them in `templates/workspace/`. Run code explicitly from that directory or integrate it yourself. Installing prompts does not invoke the backend or automatically observe/review/promote lessons. The adaptive marketing-team exporter is separate; its optional discovery helper runs only when the host actually permits execution and network access.
 
 ## Verify Installation
 
