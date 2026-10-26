@@ -98,8 +98,9 @@ def archive_entries(target, sources):
             'Use PLAYBOOK.md as the canonical adaptive marketing director and method guide.\n'
             'This is a manual text workflow, not a native plugin or an automatic installer.\n'
             'Use only visible authorized CLIENT_CONTEXT.md inputs; keep versions manual.\n'
-            'For each new need capability-check, discover safe public methods with generic\n'
-            'category searches or mark LIVE_SEARCH_UNAVAILABLE, then deliver the real\n'
+            'Capability-check each new need; reuse bundled methods for supported small edits.\n'
+            'Discover safe public methods for gaps, fresh evidence or explicit research, using\n'
+            'generic category searches or mark LIVE_SEARCH_UNAVAILABLE, then deliver the real\n'
             'requested output before optional onboarding. Select relevant workstreams,\n'
             'apply reviewed methods, cite sources/versions and QA. Bundled methods are\n'
             'available offline. Outputs remain DRAFT — unpublished. No account access,\n'
@@ -134,7 +135,7 @@ def archive_entries(target, sources):
         entries['plugin.json'] = stable_json({
             '$schema': 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json',
             'name': 'atlas-marketing-team',
-            'version': '0.1.0',
+            'version': '0.2.0',
             'description': 'Adaptive marketing workstreams with reviewed public methods.',
             'license': 'MIT',
             'keywords': ['marketing', 'research', 'content', 'skills'],

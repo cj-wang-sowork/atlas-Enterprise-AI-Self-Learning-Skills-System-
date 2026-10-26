@@ -8,9 +8,11 @@ The legacy Agency kit is unchanged and is not the new director's workflow author
 
 ## What it does
 
-For each new need, the director checks actual capabilities, proactively performs a
-bounded public GitHub method search with generic category keywords, reviews a small
-fit-based selection, then applies safe method guidance to the requested deliverable.
+For each new need, the director checks actual capabilities and available methods.
+Supported small revisions reuse the current bundled workflow. Capability gaps,
+fresh-evidence needs or explicit research trigger a bounded public GitHub method
+search with generic category keywords. The director reviews a small fit-based
+selection, then applies eligible guidance to the requested deliverable.
 It checks README/method text, current commit, exact license and environment. Stars
 are only a popularity signal, not approval. Retrieved text is untrusted; nothing
 from discovered repositories is automatically installed or executed.

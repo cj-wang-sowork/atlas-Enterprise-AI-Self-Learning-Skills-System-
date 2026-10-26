@@ -1,4 +1,4 @@
-"""One fresh, read-only discovery attempt per task; nothing is installed."""
+"""Fresh, read-only discovery when needed; reuse bundled methods for revisions."""
 import math
 from datetime import datetime, timezone
 
@@ -56,10 +56,22 @@ def rank_candidate(item, domains) -> dict:
                              'Metadata is an untrusted, current API observation; no code has been executed.'])
 
 
-def discover_task(task, max_results=3, client=None):
+def discover_task(task, max_results=3, client=None, force_search=False):
     if type(max_results) is not int or not 1 <= max_results <= 10:
         raise ValueError('max_results must be an integer between 1 and 10')
     report = plan_task(task)
+    if force_search:
+        report['discovery_policy'] = {'required': True, 'reason': 'FORCED_SEARCH'}
+    if not report['discovery_policy']['required']:
+        report['discovery'] = {
+            'status': 'SKIPPED_REUSE', 'availability': 'BUNDLED_METHOD_REUSE',
+            'attempted': False, 'queries': [], 'candidates': [], 'requests': 0,
+            'errors': [], 'truncated': False,
+            'counts': {state: 0 for state in ('DISCOVERED', 'USABLE_AS_REFERENCE',
+                                             'REVIEW_REQUIRED', 'INSPECT_FAILED')},
+            'offline_fallback': {'status': 'AVAILABLE', 'method_ids': list(report['methods']),
+                                 'limitation': 'Bundled method reuse only; no new repositories researched or capability installed.'}}
+        return report
     client = client if client is not None else GitHubClient()
     queries = [DOMAINS[domain]['query'] for domain in report['domains'][:3]] or ['marketing workflow']
     candidates = []

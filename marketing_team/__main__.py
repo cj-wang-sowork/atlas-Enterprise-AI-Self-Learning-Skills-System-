@@ -14,17 +14,18 @@ class _Arguments(argparse.ArgumentParser):
 
 
 def main(argv=None):
-    parser = _Arguments(description='Adaptive marketing team: offline planning or live read-only GitHub discovery')
+    parser = _Arguments(description='Rules-based marketing helper: offline planning or read-only GitHub discovery')
     commands = parser.add_subparsers(dest='command', required=True)
     plan = commands.add_parser('plan', help='offline adaptive method plan (no network)')
     plan.add_argument('--task', required=True, help='private local task text; never included in search queries')
-    discover = commands.add_parser('discover', help='fresh read-only GitHub search and bounded source inspection')
+    discover = commands.add_parser('discover', help='read-only GitHub search when needed; reuse bundled methods for small revisions')
     discover.add_argument('--task', required=True)
     discover.add_argument('--max-results', type=int, default=3, help='1..10 candidates, at most two inspected (default: 3)')
+    discover.add_argument('--force-search', action='store_true', help='search fresh even for a narrow revision')
     try:
         args = parser.parse_args(argv)
         report = (plan_task(args.task) if args.command == 'plan' else
-                  discover_task(args.task, max_results=args.max_results))
+                  discover_task(args.task, max_results=args.max_results, force_search=args.force_search))
     except ValueError:
         print(json.dumps({'status': 'ERROR', 'error': {'code': 'INVALID_ARGUMENT'}}))
         return 2

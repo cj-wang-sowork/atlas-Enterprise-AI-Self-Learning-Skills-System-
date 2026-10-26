@@ -1,6 +1,6 @@
 # Licensing and provenance
 
-Canonical adaptive director/resources: ATLAS marketing team 0.1.0; distributed
+Canonical adaptive director/resources: ATLAS marketing team 0.2.0; distributed
 under the repository license retained in licenses/ATLAS_LICENSE.txt.
 
 The six complete blocks in resources/bundled-methods.md are adapted method text
